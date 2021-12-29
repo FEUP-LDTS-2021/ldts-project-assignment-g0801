@@ -1,5 +1,5 @@
-import GUI.*;
-import com.g10.supaplex.Size;
+import com.g801.supaplex.Model.GUI.*;
+import com.g801.supaplex.Model.Size;
 
 import java.io.IOException;
 
@@ -13,6 +13,5 @@ public class TestScreen {
 
     public static void main(String[] args) throws IOException {
         TestScreen test = new TestScreen();
-
     }
 }
