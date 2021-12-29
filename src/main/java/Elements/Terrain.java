@@ -1,3 +1,6 @@
+package Elements;
+import Models.Sprite;
+
 public class Terrain extends Model{
     Terrain(double x, double y){
         pos = new Position(x, y);

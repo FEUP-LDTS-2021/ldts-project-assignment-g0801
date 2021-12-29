@@ -1,3 +1,6 @@
+package Elements;
+import Models.Sprite;
+
 public abstract class Model {
     Position pos;
     Sprite model;
