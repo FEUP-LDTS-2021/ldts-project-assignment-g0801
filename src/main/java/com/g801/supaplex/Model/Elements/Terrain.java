@@ -7,10 +7,12 @@ public class Terrain extends Model{
         pos = new Position(x, y);
     }
 
+    @Override
     Position getPos(){
         return pos;
     }
 
+    @Override
     Sprite getModel(){
         return model;
     }

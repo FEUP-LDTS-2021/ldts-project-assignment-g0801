@@ -18,4 +18,5 @@ public class Entity extends Model {
     Sprite getModel() {
         return null;
     }
+
 }
