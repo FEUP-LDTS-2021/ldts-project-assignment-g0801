@@ -1,4 +1,6 @@
 plugins {
+    id 'java'
+    id 'application'
     id 'groovy'
 }
 
@@ -15,6 +17,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
 
+}
+
+application {
+    mainClass.set("TestScreen")
 }
 
 test {
