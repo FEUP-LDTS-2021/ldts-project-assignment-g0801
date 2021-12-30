@@ -1,12 +1,12 @@
-import com.g801.supaplex.Model.GUI.*;
+package com.g801.supaplex;
+
+import com.g801.supaplex.Model.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
-
 public class Game implements Runnable {
 
-    private final GUI gui;
+    private final LanternaGUI gui;
 
     private boolean running = false;
     private Thread thread;
@@ -38,6 +38,7 @@ public class Game implements Runnable {
 
     public Game() throws IOException {
         this.gui = new LanternaGUI(new Size(150,50));
+        gui.draw();
     }
 
     public void run() {
@@ -77,6 +78,7 @@ public class Game implements Runnable {
     private void tick() {
 
     }
+
     // EVERYTHING THAT IS RENDERED (PROBABLY BOTH WILL BE PUT SOMEWHERE ELSE)
     private void render() {
 
@@ -88,3 +90,4 @@ public class Game implements Runnable {
         test.run();
     }
 }
+

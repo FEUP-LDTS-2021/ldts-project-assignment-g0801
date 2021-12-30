@@ -1,7 +1,10 @@
 package com.g801.supaplex.Model.GUI;
 
 import com.g801.supaplex.Model.Size;
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -89,5 +92,14 @@ public class LanternaGUI implements GUI {
 
     Screen getScreen() {
         return screen;
+    }
+
+    public void draw() throws IOException {
+        clear();
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.ANSI.RED);
+        tg.enableModifiers(SGR.BOLD);
+        tg.putString(4, 16, "Cona de Sabão");
+        refresh();
     }
 }
