@@ -1,14 +1,12 @@
 package com.g801.supaplex.Model.Models;
 
-import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Position;
-
 import java.util.HashMap;
 
 public class Model {
 
-    Position pos;
-    Sprite model;
+    protected Position pos;
+    protected Sprite model;
 
     Position getPos() {
         return pos;
