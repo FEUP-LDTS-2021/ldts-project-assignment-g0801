@@ -20,7 +20,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("TestScreen")
+    mainClass.set("Game")
 }
 
 test {
