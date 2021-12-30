@@ -1,22 +1,22 @@
-package com.g801.supaplex.Model.Elements;
+package com.g801.supaplex.Model.Models;
 
-import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Position;
 
 public class Entity extends Model {
 
-    Entity(double x, double y){
+    public Entity(double x, double y){
         pos = new Position(x, y);
+        model = new Sprite();
     }
 
     @Override
     Position getPos() {
-        return null;
+        return pos;
     }
 
     @Override
     Sprite getModel() {
-        return null;
+        return model;
     }
 
 }

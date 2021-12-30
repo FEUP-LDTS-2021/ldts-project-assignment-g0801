@@ -70,8 +70,7 @@ public class Game implements Runnable {
                 frames = 0;
             }
         }
-        stop();
-    }
+        stop();    }
 
     // EVERYTHING THAT UPDATES
     private void tick() {

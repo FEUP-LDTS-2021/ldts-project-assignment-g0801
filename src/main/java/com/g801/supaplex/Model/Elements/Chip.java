@@ -1,6 +1,8 @@
 package com.g801.supaplex.Model.Elements;
 
-public class Chip extends Entity{
+import com.g801.supaplex.Model.Models.Entity;
+
+public class Chip extends Entity {
     Chip(double x, double y) {
         super(x, y);
     }

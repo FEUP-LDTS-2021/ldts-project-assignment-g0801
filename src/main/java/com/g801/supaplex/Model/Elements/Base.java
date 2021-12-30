@@ -1,8 +1,14 @@
 package com.g801.supaplex.Model.Elements;
 
+import com.g801.supaplex.Model.Models.Terrain;
+
+import java.util.HashMap;
+
 public class Base extends Terrain {
 
-    Base(double x, double y){
+    public Base (double x, double y, HashMap<Character, String> colors) {
         super(x, y);
+        this.setSprite("Base", colors);
     }
+
 }
