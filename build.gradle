@@ -21,7 +21,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("Game")
+    mainClass.set("com.g801.supaplex.Game")
 }
 
 test {

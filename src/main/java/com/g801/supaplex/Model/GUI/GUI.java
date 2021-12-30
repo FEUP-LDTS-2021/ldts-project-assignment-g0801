@@ -15,7 +15,8 @@ public interface GUI {
 
     KEYACTION getNextAction() throws IOException;
 
-//    void drawCharacter();
+    void draw() throws IOException;
+
 //    void drawText(...);
 //    void drawTextImage(...);
 //    void drawRectangle(...);
