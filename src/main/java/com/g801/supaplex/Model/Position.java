@@ -8,19 +8,19 @@ public class Position {
         this.y = y;
     }
 
-    double getX(){
+    public double getX(){
         return x;
     }
 
-    double getY(){
+    public double getY(){
         return y;
     }
 
-    void addX(double n){
+    public void addX(double n){
         x += n;
     }
 
-    void addY(double n){
+    public void addY(double n){
         y += n;
     }
 }
