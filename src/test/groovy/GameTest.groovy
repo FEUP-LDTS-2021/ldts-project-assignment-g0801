@@ -1,3 +1,4 @@
+import com.g801.supaplex.Game
 import spock.lang.Specification;
 
 class GameTest extends Specification {
