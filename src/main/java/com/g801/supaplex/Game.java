@@ -3,7 +3,7 @@ package com.g801.supaplex;
 import com.g801.supaplex.Model.Menu.StartMenuBuilder;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
-import com.g801.supaplex.Viewer.MenuViewer;
+import com.g801.supaplex.Viewer.Menu.MenuViewer;
 
 import java.io.IOException;
 public class Game implements Runnable {

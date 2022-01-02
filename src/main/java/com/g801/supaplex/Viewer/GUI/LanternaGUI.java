@@ -13,11 +13,13 @@ import com.googlecode.lanterna.terminal.MouseCaptureMode;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class LanternaGUI implements GUI {
 
     private final TerminalScreen screen;
     private final Size size;
+    protected TextGraphics tg;
 
     public LanternaGUI(Size size) throws IOException {
         this.size = size;
@@ -100,7 +102,17 @@ public class LanternaGUI implements GUI {
         tg.putString((int) position.getX(), (int) position.getY(), text.getString());
     }
 
-    TerminalScreen getScreen() {
+    @Override
+    public void drawRectangle(Position position) {
+        TextGraphics tg = screen.newTextGraphics();
+        TerminalPosition tp = new TerminalPosition((int) position.getX(), (int) position.getY());
+        TerminalSize ts = new TerminalSize(size.getWidth(), size.getHeight());
+
+        tg.fillRectangle(tp, ts, TextCharacter.fromCharacter(' ', TextColor.Factory.fromString("#ff00ff"), TextColor.Factory.fromString("#00FF000"))[0]);
+    }
+
+    @Override
+    public TerminalScreen getScreen() {
         return screen;
     }
 
@@ -112,5 +124,15 @@ public class LanternaGUI implements GUI {
         tg.putString(4, 16, "Cona de Sabão");
 
         refresh();
+    }
+
+    public int getCol(String s) {
+        return (screen.getTerminalSize().getColumns() - s.length() / 2);
+    }
+
+    @Override
+    public void drawString(String color, int row, String s) {
+        this.tg.setForegroundColor(TextColor.Factory.fromString(color));
+        this.tg.putString(getCol(s), row, s);
     }
 }

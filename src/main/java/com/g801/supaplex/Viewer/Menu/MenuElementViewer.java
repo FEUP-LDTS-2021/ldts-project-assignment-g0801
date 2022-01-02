@@ -1,4 +1,4 @@
-package com.g801.supaplex.Viewer;
+package com.g801.supaplex.Viewer.Menu;
 
 import com.g801.supaplex.Viewer.GUI.GUI;
 
