@@ -1,13 +1,12 @@
-package com.g801.supaplex.Model.GUI;
+package com.g801.supaplex.Viewer.GUI;
 
+import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
+import com.g801.supaplex.Model.Text;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.MouseCaptureMode;
@@ -43,7 +42,9 @@ public class LanternaGUI implements GUI {
 
         terminalFactory.setTerminalEmulatorTitle("Supaplex");
         terminalFactory.setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE_DRAG_MOVE);
-        return terminalFactory.createTerminal();
+        Terminal terminal = terminalFactory.createTerminal();
+        terminal.setBackgroundColor(TextColor.ANSI.GREEN);
+        return terminal;
     }
 
     @Override
@@ -90,7 +91,16 @@ public class LanternaGUI implements GUI {
         return this.size;
     }
 
-    Screen getScreen() {
+    @Override
+    public void drawText(Position position, Text text) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(text.getForegroundColor()));
+        tg.setBackgroundColor(TextColor.Factory.fromString(text.getBackgroundColor()));
+
+        tg.putString((int) position.getX(), (int) position.getY(), text.getString());
+    }
+
+    TerminalScreen getScreen() {
         return screen;
     }
 
@@ -100,6 +110,7 @@ public class LanternaGUI implements GUI {
         tg.setForegroundColor(TextColor.ANSI.RED);
         tg.enableModifiers(SGR.BOLD);
         tg.putString(4, 16, "Cona de Sabão");
+
         refresh();
     }
 }

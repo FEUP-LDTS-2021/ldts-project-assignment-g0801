@@ -9,12 +9,12 @@ public class Terrain extends Model {
     }
 
     @Override
-    Position getPos() {
+    public Position getPos() {
         return pos;
     }
 
     @Override
-    Sprite getModel() {
+    public Sprite getModel() {
         return model;
     }
 

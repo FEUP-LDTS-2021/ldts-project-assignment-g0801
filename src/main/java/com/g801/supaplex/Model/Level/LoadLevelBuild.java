@@ -11,8 +11,6 @@ public class LoadLevelBuild {
 
     private final List<String> lines;
 
-
-
     public LoadLevelBuild() throws FileNotFoundException {
 
         URL resource = LoadLevelBuild.class.getResource("/Levels/Level01.txt");

@@ -9,5 +9,4 @@ public class Base extends Terrain {
         super(x, y);
         setSprite("Base", colors);
     }
-
-}
+    }

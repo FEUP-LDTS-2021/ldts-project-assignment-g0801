@@ -8,17 +8,16 @@ public class Model {
     protected Position pos;
     protected Sprite model;
 
-    Position getPos() {
+    public Position getPos() {
         return pos;
     }
 
-    Sprite getModel() {
+    public Sprite getModel() {
         return model;
     }
 
     public void setSprite(String s, HashMap<Character, String> colors) {
         model.read(s, colors);
     }
-
 }
 

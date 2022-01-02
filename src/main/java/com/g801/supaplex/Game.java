@@ -1,12 +1,15 @@
 package com.g801.supaplex;
 
-import com.g801.supaplex.Model.GUI.LanternaGUI;
+import com.g801.supaplex.Model.Menu.StartMenuBuilder;
+import com.g801.supaplex.Viewer.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
+import com.g801.supaplex.Viewer.MenuViewer;
 
 import java.io.IOException;
 public class Game implements Runnable {
 
     private final LanternaGUI gui;
+    private final StartMenuBuilder startMenuBuilder;
 
     private boolean running = false;
     private Thread thread;
@@ -38,7 +41,10 @@ public class Game implements Runnable {
 
     public Game() throws IOException {
         this.gui = new LanternaGUI(new Size(150,50));
-        gui.draw();
+        this.startMenuBuilder = new StartMenuBuilder(gui.getSize());
+
+        MenuViewer menuViewer = new MenuViewer(startMenuBuilder.createMenu());
+        menuViewer.draw(this.gui);
     }
 
     public void run() {
@@ -85,8 +91,6 @@ public class Game implements Runnable {
 
     public static void main(String[] args) throws IOException {
         Game test = new Game();
-        test.start();
-        test.run();
     }
 }
 

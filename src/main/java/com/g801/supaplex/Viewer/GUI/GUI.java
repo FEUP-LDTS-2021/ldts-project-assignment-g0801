@@ -1,6 +1,8 @@
-package com.g801.supaplex.Model.GUI;
+package com.g801.supaplex.Viewer.GUI;
 
+import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
+import com.g801.supaplex.Model.Text;
 
 import java.io.IOException;
 
@@ -28,4 +30,6 @@ public interface GUI {
     void close() throws IOException;
 
     Size getSize();
+
+    void drawText(Position position, Text text);
 }
