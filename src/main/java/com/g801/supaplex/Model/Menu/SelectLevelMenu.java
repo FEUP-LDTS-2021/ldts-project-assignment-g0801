@@ -1,30 +1,30 @@
 package com.g801.supaplex.Model.Menu;
 
-public class Menu {
+public class SelectLevelMenu {
 
-    public enum Option {START, LEVEL, EXIT};
+    public enum Option {LOWER, INCREASE, BACK};
 
-    public Option[] options = {Option.START, Option.LEVEL, Option.EXIT};
-
-    public String[] optString = {"START", "SELECT LEVEL", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"LOWER", "INCREASE", "BACK"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
     Option selected;
 
-    Option[] opt = Option.values();
+    Option[] options = Option.values();
 
     private int currentSelect;
 
-    public Menu() {
-        this.selected = Option.START;
+    private int currentLevelSelect;
+
+    public SelectLevelMenu() {
+        this.selected = getOpt()[0];
     }
 
-    public Option[] getOptions() {
+    public Option[] getOpt() {
         return options;
     }
 
     public int getPosElem(Option target) {
         int i = 0;
-        for (; opt[i] != target; i++);
+        for (; options[i] != target; i++);
         return i;
     }
 
@@ -37,10 +37,6 @@ public class Menu {
         this.selected = selected;
     };
 
-    public Option[] getOpt() {
-        return opt;
-    }
-
     public Option getCurrentSelect() {
         return selected;
     }
@@ -49,22 +45,21 @@ public class Menu {
         return optString;
     }
 
-
     public void upButton() {
-        if (selected == Option.START) selected = Option.EXIT;
+        if (selected == Option.LOWER) selected = Option.BACK;
         else {
             int i = getPosElem(selected);
             i--;
-            selected = opt[i];
+            selected = options[i];
         }
     }
 
     public void downButton() {
-        if (selected == Option.EXIT) selected = Option.START;
+        if (selected == Option.BACK) selected = Option.LOWER;
         else {
             int i = getPosElem(selected);
             i++;
-            selected = opt[i];
+            selected = options[i];
         }
     }
 }

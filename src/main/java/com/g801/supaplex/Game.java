@@ -1,11 +1,10 @@
 package com.g801.supaplex;
 
-import com.g801.supaplex.Model.Menu.StartMenuBuilder;
+import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
-import com.g801.supaplex.Viewer.Menu.MenuViewer;
 
 import java.io.IOException;
 import java.util.Stack;
@@ -13,8 +12,10 @@ import java.util.Stack;
 public class Game implements Runnable {
 
     private final LanternaGUI gui;
-    private final StartMenuBuilder startMenuBuilder;
+    private final MainMenu mainMenu;
     private final Stack<State> states;
+    private int currentLevel;
+    private final int TOTAL_LEVELS = 5;
 
     private boolean running = false;
     private Thread thread;
@@ -45,11 +46,12 @@ public class Game implements Runnable {
     }
 
     public Game() throws IOException {
+        this.currentLevel = 1;
         this.gui = new LanternaGUI(new Size(150,50));
-        this.startMenuBuilder = new StartMenuBuilder(gui.getSize());
+        this.mainMenu = new MainMenu();
 
         states = new Stack<>();
-        states.push(new MenuState(startMenuBuilder.createMenu()));
+        states.push(new MenuState(mainMenu));
     }
 
     public void run() {
@@ -99,6 +101,31 @@ public class Game implements Runnable {
     // EVERYTHING THAT IS RENDERED (PROBABLY BOTH WILL BE PUT SOMEWHERE ELSE)
     private void render() {
 
+    }
+
+    public void pushState(State state) {
+        states.push(state);
+    }
+    public void popState() {
+        states.pop();
+    }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void increaseCurrentLevel() {
+        if (currentLevel == TOTAL_LEVELS) {
+            currentLevel = 1;
+        }
+        currentLevel++;
+    }
+
+    public void lowerCurrentLevel() {
+        if (currentLevel == 1) {
+            currentLevel = TOTAL_LEVELS;
+        }
+        currentLevel--;
     }
 
     public static void main(String[] args) throws IOException {
