@@ -24,6 +24,7 @@ class FactoryTest extends Specification {
         given:
             double a = 13;
             double b = 24;
+            double c = 23;
             Base base = factory.getBaseBlock(a, b);
             Chip chip = factory.getChipBlock(a, b);
             Endblock end = factory.getEndBlock(a, b);
