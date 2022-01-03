@@ -1,30 +1,24 @@
 package com.g801.supaplex.Model.Menu;
 
-public class Menu {
+public class MainMenu {
 
-    public enum Option {START, LEVEL, EXIT};
-
-    public Option[] options = {Option.START, Option.LEVEL, Option.EXIT};
+    public enum Option {START, LEVEL, EXIT}
 
     public String[] optString = {"START", "SELECT LEVEL", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
     Option selected;
 
-    Option[] opt = Option.values();
+    Option[] options = Option.values();
 
     private int currentSelect;
 
-    public Menu() {
+    public MainMenu() {
         this.selected = Option.START;
-    }
-
-    public Option[] getOptions() {
-        return options;
     }
 
     public int getPosElem(Option target) {
         int i = 0;
-        for (; opt[i] != target; i++);
+        for (; options[i] != target; i++);
         return i;
     }
 
@@ -35,10 +29,10 @@ public class Menu {
 
     public void setSelected(Option selected) {
         this.selected = selected;
-    };
+    }
 
     public Option[] getOpt() {
-        return opt;
+        return options;
     }
 
     public Option getCurrentSelect() {
@@ -55,7 +49,7 @@ public class Menu {
         else {
             int i = getPosElem(selected);
             i--;
-            selected = opt[i];
+            selected = options[i];
         }
     }
 
@@ -64,7 +58,7 @@ public class Menu {
         else {
             int i = getPosElem(selected);
             i++;
-            selected = opt[i];
+            selected = options[i];
         }
     }
 }

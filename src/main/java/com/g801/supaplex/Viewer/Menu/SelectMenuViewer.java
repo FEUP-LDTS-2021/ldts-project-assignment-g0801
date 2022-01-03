@@ -1,33 +1,33 @@
 package com.g801.supaplex.Viewer.Menu;
 
-import com.g801.supaplex.Model.Menu.Menu;
+import com.g801.supaplex.Model.Menu.MainMenu;
+import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Model.Size;
-import com.g801.supaplex.Model.Text;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
-import com.googlecode.lanterna.*;
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.Symbols;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
-import java.util.List;
 
-public class MenuViewer extends Viewer<Menu> {
+public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
-    public MenuViewer(Menu menu) {
-        super(menu);
+    public SelectMenuViewer(SelectLevelMenu model) {
+        super(model);
     }
 
     @Override
     public void drawModel(GUI gui) throws IOException {
-
         gui.clear();
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
 
         tg.setForegroundColor(TextColor.ANSI.RED);
-        tg.putString((size.getWidth() - "SUPAPLEX".length())/ 2 + 1, 7, "SUPAPLEX", SGR.BOLD);
+        tg.putString((size.getWidth() - "SELECT LEVEL".length())/ 2 + 1, 7, "SELECT LEVEL", SGR.BOLD);
 
         // drawing double line box
 
@@ -47,20 +47,20 @@ public class MenuViewer extends Viewer<Menu> {
 
         int y = 10;
 
-
-        for (Menu.Option elem : getModel().getOptions()) {
+        for (SelectLevelMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
                 tg.setForegroundColor(TextColor.ANSI.BLUE);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             }
             else {
                 tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             }
+            tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             y += 2;
         }
 
+        tg.putString((size.getWidth() - "Current Level:".length()) / 2, y, "Current Level: " + getModel().getConfiguration().getCurrentLevel());
+        y += 2;
+
         gui.refresh();
     }
-
 }

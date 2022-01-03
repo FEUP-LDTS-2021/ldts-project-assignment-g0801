@@ -13,8 +13,6 @@ import com.googlecode.lanterna.terminal.MouseCaptureMode;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
 
 public class LanternaGUI implements GUI {
 
