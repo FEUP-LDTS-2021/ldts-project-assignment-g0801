@@ -18,7 +18,7 @@ abstract public class Viewer <T> {
         gui.refresh();
     }
 
-    protected abstract void drawModel(GUI gui);
+    public abstract void drawModel(GUI gui) throws IOException;
 
     public T getModel() {
         return model;

@@ -1,34 +1,25 @@
 package com.g801.supaplex.Model.Menu;
 
-import com.g801.supaplex.Model.Menu.MenuElem.Button;
-import com.g801.supaplex.Model.Menu.MenuElem.Title;
-
-import java.util.List;
-
 public class Menu {
 
     public enum Option {START, LEVEL, EXIT};
 
-    public String[] optString = {"START GAME", "SELECT LEVEL", "QUIT"};
+    public Option[] options = {Option.START, Option.LEVEL, Option.EXIT};
+
+    public String[] optString = {"START", "SELECT LEVEL", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
     Option selected;
 
     Option[] opt = Option.values();
 
-    private Title title;
-    private List<Button> buttons;
     private int currentSelect;
 
     public Menu() {
-        this.currentSelect = 0;
+        this.selected = Option.START;
     }
 
-    public Title getTitle() {
-        return title;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
+    public Option[] getOptions() {
+        return options;
     }
 
     public int getPosElem(Option target) {
@@ -50,7 +41,30 @@ public class Menu {
         return opt;
     }
 
+    public Option getCurrentSelect() {
+        return selected;
+    }
+
     public String[] getOptString() {
         return optString;
+    }
+
+
+    public void upButton() {
+        if (selected == Option.START) selected = Option.EXIT;
+        else {
+            int i = getPosElem(selected);
+            i--;
+            selected = opt[i];
+        }
+    }
+
+    public void downButton() {
+        if (selected == Option.EXIT) selected = Option.START;
+        else {
+            int i = getPosElem(selected);
+            i++;
+            selected = opt[i];
+        }
     }
 }

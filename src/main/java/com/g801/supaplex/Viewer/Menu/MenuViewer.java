@@ -9,6 +9,7 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MenuViewer extends Viewer<Menu> {
@@ -18,8 +19,9 @@ public class MenuViewer extends Viewer<Menu> {
     }
 
     @Override
-    protected void drawModel(GUI gui) {
-        TitleViewer titleViewer = new TitleViewer();
+    public void drawModel(GUI gui) throws IOException {
+
+        gui.clear();
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
@@ -45,16 +47,20 @@ public class MenuViewer extends Viewer<Menu> {
 
         int y = 10;
 
-        tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-        for (String elem : getModel().getOptString()) {
-            tg.putString((size.getWidth() - elem.length()) / 2 + 1, y, elem);
+
+        for (Menu.Option elem : getModel().getOptions()) {
+            if (getModel().getCurrentSelect() == elem) {
+                tg.setForegroundColor(TextColor.ANSI.BLUE);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
+            }
+            else {
+                tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
+            }
             y += 2;
         }
-    }
 
-    public <T> void drawSingle(T element, MenuElementViewer<T> viewer, GUI gui) {
-        viewer.drawElement(element, gui);
+        gui.refresh();
     }
-
 
 }

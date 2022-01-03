@@ -1,15 +1,20 @@
 package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Menu.StartMenuBuilder;
+import com.g801.supaplex.States.MenuState;
+import com.g801.supaplex.States.State;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.Menu.MenuViewer;
 
 import java.io.IOException;
+import java.util.Stack;
+
 public class Game implements Runnable {
 
     private final LanternaGUI gui;
     private final StartMenuBuilder startMenuBuilder;
+    private final Stack<State> states;
 
     private boolean running = false;
     private Thread thread;
@@ -43,13 +48,13 @@ public class Game implements Runnable {
         this.gui = new LanternaGUI(new Size(150,50));
         this.startMenuBuilder = new StartMenuBuilder(gui.getSize());
 
-        MenuViewer menuViewer = new MenuViewer(startMenuBuilder.createMenu());
-        menuViewer.draw(this.gui);
+        states = new Stack<>();
+        states.push(new MenuState(startMenuBuilder.createMenu()));
     }
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 30.0;
+        final double amountOfTicks = 60;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
         int updates = 0;
@@ -57,8 +62,14 @@ public class Game implements Runnable {
         long timer = System.currentTimeMillis();
 
         while (running) {
-//            System.out.println("Working??");
+
             long now = System.nanoTime(); //takes time to load from line 43 to this one
+
+            try {
+                states.peek().step(this, gui, now);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
@@ -76,6 +87,7 @@ public class Game implements Runnable {
                 updates = 0;
                 frames = 0;
             }
+
         }
         stop();    }
 
@@ -91,6 +103,7 @@ public class Game implements Runnable {
 
     public static void main(String[] args) throws IOException {
         Game test = new Game();
+        test.start();
     }
 }
 
