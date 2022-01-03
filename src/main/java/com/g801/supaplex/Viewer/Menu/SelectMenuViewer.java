@@ -1,6 +1,6 @@
 package com.g801.supaplex.Viewer.Menu;
 
-import com.g801.supaplex.Model.Menu.MainMenu;
+
 import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI;
@@ -58,6 +58,7 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
             y += 2;
         }
 
+        tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
         tg.putString((size.getWidth() - "Current Level:".length()) / 2, y, "Current Level: " + getModel().getConfiguration().getCurrentLevel());
         y += 2;
 

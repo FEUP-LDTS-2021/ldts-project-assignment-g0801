@@ -16,8 +16,6 @@ public class Game implements Runnable {
     private final Configuration configuration;
     private final MainMenu mainMenu;
     private final Stack<State> states;
-    private int currentLevel;
-    private final int TOTAL_LEVELS = 5;
 
     private boolean running = false;
     private Thread thread;
@@ -48,7 +46,7 @@ public class Game implements Runnable {
     }
 
     public Game() throws IOException {
-        this.currentLevel = 1;
+
         this.configuration = new Configuration(3);
 
         this.gui = new LanternaGUI(new Size(150,50));
@@ -60,7 +58,7 @@ public class Game implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 60;
+        final double amountOfTicks = 25;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
         int updates = 0;
