@@ -25,10 +25,10 @@ public class SelectLevelMenuController extends Controller<SelectLevelMenu> {
             case SELECT:
                 switch(getModel().getCurrentSelect()) {
                     case LOWER:
-                        game.lowerCurrentLevel();
+                        getModel().getConfiguration().lowerCurrentLevel();
                         break;
                     case INCREASE:
-                        game.increaseCurrentLevel();
+                        getModel().getConfiguration().increaseCurrentLevel();
                         break;
                     case BACK:
                         game.popState();

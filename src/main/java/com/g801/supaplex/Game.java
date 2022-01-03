@@ -1,5 +1,6 @@
 package com.g801.supaplex;
 
+import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
@@ -12,6 +13,7 @@ import java.util.Stack;
 public class Game implements Runnable {
 
     private final LanternaGUI gui;
+    private final Configuration configuration;
     private final MainMenu mainMenu;
     private final Stack<State> states;
     private int currentLevel;
@@ -47,6 +49,8 @@ public class Game implements Runnable {
 
     public Game() throws IOException {
         this.currentLevel = 1;
+        this.configuration = new Configuration(3);
+
         this.gui = new LanternaGUI(new Size(150,50));
         this.mainMenu = new MainMenu();
 
@@ -110,22 +114,8 @@ public class Game implements Runnable {
         states.pop();
     }
 
-    public int getCurrentLevel() {
-        return currentLevel;
-    }
-
-    public void increaseCurrentLevel() {
-        if (currentLevel == TOTAL_LEVELS) {
-            currentLevel = 1;
-        }
-        currentLevel++;
-    }
-
-    public void lowerCurrentLevel() {
-        if (currentLevel == 1) {
-            currentLevel = TOTAL_LEVELS;
-        }
-        currentLevel--;
+    public Configuration getConfiguration() {
+        return configuration;
     }
 
     public static void main(String[] args) throws IOException {

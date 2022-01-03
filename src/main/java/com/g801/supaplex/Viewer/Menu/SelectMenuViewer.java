@@ -47,7 +47,6 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
         int y = 10;
 
-
         for (SelectLevelMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
                 tg.setForegroundColor(TextColor.ANSI.BLUE);
@@ -58,6 +57,9 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
             tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             y += 2;
         }
+
+        tg.putString((size.getWidth() - "Current Level:".length()) / 2, y, "Current Level: " + getModel().getConfiguration().getCurrentLevel());
+        y += 2;
 
         gui.refresh();
     }

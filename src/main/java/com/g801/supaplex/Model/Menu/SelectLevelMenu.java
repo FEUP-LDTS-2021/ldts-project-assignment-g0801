@@ -1,6 +1,10 @@
 package com.g801.supaplex.Model.Menu;
 
+import com.g801.supaplex.Model.Configuration;
+
 public class SelectLevelMenu {
+
+    Configuration configuration;
 
     public enum Option {LOWER, INCREASE, BACK};
 
@@ -14,8 +18,9 @@ public class SelectLevelMenu {
 
     private int currentLevelSelect;
 
-    public SelectLevelMenu() {
+    public SelectLevelMenu(Configuration configuration) {
         this.selected = getOpt()[0];
+        this.configuration = configuration;
     }
 
     public Option[] getOpt() {
@@ -61,5 +66,9 @@ public class SelectLevelMenu {
             i++;
             selected = options[i];
         }
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
     }
 }
