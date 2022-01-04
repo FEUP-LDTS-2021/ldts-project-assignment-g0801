@@ -5,6 +5,10 @@ import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 
 public class Murphy extends Movable {
+    enum Direction{
+        UP, DOWN, LEFT, RIGHT
+    }
+
     private static Murphy m;
     private Aura aura;
     private boolean alive;
@@ -19,5 +23,19 @@ public class Murphy extends Movable {
         if(m == null)
             m = new Murphy();
         return m;
+    }
+
+    //Checks if Murphy can move to the desired block
+    public boolean canMove(Direction d){
+        return true;
+    }
+
+    //Checks if Murphy can eat the desired block
+    public boolean canEat(Direction d){
+        return true;
+    }
+
+    public void updateAura(){
+        aura.update(m.pos);
     }
 }

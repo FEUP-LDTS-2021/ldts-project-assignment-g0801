@@ -1,27 +1,46 @@
 package com.g801.supaplex.Model.Level;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class LoadLevelBuild {
 
-    private final List<String> lines;
+    private static char[][] map;
 
-    public LoadLevelBuild() throws FileNotFoundException {
+    private LoadLevelBuild(int lvl) throws FileNotFoundException {
+        String level;
+        if(lvl < 10) level = String.valueOf(0) + String.valueOf(lvl);
+        else level = String.valueOf(lvl);
 
-        URL resource = LoadLevelBuild.class.getResource("/Levels/Level01.txt");
-        assert resource != null;
-        BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
-
-        lines = readLines(br);
+        File file = new File("/Levels/Level0" + level + ".txt");
+        Scanner reader = new Scanner(file);
+        int i = 0;
+        String line = null;
+        while(reader.hasNextLine()){
+            line = reader.nextLine();
+            map[i] = new char[line.length()];
+            for(int j = 0; j < line.length(); j++){
+                map[i][j] = line.charAt(j);
+            }
+            i++;
+        }
+        reader.close();
     }
 
-    private List<String> readLines(BufferedReader br) {
-        return new ArrayList<>();
+    public static char[][] getLevelMap(int level){
+        try {
+            LoadLevelBuild levelMap = new LoadLevelBuild(level);
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        return map;
     }
 
 //    private List<String> readLines(BufferedReader br) {
