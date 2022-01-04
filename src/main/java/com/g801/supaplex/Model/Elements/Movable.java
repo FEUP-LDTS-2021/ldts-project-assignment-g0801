@@ -1,10 +1,10 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Models.Model;
 
 public class Movable extends Model {
-    boolean alive;
+
+    boolean alive = true;
 
     public Movable(){
         super.model = null;

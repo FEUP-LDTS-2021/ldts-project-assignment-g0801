@@ -1,11 +1,8 @@
 package com.g801.supaplex.Model.Elements;
 
 import com.g801.supaplex.Model.Level.MurphyAura;
-import com.g801.supaplex.Model.Models.Model;
-import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
-
 
 public class Murphy extends Movable {
     private static Murphy m;

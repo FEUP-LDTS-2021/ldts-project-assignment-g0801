@@ -1,84 +1,109 @@
 package com.g801.supaplex.Model.Models;
 
-class WallSprite extends Sprite{
+import com.g801.supaplex.Model.Reader;
+
+class WallSprite extends Sprite {
+
     private static WallSprite sprite;
 
     private WallSprite(){
-        //Reads from file
+        Reader.fillSprite("Wall", this);
     }
 
     public static WallSprite getInstance(){
-        if(sprite == null)
+        if (sprite == null)
             sprite = new WallSprite();
         return sprite;
     }
 }
 
-class MurphySprite extends Sprite{
+class MurphySprite extends Sprite {
+
     private static MurphySprite sprite;
 
     private MurphySprite(){
-        //Reads from file
+        Reader.fillSprite("Murphy", this);
     }
 
     public static MurphySprite getInstance(){
-        if(sprite == null)
+        if (sprite == null)
             sprite = new MurphySprite();
         return sprite;
     }
 }
 
-class BaseSprite extends Sprite{
+class BaseSprite extends Sprite {
+
     private static BaseSprite sprite;
 
     private BaseSprite(){
-        //Reads from file
+        Reader.fillSprite("Base", this);
     }
 
     public static BaseSprite getInstance(){
-        if(sprite == null)
+        if (sprite == null)
             sprite = new BaseSprite();
         return sprite;
     }
 }
 
-class ChipSprite extends Sprite{
+class ChipSprite extends Sprite {
+
     private static ChipSprite sprite;
 
     private ChipSprite(){
-        //Reads from file
+        Reader.fillSprite("Chip", this);
     }
 
     public static ChipSprite getInstance(){
-        if(sprite == null)
+        if (sprite == null)
             sprite = new ChipSprite();
         return sprite;
     }
 }
 
-class EndSprite extends Sprite{
+class EndSprite extends Sprite {
+
     private static EndSprite sprite;
 
     private EndSprite(){
-        //Reads from file
+        Reader.fillSprite("EndBlock", this);
     }
 
     public static EndSprite getInstance(){
-        if(sprite == null)
+        if (sprite == null)
             sprite = new EndSprite();
         return sprite;
     }
 }
 
+class InfotronSprite extends Sprite {
+
+    private static InfotronSprite sprite;
+
+    private InfotronSprite(){
+        Reader.fillSprite("Infotron", this);
+    }
+
+    public static InfotronSprite getInstance(){
+        if (sprite == null)
+            sprite = new InfotronSprite();
+        return sprite;
+    }
+}
+
 public class SpriteFactory {
-    public static Sprite factoryMethod(char c){
+
+    public static Sprite factoryMethod(char c) {
         switch(c){
-            default:
             case 'W' : return WallSprite.getInstance();
             case 'B' : return BaseSprite.getInstance();
             case 'C' : return ChipSprite.getInstance();
             case 'E' : return EndSprite.getInstance();
             case 'M' : return MurphySprite.getInstance();
+            case 'I' : return InfotronSprite.getInstance();
+            // default something, retorna uma excepção de caracter inválido
         }
+        return null; // temos de ter um return value após o switch?!
     }
 }
