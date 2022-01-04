@@ -8,5 +8,6 @@ public class EndBlock extends Model {
 
     public EndBlock(Position p){
         super.model = SpriteFactory.factoryMethod('E');
+        super.pos = p;
     }
 }
