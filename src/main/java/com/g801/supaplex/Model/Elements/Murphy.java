@@ -1,13 +1,25 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Entity;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Aura.Aura;
+import com.g801.supaplex.Model.Models.SpriteFactory;
+import com.g801.supaplex.Model.Position;
 
-public class Murphy extends Entity {
+public class Murphy extends Movable {
+    private static Murphy m;
+    private Aura aura;
 
-    public Murphy(double x, double y, HashMap<Character, String> colors) {
-        super(x, y);
-        setSprite("Murphy", colors);
+    private Murphy(){
+        super.model = SpriteFactory.factoryMethod('M');
+        super.pos = null;
     }
 
+    public void setPosition(Position p){
+        super.pos = p;
+    }
+
+    public static Murphy getInstance(){
+        if(m == null)
+            m = new Murphy();
+        return m;
+    }
 }

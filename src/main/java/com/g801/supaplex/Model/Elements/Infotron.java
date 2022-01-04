@@ -1,12 +1,13 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Entity;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Models.SpriteFactory;
+import com.g801.supaplex.Model.Position;
 
-public class Infotron extends Entity {
+public class Infotron extends Movable {
 
-    public Infotron(double x, double y, HashMap<Character, String> colors) {
-        super(x, y);
-        setSprite("Infotron", colors);
+    public Infotron(Position p){
+        super.model = SpriteFactory.factoryMethod('I');
+        super.pos = p;
     }
+
 }
