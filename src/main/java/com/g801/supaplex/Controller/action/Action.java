@@ -1,4 +1,4 @@
-package com.g801.supaplex.Controller;
+package com.g801.supaplex.Controller.action;
 
 import com.g801.supaplex.Model.Elements.Movable;
 

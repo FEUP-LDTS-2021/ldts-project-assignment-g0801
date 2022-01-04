@@ -1,4 +1,4 @@
-package com.g801.supaplex
+/*package com.g801.supaplex
 
 import com.g801.supaplex.Model.Elements.Chip
 import com.g801.supaplex.Model.Elements.EndBlock
@@ -150,4 +150,4 @@ class FactoryTest extends Specification {
         0 |   0 |  12 | 34
                 -56 |  25 | -44 | 59
     }
-}
+}*/
