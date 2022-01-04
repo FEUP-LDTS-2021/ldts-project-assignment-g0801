@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Aura{
-    private static List<Character> next = new ArrayList<>(4);
-
-}
-
 class MurphyAura extends Aura{
 }
 

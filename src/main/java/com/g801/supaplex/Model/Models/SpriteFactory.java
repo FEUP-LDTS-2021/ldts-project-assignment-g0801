@@ -1,5 +1,4 @@
 package com.g801.supaplex.Model.Models;
-
 import com.g801.supaplex.Model.Reader;
 
 class WallSprite extends Sprite {

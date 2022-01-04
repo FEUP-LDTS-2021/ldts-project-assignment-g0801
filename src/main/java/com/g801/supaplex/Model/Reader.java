@@ -11,14 +11,13 @@ public class Reader {
     public static void fillSprite (String type, Sprite sprite) {
 
         try {
-
             File file = new File("src/main/java/com/g801/supaplex/Model/Resorces/Blocks/" + type + ".txt");
             Scanner reader = new Scanner(file);
             int i = 0;
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
                 for (int j = 0 ; j < line.length() ; j++) {
-                    sprite.getBitmap()[i][j] = Colors.getInstance().getColors().get(line.charAt(j));
+                    sprite.getBitmap()[i][j] = line.charAt(j);
                 }
                 i++;
             }

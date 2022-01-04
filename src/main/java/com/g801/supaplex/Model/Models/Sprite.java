@@ -4,13 +4,13 @@ public class Sprite {
 
     static int height = 5;
     static int width = 10;
-    String[][] bitmap;
+    char[][] bitmap;
 
     public Sprite() {
-       bitmap = new String[height][width];
+       bitmap = new char[height][width];
     }
 
-    public String[][] getBitmap() {
+    public char[][] getBitmap() {
         return bitmap;
     }
 
