@@ -16,6 +16,8 @@ public class Game implements Runnable {
     private final Configuration configuration;
     private final MainMenu mainMenu;
     private final Stack<State> states;
+    private int currentLevel;
+    private final int TOTAL_LEVELS = 5;
 
     private boolean running = false;
     private Thread thread;
@@ -46,7 +48,7 @@ public class Game implements Runnable {
     }
 
     public Game() throws IOException {
-
+        this.currentLevel = 1;
         this.configuration = new Configuration(3);
 
         this.gui = new LanternaGUI(new Size(150,50));
@@ -58,7 +60,7 @@ public class Game implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 25;
+        final double amountOfTicks = 30;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
         int updates = 0;
@@ -69,15 +71,15 @@ public class Game implements Runnable {
 
             long now = System.nanoTime(); //takes time to load from line 43 to this one
 
-            try {
-                states.peek().step(this, gui, now);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
-                tick();
+                try {
+                    tick(now - lastTime);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 updates++;
                 delta--;
             }
@@ -96,8 +98,8 @@ public class Game implements Runnable {
         stop();    }
 
     // EVERYTHING THAT UPDATES
-    private void tick() {
-
+    private void tick(long time) throws IOException {
+        states.peek().step(this, this.gui, time);
     }
 
     // EVERYTHING THAT IS RENDERED (PROBABLY BOTH WILL BE PUT SOMEWHERE ELSE)
@@ -117,8 +119,7 @@ public class Game implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        Game test = new Game();
-        test.start();
+        new Game().start();
     }
 }
 

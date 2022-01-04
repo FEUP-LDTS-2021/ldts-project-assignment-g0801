@@ -5,10 +5,10 @@ import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.Symbols;
-import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.*;
+import com.googlecode.lanterna.graphics.BasicTextImage;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.graphics.TextImage;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
@@ -21,7 +21,6 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
     @Override
     public void drawModel(GUI gui) throws IOException {
-        gui.clear();
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
@@ -49,19 +48,19 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
         for (SelectLevelMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
-                tg.setForegroundColor(TextColor.ANSI.BLUE);
+                tg.setForegroundColor(TextColor.ANSI.BLUE_BRIGHT);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem),SGR.BOLD);
             }
             else {
                 tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             }
-            tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
+
             y += 2;
         }
 
         tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
         tg.putString((size.getWidth() - "Current Level:".length()) / 2, y, "Current Level: " + getModel().getConfiguration().getCurrentLevel());
         y += 2;
-
-        gui.refresh();
     }
 }
