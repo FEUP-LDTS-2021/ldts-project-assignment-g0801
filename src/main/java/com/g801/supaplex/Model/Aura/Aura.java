@@ -1,5 +1,6 @@
 package com.g801.supaplex.Model.Aura;
 
+import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Level.GameScreen;
 import com.g801.supaplex.Model.Models.Model;
@@ -13,5 +14,10 @@ public class Aura{
 
     public void update(Position p){
         aura = Display.getAura(p);
+    }
+
+    public boolean canMove(Action.Actions action){
+        //checks if action is allowed;
+        return true;
     }
 }
