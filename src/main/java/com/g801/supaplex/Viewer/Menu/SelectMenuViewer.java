@@ -48,19 +48,11 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
         for (SelectLevelMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
-                tg.setForegroundColor(TextColor.ANSI.BLUE_BRIGHT);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem),SGR.BOLD);
+                gui.drawString(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
             }
-            else {
-                tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
-            }
-
+            else gui.drawString(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
             y += 2;
         }
-
-        tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-        tg.putString((size.getWidth() - "Current Level:".length()) / 2, y, "Current Level: " + getModel().getConfiguration().getCurrentLevel());
-        y += 2;
+        gui.drawString(TextColor.ANSI.RED_BRIGHT, y, "CURRENT LVL: " + getModel().getConfiguration().getCurrentLevel());
     }
 }

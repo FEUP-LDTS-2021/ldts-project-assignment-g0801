@@ -3,6 +3,7 @@ package com.g801.supaplex.Viewer.GUI;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Model.Text;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
@@ -18,12 +19,6 @@ public interface GUI {
 
     KEYACTION getNextAction() throws IOException;
 
-    void draw() throws IOException;
-
-//    void drawText(...);
-//    void drawTextImage(...);
-//    void drawRectangle(...);
-
     void clear();
 
     void refresh() throws IOException;
@@ -36,7 +31,7 @@ public interface GUI {
 
     void drawRectangle(Position position);
 
-    void drawString(String color, int row, String s);
+    void drawString(TextColor color, int row, String s);
 
     TerminalScreen getScreen();
 }

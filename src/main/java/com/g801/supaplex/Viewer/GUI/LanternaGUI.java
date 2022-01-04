@@ -24,6 +24,7 @@ public class LanternaGUI implements GUI {
         this.size = size;
         Terminal terminal = createTerminal(size.getWidth(), size.getHeight());
         screen = createScreen(terminal);
+        this.tg = screen.newTextGraphics();
     }
 
     private TerminalScreen createScreen(Terminal terminal) throws IOException {
@@ -116,23 +117,13 @@ public class LanternaGUI implements GUI {
         return screen;
     }
 
-    public void draw() throws IOException {
-        clear();
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.ANSI.RED);
-        tg.enableModifiers(SGR.BOLD);
-        tg.putString(4, 16, "Cona de Sabão");
-
-        refresh();
-    }
-
     public int getCol(String s) {
-        return (screen.getTerminalSize().getColumns() - s.length() / 2);
+        return ((screen.getTerminalSize().getColumns() - s.length()) / 2);
     }
 
     @Override
-    public void drawString(String color, int row, String s) {
-        this.tg.setForegroundColor(TextColor.Factory.fromString(color));
-        this.tg.putString(getCol(s), row, s);
+    public void drawString(TextColor color, int row, String s) {
+        tg.setForegroundColor(color);
+        tg.putString(getCol(s), row, s);
     }
 }
