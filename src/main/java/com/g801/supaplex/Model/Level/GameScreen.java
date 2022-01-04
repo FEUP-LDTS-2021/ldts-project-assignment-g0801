@@ -1,36 +1,14 @@
 package com.g801.supaplex.Model.Level;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Models.SpriteFactory;
-
-class GameMap{
-    private char map[][];
-    private int xBound;
-    private int yBound;
-
-    GameMap(int i){
-        //Receives level
-        //Opens level file
-        //Reads level info into map array
-        //Counts line and character
-            //These are the indexes of the char map
-
-        /*char c = '\0';
-        switch(c){
-            case 'M' : Murphy m = Murphy.getInstance();
-                    //Sets murphy sprite and position
-                    //Calls ModelFactory to get sprite
-                    //Uses position with the counters
-                    break;
-        }*/
-    }
-
-    public char[][] getMap(){return map;}
-}
+import com.g801.supaplex.Model.Position;
 
 class Config{
-    //Eventually move this into Configuration.java
     public static final int x = 5;   //How many blocks to the side of murphy
     public static final int y = 3;
     public int yMin;
@@ -39,14 +17,52 @@ class Config{
     public int xMax;
 }
 
-public class GameScreen {
-    private static GameMap map;
+
+class GameMap{
+    private static int level;
+    private static char[][] map;
+    private int xBound;
+    private int yBound;
+
+    GameMap(int i){
+        xBound = 0;
+        yBound = 0;
+        map = null;
+        level = i;
+    }
+
+    private File openFile(){
+        return new File("");
+    }
+
+    private void loadMap(File f){
+    }
+
+    private void createGameMap(){
+
+    }
+
+    public int getXBound(){
+        return 0;
+    }
+
+    public int getYBound(){
+        return 0;
+    }
+
+    protected char[][] getMap(){
+        createGameMap();
+        return map;}
+}
+
+public class GameScreen{
+    private GameMap map;
     private static Config confs;
-    private SpriteFactory mf;
 
     //Eventually make this into a singleton
-    public GameScreen(int i){
-        //initialize game map
+    public GameScreen(int lvl){
+        map = new GameMap(lvl);
+
         Murphy m = Murphy.getInstance();
         confs = new Config();
         int mY = m.getPos().getY();
@@ -59,20 +75,31 @@ public class GameScreen {
         //Make sure this doesnt go past mapboung
         confs.yMax = mY + Config.y;
         confs.xMax = mX + Config.x;
-        mf = new SpriteFactory();
     }
 
-    public void getGameScreen(){
-        //Change return type to Model[][]
-        // get map from GameMap
-        //use ModelFactory to parse subarray
-            //Subarray specs stored in cofig
-        //Return Model 2D array
-            //Other option is setting it as attribute
+    public Position getMapBounds(){
+        return null;
     }
 
-    //Methods to update GameScreen upon event
+    public Position getLowerBounds(){
+        return null;
+    }
 
+    public Position getUpperBounds(){
+        return null;
+    }
 
+    public void update(Position p){
+        //receives Murphy's new position
+        //updates Config accordingly
+    }
+
+    public char[][] getMap(){
+        return map.getMap();
+    }
+
+    public char[][] getGameScreen(){
+        return null;
+    }
 
 }
