@@ -2,12 +2,6 @@ package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Model.Elements.Movable;
 
-enum Actions{
-    MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT,
-    EAT_UP, EAT_DOWN, EAT_LEFT, EAT_RIGHT,
-    EXPLODE, WIN_GAME, LOSE_GAME, GET_INFO;
-}
-
 class MoveLeft extends Action{
     public MoveLeft(Movable m){
         super.movable = m;
@@ -97,10 +91,18 @@ class GetInfo extends Action{
 //class Fall extends Action{}
 //class Flip extends Action{}
 
+
 public class ActionFactory {
+    public enum Actions{
+        MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT,
+        EAT_UP, EAT_DOWN, EAT_LEFT, EAT_RIGHT,
+        EXPLODE, WIN_GAME, LOSE_GAME, GET_INFO;
+    }
+    
     private static Movable movable;
 
     public ActionFactory(Movable m){
+
         movable = m;
     }
 
