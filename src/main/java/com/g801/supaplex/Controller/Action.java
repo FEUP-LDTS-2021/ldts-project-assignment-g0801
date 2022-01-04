@@ -3,8 +3,8 @@ package com.g801.supaplex.Controller;
 import com.g801.supaplex.Model.Elements.Movable;
 import com.g801.supaplex.Model.Elements.Murphy;
 
-
 public class Action {
+
     public enum Actions {
         MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT,
         EAT_UP, EAT_DOWN, EAT_LEFT, EAT_RIGHT,
@@ -18,6 +18,7 @@ public class Action {
             //YES : moves murphy up
             //NO :  does nothing
     }
+
 
     private static void down() {
     }
@@ -47,7 +48,9 @@ public class Action {
         return movable;
     }
 
-    public static void factory(Actions a) {
+    public Action() {};
+
+    public void factory(Actions a) {
         switch (a) {
             case MOVE_UP -> up();
             case MOVE_DOWN -> down();

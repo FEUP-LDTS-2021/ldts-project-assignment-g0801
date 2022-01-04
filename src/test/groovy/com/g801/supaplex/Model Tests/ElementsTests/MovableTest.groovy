@@ -17,7 +17,7 @@ class MovableTest extends Specification {
 
     def "initial state"() {
 
-        then:
+        expect:
             movable.getPos() == new Position(originalX, originalX);
             movable.getModel() == null;
     }

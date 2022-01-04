@@ -1,30 +1,31 @@
-import com.g801.supaplex.Controller.action.Action
+import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Elements.Movable
+import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification
 
 class ActionTest extends Specification {
 
     private Movable mockMovable;
+    private Action mockAction;
 
     def setup() {
         this.mockMovable = Mock(Movable.class);
         mockMovable.getPos() >> new Position(10, 20);
+        this.mockAction = Mock(Action.class);
+        this.mockAction.getMovable() >> mockMovable;
+        Murphy m = Murphy.getInstance();
+        m.setPos(new Position(10, 20));
     }
 
-    def "Make an Action"() {
+    /*
+    def "Move up"() {
 
-        given:
-            Action action1 = new Action();
-            Action action2 = new Action(new Movable());
-            Action action3 = new Action(mockMovable);
+        when:
+            Action.factory(Action.Actions.MOVE_UP);
 
-        expect:
-            action1.getMovable() == null;
-            action2.getMovable() != null;
-            action2.getMovable().getModel() == null;
-            action2.getMovable().getPos() == null;
-            action3.getMovable().getPos() == new Position(10, 20);
-            action3.getMovable().getModel() == null;
+        then:
+            1 * Action.up();
     }
+    */
 }
