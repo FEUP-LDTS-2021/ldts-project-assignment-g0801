@@ -7,10 +7,12 @@ import com.g801.supaplex.Model.Position;
 public class Murphy extends Movable {
     private static Murphy m;
     private Aura aura;
+    private boolean alive;
 
     private Murphy(){
         super.model = SpriteFactory.factoryMethod('M');
         super.pos = null;
+        alive = true;
     }
 
     public static Murphy getInstance(){
