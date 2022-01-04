@@ -4,8 +4,6 @@ import com.g801.supaplex.Model.Models.Model;
 
 public class Movable extends Model {
 
-    boolean alive = true;
-
     public Movable(){
         super.model = null;
         super.pos = null;
