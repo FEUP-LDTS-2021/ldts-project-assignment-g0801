@@ -22,7 +22,7 @@ public class Sprite {
     public void read(String type, HashMap<Character, String> colors) {
 
         try {
-            File file = new File("src/main/java/com/g801/supaplex/Model/Resorces/Blocks/" + type + ".txt");
+            File file = new File("src/main/java/com/g801/supaplex/Model/Reso    rces/Blocks/" + type + ".txt");
             Scanner reader = new Scanner(file);
             int i = 0;
             while (reader.hasNextLine()) {

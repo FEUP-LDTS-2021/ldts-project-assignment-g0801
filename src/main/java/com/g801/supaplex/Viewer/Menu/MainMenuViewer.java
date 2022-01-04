@@ -8,6 +8,7 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
+import javax.security.auth.callback.TextOutputCallback;
 import java.io.IOException;
 
 
@@ -20,7 +21,6 @@ public class MainMenuViewer extends Viewer<MainMenu> {
     @Override
     public void drawModel(GUI gui) throws IOException {
 
-        gui.clear();
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
@@ -49,16 +49,16 @@ public class MainMenuViewer extends Viewer<MainMenu> {
 
         for (MainMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
-                tg.setForegroundColor(TextColor.ANSI.BLUE);
+                tg.setForegroundColor(TextColor.ANSI.BLUE_BRIGHT);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem),SGR.BOLD);
             }
             else {
                 tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
+                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
             }
-            tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
+
             y += 2;
         }
-
-        gui.refresh();
     }
 
 }
