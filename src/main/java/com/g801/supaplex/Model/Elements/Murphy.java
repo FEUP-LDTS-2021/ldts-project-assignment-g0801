@@ -13,10 +13,6 @@ public class Murphy extends Movable {
         super.pos = null;
     }
 
-    public void setPosition(Position p){
-        super.pos = p;
-    }
-
     public static Murphy getInstance(){
         if(m == null)
             m = new Murphy();
