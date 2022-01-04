@@ -7,10 +7,7 @@ import com.g801.supaplex.Viewer.Viewer;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-
-import javax.security.auth.callback.TextOutputCallback;
 import java.io.IOException;
-
 
 public class MainMenuViewer extends Viewer<MainMenu> {
 
@@ -46,19 +43,12 @@ public class MainMenuViewer extends Viewer<MainMenu> {
 
         int y = 10;
 
-
         for (MainMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
-                tg.setForegroundColor(TextColor.ANSI.BLUE_BRIGHT);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem),SGR.BOLD);
+                gui.drawString(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
             }
-            else {
-                tg.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-                tg.putString((size.getWidth() - getModel().enumToString(elem).length()) / 2 + 1, y, getModel().enumToString(elem));
-            }
-
+            else gui.drawString(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
             y += 2;
         }
     }
-
 }
