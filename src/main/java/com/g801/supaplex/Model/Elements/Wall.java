@@ -1,12 +1,7 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Terrain;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Models.Model;
 
-public class Wall extends Terrain {
+public class Wall extends Model {
 
-    public Wall(double x, double y, HashMap<Character, String> colors){
-        super(x, y);
-        setSprite("Wall", colors);
-    }
 }
