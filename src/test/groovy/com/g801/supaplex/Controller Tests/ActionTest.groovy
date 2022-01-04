@@ -1,4 +1,4 @@
-import com.g801.supaplex.Controller.Action
+import com.g801.supaplex.Controller.action.Action
 import com.g801.supaplex.Model.Elements.Movable
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification

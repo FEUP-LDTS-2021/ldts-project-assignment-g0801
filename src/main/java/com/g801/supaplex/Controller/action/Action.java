@@ -13,7 +13,9 @@ public class Action {
         movable = m;
     }
 
-    public Movable getMovable() {
+    //Test method, might be needed later
+    public Movable getMovable(){
         return movable;
     }
+
 }

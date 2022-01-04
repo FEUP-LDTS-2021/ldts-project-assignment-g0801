@@ -8,7 +8,6 @@ import com.g801.supaplex.Model.Elements.Infotron;
 import com.g801.supaplex.Model.Elements.Chip
 import com.g801.supaplex.Model.Elements.EndBlock
 import com.g801.supaplex.Model.Elements.Infotron
->>>>>>> ebe630bc1443bf62c4d2f733d5735221519ce147
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Elements.Wall
 import com.g801.supaplex.Model.Elements.Base
