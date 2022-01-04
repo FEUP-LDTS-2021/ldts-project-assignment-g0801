@@ -1,7 +1,7 @@
 package com.g801.supaplex
 
 import com.g801.supaplex.Model.Elements.Chip
-import com.g801.supaplex.Model.Elements.Endblock
+import com.g801.supaplex.Model.Elements.EndBlock
 import com.g801.supaplex.Model.Elements.Infotron
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Elements.Wall
@@ -27,7 +27,7 @@ class FactoryTest extends Specification {
             double c = 23;
             Base base = factory.getBaseBlock(a, b);
             Chip chip = factory.getChipBlock(a, b);
-            Endblock end = factory.getEndBlock(a, b);
+            EndBlock end = factory.getEndBlock(a, b);
             Infotron infotron = factory.getInfotron(a, b);
             Murphy murphy = factory.getMurphy(a, b);
             Wall wall = factory.getWall(a, b);
