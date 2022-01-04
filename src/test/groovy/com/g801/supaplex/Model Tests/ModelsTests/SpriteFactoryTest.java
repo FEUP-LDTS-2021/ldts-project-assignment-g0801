@@ -1,7 +1,14 @@
+
 /*
 import com.g801.supaplex.Model.Elements.Chip;
 import com.g801.supaplex.Model.Elements.EndBlock;
 import com.g801.supaplex.Model.Elements.Infotron;
+/*package com.g801.supaplex
+
+import com.g801.supaplex.Model.Elements.Chip
+import com.g801.supaplex.Model.Elements.EndBlock
+import com.g801.supaplex.Model.Elements.Infotron
+>>>>>>> ebe630bc1443bf62c4d2f733d5735221519ce147
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Elements.Wall
 import com.g801.supaplex.Model.Elements.Base
@@ -148,5 +155,6 @@ class FactoryTest extends Specification {
         0 |   0 |  12 | 34
                 -56 |  25 | -44 | 59
     }
+<<<<<<< HEAD
 }
 */

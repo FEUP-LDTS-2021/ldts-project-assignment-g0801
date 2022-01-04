@@ -1,8 +1,24 @@
-package com.g801.supaplex.Controller;
+package com.g801.supaplex.Controller.action;
 
 import com.g801.supaplex.Model.Elements.Movable;
 
+class MoveUp extends Action{
+
+    public MoveUp(Movable m){
+        super.movable = m;
+        System.out.println("Move Up");
+    }
+}
+class MoveDown extends Action{
+
+    public MoveDown(Movable m){
+        super.movable = m;
+        System.out.println("Move Down");
+    }
+}
+
 class MoveLeft extends Action{
+
     public MoveLeft(Movable m){
         super.movable = m;
         System.out.println("Move Left");
@@ -13,20 +29,6 @@ class MoveRight extends Action{
     public MoveRight(Movable m){
         super.movable = m;
         System.out.println("Move Right");
-    }
-}
-
-class MoveUp extends Action{
-    public MoveUp(Movable m){
-        super.movable = m;
-        System.out.println("Move Up");
-    }
-}
-
-class MoveDown extends Action{
-    public MoveDown(Movable m){
-        super.movable = m;
-        System.out.println("Move Down");
     }
 }
 

@@ -7,6 +7,10 @@ public class Model {
     protected Position pos;
     protected Sprite model;
 
+    public void setPos(Position p){
+        pos = p;
+    }
+
     public Position getPos() {
         return pos;
     }
