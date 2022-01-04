@@ -13,4 +13,7 @@ public class Action {
         movable = m;
     }
 
+    public Movable getMovable() {
+        return movable;
+    }
 }
