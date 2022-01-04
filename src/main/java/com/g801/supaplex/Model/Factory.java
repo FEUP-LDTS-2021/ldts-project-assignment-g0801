@@ -32,7 +32,7 @@ public class Factory {
         }
     }
 
-    public Base getBaseBlock(double x, double y) {
+    /*public Base getBaseBlock(double x, double y) {
         return new Base(x, y, colors);
     }
 
@@ -54,5 +54,5 @@ public class Factory {
 
     public Wall getWall(double x, double y) {
         return new Wall(x, y, colors);
-    }
+    }*/
 }
