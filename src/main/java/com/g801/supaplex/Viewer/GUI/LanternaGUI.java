@@ -145,6 +145,6 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawString(TextColor color, int row, String s) {
         tg.setForegroundColor(color);
-        tg.putString(getCol(s), row, s);
+        tg.putString(getCol(s), row, s, SGR.BOLD);
     }
 }

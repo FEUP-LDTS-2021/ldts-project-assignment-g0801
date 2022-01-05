@@ -101,19 +101,38 @@ class InfotronSprite extends Sprite {
     }
 }
 
+class RockSprite extends Sprite {
+
+    private static RockSprite rock;
+
+    private RockSprite(){
+        Reader.fillSprite("Rock", this);
+    }
+
+    public static RockSprite getInstance(){
+        if (rock == null)
+            rock = new RockSprite();
+        return rock;
+    }
+}
+
 public class SpriteFactory {
 
     public static Sprite factoryMethod(char c) {
-        switch(c){
-            case 'W' : return WallSprite.getInstance();
-            case 'B' : return BaseSprite.getInstance();
-            case 'C' : return ChipSprite.getInstance();
-            case 'E' : return EndSprite.getInstance();
-            case 'M' : return MurphySprite.getInstance();
-            case 'I' : return InfotronSprite.getInstance();
-            case 'X' : return ScissorsSprite.getInstance();
-            // default something, retorna uma excepção de caracter inválido
-        }
-        return null; // temos de ter um return value após o switch?!
+        return switch (c) {
+            case 'W' -> WallSprite.getInstance();
+            case 'B' -> BaseSprite.getInstance();
+            case 'C' -> ChipSprite.getInstance();
+            case 'E' -> EndSprite.getInstance();
+            case 'M' -> MurphySprite.getInstance();
+            case 'I' -> InfotronSprite.getInstance();
+            case 'X' -> ScissorsSprite.getInstance();
+            case 'O' -> RockSprite.getInstance();
+            default ->
+
+                    // default something, retorna uma excepção de caracter inválido
+                    null;
+        };
+        // temos de ter um return value após o switch?!
     }
 }
