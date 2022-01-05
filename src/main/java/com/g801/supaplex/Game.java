@@ -49,7 +49,7 @@ public class Game implements Runnable {
 
     public Game() throws IOException {
         this.currentLevel = 1;
-        this.configuration = new Configuration(3);
+        this.configuration = Configuration.getInstance();
 
         this.gui = new LanternaGUI(new Size(150,50));
         this.mainMenu = new MainMenu();
