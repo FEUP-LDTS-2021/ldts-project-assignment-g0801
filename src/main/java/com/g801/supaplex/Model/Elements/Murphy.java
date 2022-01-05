@@ -1,5 +1,6 @@
 package com.g801.supaplex.Model.Elements;
 
+import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Aura.Aura;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
@@ -26,8 +27,8 @@ public class Murphy extends Movable {
     }
 
     //Checks if Murphy can move to the desired block
-    public boolean canMove(Direction d){
-        return true;
+    public boolean canMove(Action.Actions action){
+        return aura.canMove(action);
     }
 
     //Checks if Murphy can eat the desired block
@@ -36,6 +37,6 @@ public class Murphy extends Movable {
     }
 
     public void updateAura(){
-        aura.update(m.pos);
+        aura.update();
     }
 }

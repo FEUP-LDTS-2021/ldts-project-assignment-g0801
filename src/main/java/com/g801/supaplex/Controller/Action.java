@@ -11,23 +11,8 @@ public class Action {
         EXPLODE
     }
 
-    private final Movable movable = Murphy.getInstance();
+    private static final Murphy murphy = Murphy.getInstance();
 
-    private static void up() {
-        //Checks if murphy can move up
-            //YES : moves murphy up
-            //NO :  does nothing
-    }
-
-
-    private static void down() {
-    }
-
-    private static void right() {
-    }
-
-    private static void left() {
-    }
 
     private static void eatUp() {
     }
@@ -45,22 +30,24 @@ public class Action {
     }
 
     public Movable getMovable() {
-        return movable;
+        return murphy;
     }
 
     public Action() {};
 
     public void factory(Actions a) {
-        switch (a) {
-            case MOVE_UP -> up();
-            case MOVE_DOWN -> down();
-            case MOVE_LEFT -> left();
-            case MOVE_RIGHT -> right();
-            case EAT_UP -> eatUp();
-            case EAT_DOWN -> eatDown();
-            case EAT_LEFT -> eatLeft();
-            case EAT_RIGHT -> eatRight();
-            case EXPLODE -> explode();
+        if (murphy.canMove(a)) {
+            switch (a) {
+                case MOVE_UP -> murphy.moveUp();
+                case MOVE_DOWN -> murphy.moveDown();
+                case MOVE_LEFT -> murphy.moveLeft();
+                case MOVE_RIGHT -> murphy.moveRight();
+                case EAT_UP -> eatUp();
+                case EAT_DOWN -> eatDown();
+                case EAT_LEFT -> eatLeft();
+                case EAT_RIGHT -> eatRight();
+                case EXPLODE -> explode();
+            }
         }
     }
 }
