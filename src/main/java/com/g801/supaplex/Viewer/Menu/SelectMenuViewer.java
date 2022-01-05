@@ -1,7 +1,9 @@
 package com.g801.supaplex.Viewer.Menu;
 
 
+import com.g801.supaplex.Model.Menu.Elements.Image;
 import com.g801.supaplex.Model.Menu.SelectLevelMenu;
+import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
@@ -12,6 +14,7 @@ import com.googlecode.lanterna.graphics.TextImage;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 

@@ -1,5 +1,6 @@
 package com.g801.supaplex.Viewer.Menu;
 
+import com.g801.supaplex.Model.Menu.Elements.Image;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI;
@@ -8,6 +9,7 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import java.io.IOException;
+import java.util.List;
 
 public class MainMenuViewer extends Viewer<MainMenu> {
 
@@ -49,6 +51,14 @@ public class MainMenuViewer extends Viewer<MainMenu> {
             }
             else gui.drawString(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
             y += 2;
+        }
+
+        drawImages(getModel().getTextImagesList(), gui);
+    }
+
+    public void drawImages(List<Image> elements, GUI gui) {
+        for (Image img : elements) {
+            gui.drawTextImage(img.getPosition(), img.getBitMap());
         }
     }
 }

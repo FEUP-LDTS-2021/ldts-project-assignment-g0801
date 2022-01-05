@@ -10,7 +10,7 @@ public class Colors {
     private static Colors colors;
     private static HashMap<Character, String> allColors;
 
-    private Colors() {
+    public Colors() {
         readColors();
     }
 
@@ -35,6 +35,15 @@ public class Colors {
 
     public HashMap<Character, String> getColors() {
         return allColors;
+    }
+
+    public String getColorString(Character ch) {
+
+        if(allColors.containsKey(ch))
+        {
+            return allColors.get(ch);
+        }
+        return null;
     }
 
     public static Colors getInstance() {

@@ -1,10 +1,13 @@
 package com.g801.supaplex.Viewer.GUI;
 
+import com.g801.supaplex.Model.Colors;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Model.Text;
 import com.googlecode.lanterna.*;
+import com.googlecode.lanterna.graphics.BasicTextImage;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.graphics.TextImage;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -19,12 +22,14 @@ public class LanternaGUI implements GUI {
     private final TerminalScreen screen;
     private final Size size;
     protected TextGraphics tg;
+    Colors colors ;
 
     public LanternaGUI(Size size) throws IOException {
         this.size = size;
         Terminal terminal = createTerminal(size.getWidth(), size.getHeight());
         screen = createScreen(terminal);
         this.tg = screen.newTextGraphics();
+        this.colors = new Colors();
     }
 
     private TerminalScreen createScreen(Terminal terminal) throws IOException {
@@ -112,13 +117,29 @@ public class LanternaGUI implements GUI {
         tg.fillRectangle(tp, ts, TextCharacter.fromCharacter(' ', TextColor.Factory.fromString("#ff00ff"), TextColor.Factory.fromString("#00FF000"))[0]);
     }
 
+    public void drawTextImage(Position position, char[][] textImage) {
+        TerminalSize size = new TerminalSize(10, 5);
+        BasicTextImage lanternaTextImage = new BasicTextImage(size);
+        TextColor color;
+        for (int i = 0; i < size.getRows(); i++) {
+            for (int j = 0; j < size.getColumns(); j++) {
+
+                color = TextColor.Factory.fromString(colors.getColorString(textImage[i][j]));
+
+                lanternaTextImage.setCharacterAt(j,i, TextCharacter.fromCharacter(textImage[i][j], color, color)[0]);
+            }
+        }
+            TextGraphics tg = screen.newTextGraphics();
+        tg.drawImage(new TerminalPosition(position.getX(), position.getY()),  lanternaTextImage);
+    }
+
     @Override
     public TerminalScreen getScreen() {
         return screen;
     }
 
     public int getCol(String s) {
-        return ((screen.getTerminalSize().getColumns() - s.length()) / 2);
+        return ((screen.getTerminalSize().getColumns() - s.length()) / 2 + 1);
     }
 
     @Override

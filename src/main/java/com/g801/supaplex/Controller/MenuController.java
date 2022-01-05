@@ -33,7 +33,7 @@ public class MenuController extends Controller<MainMenu> {
                         game.pushState(new SelectLevelMenuState(new SelectLevelMenu(game.getConfiguration())));
                         break;
                     case EXIT:
-                        game.pushState(null);
+                        System.exit(1);
                         break;
                 }
         }
