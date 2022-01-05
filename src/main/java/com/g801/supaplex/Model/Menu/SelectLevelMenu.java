@@ -21,6 +21,7 @@ public class SelectLevelMenu {
     public SelectLevelMenu(Configuration configuration) {
         this.selected = getOpt()[0];
         this.configuration = configuration;
+
     }
 
     public Option[] getOpt() {
@@ -71,4 +72,5 @@ public class SelectLevelMenu {
     public Configuration getConfiguration() {
         return configuration;
     }
+
 }

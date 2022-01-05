@@ -20,7 +20,7 @@ class MurphySprite extends Sprite {
 
     private static MurphySprite sprite;
 
-    private MurphySprite(){
+    public MurphySprite(){
         Reader.fillSprite("Murphy", this);
     }
 
@@ -76,6 +76,16 @@ class EndSprite extends Sprite {
     }
 }
 
+class ScissorsSprite extends Sprite {
+    private static ScissorsSprite sprite;
+    private ScissorsSprite() { Reader.fillSprite("Scissor", this);}
+    public static ScissorsSprite getInstance(){
+        if (sprite == null)
+            sprite = new ScissorsSprite();
+        return sprite;
+    }
+}
+
 class InfotronSprite extends Sprite {
 
     private static InfotronSprite sprite;
@@ -101,6 +111,7 @@ public class SpriteFactory {
             case 'E' : return EndSprite.getInstance();
             case 'M' : return MurphySprite.getInstance();
             case 'I' : return InfotronSprite.getInstance();
+            case 'X' : return ScissorsSprite.getInstance();
             // default something, retorna uma excepção de caracter inválido
         }
         return null; // temos de ter um return value após o switch?!
