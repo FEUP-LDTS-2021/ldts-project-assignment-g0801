@@ -95,6 +95,11 @@ public class Display {
 
     }
 
+    //Returns the subarray to be printed
+    public Model[][] getDisplayMap(){
+        return null;
+    }
+
     public void endGame(){
         //Deletes everything
     }
