@@ -10,6 +10,7 @@ import java.util.*;
 public class Display {
     private static Display display;
     private static Model[][] map;
+    private static Position blockSize = new Position(Sprite.width, Sprite.height);
     private GameScreen gameScreen;
     private SpriteFactory spriteFactory;
 
@@ -31,7 +32,6 @@ public class Display {
 
     public static List<Model> getAura(Position p){
         List<Model> ret = new ArrayList<Model>(4);
-        Position blockSize = new Position(Murphy.getInstance().getModel().getWidth(), Murphy.getInstance().getModel().getHeight());
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
         //ret[0] = block above
         ret.set(0, map[point.getX()][point.getY() - 1]);
@@ -74,8 +74,7 @@ public class Display {
     public void render(){
         Character[][] gameMap = gameScreen.getMap();
         Position bounds = gameScreen.getMapBounds(),
-                modelPos = null,git
-                blockSize = new Position(Murphy.getInstance().getModel().getWidth(), Murphy.getInstance().getModel().getHeight());
+                modelPos = null;
         Model load = null;
         for(int i = 0; i < bounds.getY(); i++) {
             map[i] = new Model[bounds.getX()];
