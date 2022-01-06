@@ -3,7 +3,7 @@ import spock.lang.Specification
 
 class ColorsTest extends Specification {
 
-    private int colorsNumber = 10;
+    private int colorsNumber = 11;
     private Colors colors;
 
     def setup() {

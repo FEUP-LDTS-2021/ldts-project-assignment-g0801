@@ -1,29 +1,29 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Models.Model;
+import com.g801.supaplex.Model.Models.Sprite;
 
 public class Movable extends Model {
 
     public Movable(){
-        super.model = null;
+        super.model = new Sprite();
         super.pos = null;
     }
 
     public void moveUp(){
-        super.pos.addY(-Configuration.getInstance().getBlockSize().getY());
+        super.pos.addY(-model.getHeight());
     }
 
     public void moveDown(){
-        super.pos.addY(Configuration.getInstance().getBlockSize().getY());
+        super.pos.addY(model.getHeight());
     }
 
     public void moveLeft(){
-        super.pos.addX(-Configuration.getInstance().getBlockSize().getX());
+        super.pos.addX(-model.getWidth());
     }
 
     public void moveRight(){
-        super.pos.addX(Configuration.getInstance().getBlockSize().getX());
+        super.pos.addX(model.getWidth());
     }
 
     //Put this in MoveScissors

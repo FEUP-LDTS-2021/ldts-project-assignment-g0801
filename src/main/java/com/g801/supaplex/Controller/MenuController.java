@@ -27,13 +27,13 @@ public class MenuController extends Controller<MainMenu> {
             case SELECT:
                 switch(getModel().getCurrentSelect()) {
                     case START:
-                        //game start
+                        //game.run();
                         break;
                     case LEVEL:
                         game.pushState(new SelectLevelMenuState(new SelectLevelMenu(game.getConfiguration())));
                         break;
                     case EXIT:
-                        System.exit(1);
+                        System.exit(0); // tests
                         break;
                 }
         }

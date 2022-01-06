@@ -11,20 +11,19 @@ import java.util.Scanner;
 
 public class LoadLevelBuild {
 
-    private static char[][] map;
+    private static Character[][] map;
 
     private LoadLevelBuild(int lvl) throws FileNotFoundException {
-        String level;
-        if(lvl < 10) level = String.valueOf(0) + String.valueOf(lvl);
-        else level = String.valueOf(lvl);
 
-        File file = new File("/Levels/Level0" + level + ".txt");
+        String level = lvl < 10 ? "0" + String.valueOf(lvl) : String.valueOf(lvl);
+
+        File file = new File("src/main/java/com/g801/supaplex/Model/Resorces/Levels/Level" + level + ".txt");
         Scanner reader = new Scanner(file);
         int i = 0;
-        String line = null;
+        String line;
         while(reader.hasNextLine()){
             line = reader.nextLine();
-            map[i] = new char[line.length()];
+            map[i] = new Character[line.length()];
             for(int j = 0; j < line.length(); j++){
                 map[i][j] = line.charAt(j);
             }
@@ -33,7 +32,7 @@ public class LoadLevelBuild {
         reader.close();
     }
 
-    public static char[][] getLevelMap(int level){
+    public static Character[][] getLevelMap(int level){
         try {
             LoadLevelBuild levelMap = new LoadLevelBuild(level);
         }
