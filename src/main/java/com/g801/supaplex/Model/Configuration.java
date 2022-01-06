@@ -35,7 +35,7 @@ public class Configuration {
 
     //Returns the dimentions of each bitmap
     public Position getBlockSize(){
-        return null;
+        return new Position(10, 5);
     }
 
     public void updateSettings(Murphy m, Position bound){

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Aura{
+
     private static List<Model> aura = new ArrayList<>(4);
 
     public void update(){
@@ -23,10 +24,10 @@ public class Aura{
         boolean ret = true;
         //WIll have to be extended for rocks
         switch(action){
-            case MOVE_UP : if (aura.get(0) instanceof Wall) ret = false;
-            case MOVE_DOWN: if(aura.get(1) instanceof Wall) ret = false;
-            case MOVE_LEFT: if(aura.get(2) instanceof Wall) ret = false;
-            case MOVE_RIGHT: if(aura.get(3) instanceof Wall) ret = false;
+            case MOVE_UP : if (aura.get(0) instanceof Wall) ret = false; break;
+            case MOVE_DOWN: if(aura.get(1) instanceof Wall) ret = false; break;
+            case MOVE_LEFT: if(aura.get(2) instanceof Wall) ret = false; break;
+            case MOVE_RIGHT: if(aura.get(3) instanceof Wall) ret = false; break;
         }
         return ret;
     }

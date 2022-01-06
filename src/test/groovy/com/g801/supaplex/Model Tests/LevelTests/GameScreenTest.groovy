@@ -1,6 +1,5 @@
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Level.GameMap
-import com.g801.supaplex.Model.Level.Config
 import com.g801.supaplex.Model.Level.GameScreen
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification;

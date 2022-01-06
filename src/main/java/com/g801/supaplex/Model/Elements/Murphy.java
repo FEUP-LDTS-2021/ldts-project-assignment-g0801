@@ -39,4 +39,9 @@ public class Murphy extends Movable {
     public void updateAura(){
         aura.update();
     }
+
+    //Tests
+    public void setAura(Aura aura) {
+        this.aura = aura;
+    }
 }
