@@ -18,7 +18,7 @@ class ChipTest extends Specification {
             chipBlock.getPos() == new Position(x, y);
     }
 
-    def "Base Block Size"() {
+    def "Chip Block Size"() {
 
         given:
             int height = chipBlock.getModel().getHeight();
@@ -29,7 +29,7 @@ class ChipTest extends Specification {
             width == Sprite.width;
     }
 
-    def "Base Block Colors"() {
+    def "Chip Block Colors"() {
 
         given:
             char[][] bitmap = chipBlock.getModel().getBitmap();
