@@ -5,7 +5,9 @@ import com.g801.supaplex.Model.Aura.Aura;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 
-public class Murphy extends Movable {
+public class
+
+Murphy extends Movable {
     enum Direction{
         UP, DOWN, LEFT, RIGHT
     }
@@ -40,4 +42,11 @@ public class Murphy extends Movable {
     public void updateAura(){
         aura.update();
     }
+
+    //Tests
+    public void setAura(Aura aura) {
+        this.aura = aura;
+    }
+
+    public Aura getAura() { return aura; }
 }

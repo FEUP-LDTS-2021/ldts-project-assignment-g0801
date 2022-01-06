@@ -2,8 +2,8 @@ package com.g801.supaplex.Model.Models;
 
 public class Sprite {
 
-    private static int width = 10;
-    private static int height = 5;
+    public static int width = 10;
+    public static int height = 5;
 
     char[][] bitmap;
 

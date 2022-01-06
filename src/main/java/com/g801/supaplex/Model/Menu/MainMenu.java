@@ -102,9 +102,10 @@ public class MainMenu {
         textImagesList.add(new Image(new Position( 140,40), factory.factoryMethod('W').getBitmap()));
         textImagesList.add(new Image(new Position( 130, 45), factory.factoryMethod('W').getBitmap()));
 
-        textImagesList.add(new Image(new Position( 60, 45), factory.factoryMethod('C').getBitmap()));
-
-        textImagesList.add(new Image(new Position( 80, 45), factory.factoryMethod('C').getBitmap()));
+        textImagesList.add(new Image(new Position( 60, 45), factory.factoryMethod('O').getBitmap()));
+        textImagesList.add(new Image(new Position( 70, 45), factory.factoryMethod('C').getBitmap()));
+        textImagesList.add(new Image(new Position( 70, 40), factory.factoryMethod('O').getBitmap()));
+        textImagesList.add(new Image(new Position( 80, 45), factory.factoryMethod('O').getBitmap()));
     }
     public List<Image> getTextImagesList() {
         return textImagesList;

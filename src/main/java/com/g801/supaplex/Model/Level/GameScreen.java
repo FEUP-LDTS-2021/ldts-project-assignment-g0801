@@ -20,37 +20,14 @@ class GameMap{
     GameMap(Integer i){
         xBound = 0;
         yBound = 0;
-        map = null;
+        map = new Character[0][0];
         level = i;
         loadMap();
     }
 
     private void loadMap(){
-        String lvl = "";
-        if(level < 10) lvl += String.valueOf(0);
-        lvl += String.valueOf(level);
-
-        File file = new File("/Levels/Level0" + lvl + ".txt");
-        Scanner reader = null;
-        try{
-            reader = new Scanner(file);
-            String line = null;
-            int i = 0;
-            while(reader.hasNextLine()){
-                line = reader.nextLine();
-                xBound = line.length();
-                map[i] = new Character[xBound];
-                for(int j = 0; j < xBound; j++)
-                    map[i][j] = line.charAt(j);
-                i++;
-            }
-            yBound = i;
-        }
-        catch(FileNotFoundException e){
-            e.printStackTrace();
-        }
+        LoadLevelBuild.getLevelMap(this.level);
     }
-
 
     public Integer getXBound(){
         return xBound;
@@ -66,10 +43,10 @@ class GameMap{
 }
 
 public class GameScreen{
+
     private static GameScreen gameScreen;
     private GameMap map;
     private static Configuration confs;
-
 
     private GameScreen(){
         map = new GameMap(confs.getCurrentLevel());

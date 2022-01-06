@@ -8,3 +8,4 @@ P #FF66CC Pink
 Y #FFFF00 Yellow
 D #336600 Dark Green
 C #919183 Gray
+K #525151 Dark Grey

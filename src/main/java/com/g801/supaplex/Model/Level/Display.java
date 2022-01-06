@@ -16,6 +16,8 @@ public class Display {
     private Display(){
         spriteFactory = new SpriteFactory();
         gameScreen = GameScreen.getInstance();
+        map = new Model[120][130]; // tests
+        for (Model[] row : map) Arrays.fill(row, new Model()); // tests
         render();
     }
 
@@ -72,7 +74,7 @@ public class Display {
     public void render(){
         Character[][] gameMap = gameScreen.getMap();
         Position bounds = gameScreen.getMapBounds(),
-                modelPos = null,
+                modelPos = null,git
                 blockSize = new Position(Murphy.getInstance().getModel().getWidth(), Murphy.getInstance().getModel().getHeight());
         Model load = null;
         for(int i = 0; i < bounds.getY(); i++) {

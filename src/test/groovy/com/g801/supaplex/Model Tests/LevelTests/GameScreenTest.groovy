@@ -1,6 +1,5 @@
 import com.g801.supaplex.Model.Configuration
-import com.g801.supaplex.Model.Level.GameMap
-import com.g801.supaplex.Model.Level.Config
+import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Level.GameScreen
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification;
@@ -11,7 +10,10 @@ class GameScreenTest extends Specification {
     private int level = 10;
 
     def setup() {
-        gameScreen = new GameScreen(level);
+        Murphy murphy = Murphy.getInstance();
+        murphy.setPos(new Position(10, 20));
+        Configuration configuration = Configuration.getInstance();
+        gameScreen = new GameScreen();
     }
 
     def "Initial Configuration of GameScreen"() {
@@ -28,22 +30,22 @@ class GameScreenTest extends Specification {
     def "Getting all map"() {
 
         given:
-            char[][] map = gameScreen.getMap();
+            Character[][] map = gameScreen.getMap();
         expect:
             map.length == 10;
-            map[0].length == 30;
+            map[0].length == 43;
     }
 
     def "Getting visible screen"() {
 
         given:
-            char[][] screen = gameScreen.getGameScreen();
+            Character[][] screen = gameScreen.getMap();
         expect:
-            screen.length == 5;
-            screen[0].length == 10;
+            screen.length == 50;
+            screen[0].length == 100;
     }
 
-    def "Getting upper bounds"() {
+    def "Getting map bounds"() {
 
         given:
             Position upperBounds = gameScreen.getUpperBounds();
@@ -65,7 +67,8 @@ class GameScreenTest extends Specification {
 
         given:
             Configuration oldConfig = gameScreen.getConfigs();
-            gameScreen.update(new Position(14, 9))
+            Murphy.getInstance().setPos(new Position(14, 9))
+            gameScreen.update()
             Configuration newConfig = gameScreen.getConfigs();
 
         expect:
