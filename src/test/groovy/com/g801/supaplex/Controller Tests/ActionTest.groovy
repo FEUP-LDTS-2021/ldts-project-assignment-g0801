@@ -1,40 +1,61 @@
 import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Aura.Aura
-import com.g801.supaplex.Model.Configuration
-import com.g801.supaplex.Model.Elements.Movable
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification
 
 class ActionTest extends Specification {
 
-    private Action a;
+    private Action action;
     private Aura aura;
-    private Configuration config;
 
     def setup() {
-        config = new Configuration().getInstance();
         Murphy m = Murphy.getInstance();
         m.setPos(new Position(10, 20));
         aura = Mock(Aura.class);
-        m.setAura(aura);
         aura.canMove(_) >> true;
-        a = new Action()
+        m.setAura(aura);
+        action = new Action()
     }
 
-    def "solve"() {
+    def "Murphy lives in Action too!"() {
 
         expect:
-            a.getMovable() != null;
-            a.getMovable() instanceof Murphy;
+            action.getMovable() != null;
+            action.getMovable() instanceof Murphy;
     }
 
-    def "init"() {
+    def "Murphy goes Up"() {
 
         when:
-            a.factory(Action.Actions.MOVE_UP);
+            action.factory(Action.Actions.MOVE_UP);
         then:
-            1 * Murphy.getInstance().canMove(Action.Actions.MOVE_UP);
-
+            1 * Murphy.getInstance().moveUp();
     }
+
+    def "Murphy goes Down"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_DOWN);
+        then:
+            1 * Murphy.getInstance().moveDown();
+    }
+
+    def "Murphy turn Right"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_RIGHT);
+        then:
+            1 * Murphy.getInstance().moveRight();
+    }
+
+    def "Murphy turn Left"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_LEFT);
+        then:
+            1 * Murphy.getInstance().moveLeft();
+    }
+
+    // explosions and eating later
 }
