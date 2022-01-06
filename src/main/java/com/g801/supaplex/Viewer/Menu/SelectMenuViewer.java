@@ -32,20 +32,7 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
         tg.putString((size.getWidth() - "SELECT LEVEL".length())/ 2 + 1, 7, "SELECT LEVEL", SGR.BOLD);
 
         // drawing double line box
-
-        //CORNERS
-        tg.setForegroundColor(TextColor.ANSI.YELLOW).setCharacter(65,8, Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
-        tg.setCharacter(65, 5, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
-        tg.setCharacter(85, 8, Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
-        tg.setCharacter(85, 5, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
-
-        // HORIZONTAL LINES
-        tg.drawLine(66, 8, 84, 8, Symbols.DOUBLE_LINE_HORIZONTAL);
-        tg.drawLine(66, 5,84,5, Symbols.DOUBLE_LINE_HORIZONTAL);
-
-        // VERTICAL LINES
-        tg.drawLine(65, 7,65 ,6, Symbols.DOUBLE_LINE_VERTICAL);
-        tg.drawLine(85,7,85, 6, Symbols.DOUBLE_LINE_VERTICAL);
+        gui.drawTitleBorder();
 
         int y = 10;
 
@@ -58,6 +45,6 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
         }
         gui.drawString(TextColor.ANSI.RED_BRIGHT, y, "CURRENT LVL: " + getModel().getConfiguration().getCurrentLevel());
 
-        drawImages(getModel().getTextImagesList(), gui);
+        gui.drawImages(getModel().getTextImagesList());
     }
 }
