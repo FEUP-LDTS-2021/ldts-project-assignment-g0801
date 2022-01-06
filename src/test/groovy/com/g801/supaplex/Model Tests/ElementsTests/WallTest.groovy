@@ -39,10 +39,10 @@ class WallTest extends Specification {
 
         where:
             a | b | c
-            0 | 0 | 'B'
-            0 | 2 | 'Y'
-            1 | 2 | 'C'
-            2 | 3 | 'A'
-            2 | 6 | 'G'
+            0 | 0 | 'K'
+            1 | 1 | 'C'
+            2 | 5 | 'C'
+            1 | 8 | 'K'
+            3 | 9 | 'K'
     }
 }
