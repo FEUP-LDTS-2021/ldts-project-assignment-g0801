@@ -2,7 +2,6 @@ import com.g801.supaplex.Controller.MenuController
 import com.g801.supaplex.Game
 import com.g801.supaplex.Model.Menu.MainMenu
 import com.g801.supaplex.Viewer.GUI.GUI;
-import com.g801.supaplex.Model.Models.Model
 import spock.lang.Specification;
 
 class MenuControllerTest extends Specification {
@@ -18,7 +17,7 @@ class MenuControllerTest extends Specification {
         menuController = new MenuController(mainMenu);
     }
 
-    def "Main menu receives DOWN key pressed"() {
+    def "Main Menu receives DOWN key pressed"() {
 
         when:
             menuController.execute(game, GUI.KEYACTION.DOWN, time);
@@ -26,7 +25,7 @@ class MenuControllerTest extends Specification {
             1 * mainMenu.downButton();
     }
 
-    def "Main menu receives UP key pressed"() {
+    def "Main Menu receives UP key pressed"() {
 
         when:
             menuController.execute(game, GUI.KEYACTION.UP, time);
