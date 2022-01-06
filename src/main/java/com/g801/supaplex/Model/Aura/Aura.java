@@ -13,7 +13,9 @@ import java.util.List;
 
 public class Aura{
 
-    private static List<Model> aura = new ArrayList<>(4);
+    public Aura() {}
+
+    public static List<Model> aura = new ArrayList<>(4);
 
     public void update(){
         aura = Display.getAura(Murphy.getInstance().getPos());

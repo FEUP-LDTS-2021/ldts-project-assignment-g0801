@@ -16,6 +16,8 @@ public class Display {
     private Display(){
         spriteFactory = new SpriteFactory();
         gameScreen = GameScreen.getInstance();
+        map = new Model[120][130]; // tests
+        for (Model[] row : map) Arrays.fill(row, new Model()); // tests
         render();
     }
 
