@@ -46,7 +46,7 @@ class ReaderTest extends Specification {
             Reader.fillSprite("EndBlock", bitmap);
 
         then:
-            bitmap[a][b] == c;
+            bitmap.getBitmap()[a][b] == c;
 
         where:
             a | b | c
@@ -57,5 +57,54 @@ class ReaderTest extends Specification {
             4 | 9 | 'O'
     }
 
+    def "Fill Infotron Block"() {
 
+        when:
+            Reader.fillSprite("Infotron", bitmap);
+
+        then:
+            bitmap.getBitmap()[a][b] == c;
+
+        where:
+            a | b | c
+            0 | 0 | 'B'
+            4 | 9 | 'A'
+            2 | 0 | 'G'
+            3 | 7 | 'B'
+            3 | 3 | 'G'
+    }
+
+    def "Fill Murphy Block"() {
+
+        when:
+            Reader.fillSprite("Murphy", bitmap);
+
+        then:
+            bitmap.getBitmap()[a][b] == c;
+
+        where:
+            a | b | c
+            0 | 0 | 'B'
+            1 | 3 | 'A'
+            1 | 6 | 'A'
+            3 | 4 | 'W'
+            3 | 6 | 'R'
+    }
+
+    def "Fill Wall Block"() {
+
+        when:
+            Reader.fillSprite("Wall", bitmap);
+
+        then:
+            bitmap.getBitmap()[a][b] == c;
+
+        where:
+            a | b | c
+            0 | 0 | 'K'
+            1 | 1 | 'C'
+            2 | 5 | 'C'
+            1 | 8 | 'K'
+            3 | 9 | 'K'
+    }
 }
