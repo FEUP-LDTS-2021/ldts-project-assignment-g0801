@@ -29,7 +29,7 @@ public class Display {
 
     public static List<Model> getAura(Position p){
         List<Model> ret = new ArrayList<Model>(4);
-        Position blockSize = Configuration.getInstance().getBlockSize();
+        Position blockSize = new Position(10, 5);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
         //ret[0] = block above
         ret.set(0, map[point.getX()][point.getY() - 1]);
@@ -73,7 +73,7 @@ public class Display {
         Character[][] gameMap = gameScreen.getMap();
         Position bounds = gameScreen.getMapBounds(),
                 modelPos = null,
-                blockSize = Configuration.getInstance().getBlockSize();
+                blockSize = new Position(10, 5); // old Configuration dependency
         Model load = null;
         for(int i = 0; i < bounds.getY(); i++) {
             map[i] = new Model[bounds.getX()];
@@ -93,6 +93,11 @@ public class Display {
             }
         }
 
+    }
+
+    //Returns the subarray to be printed
+    public Model[][] getDisplayMap(){
+        return null;
     }
 
     public void endGame(){

@@ -48,6 +48,7 @@ public class Action {
                 case EAT_RIGHT -> eatRight();
                 case EXPLODE -> explode();
             }
+            murphy.updateAura();
         }
     }
 }

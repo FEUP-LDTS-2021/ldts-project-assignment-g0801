@@ -33,11 +33,6 @@ public class Configuration {
         return null;
     }
 
-    //Returns the dimentions of each bitmap
-    public Position getBlockSize(){
-        return new Position(10, 5);
-    }
-
     public void updateSettings(Murphy m, Position bound){
         Integer mY = m.getPos().getY();
         Integer mX = m.getPos().getX();
