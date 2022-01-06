@@ -57,5 +57,7 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
             y += 2;
         }
         gui.drawString(TextColor.ANSI.RED_BRIGHT, y, "CURRENT LVL: " + getModel().getConfiguration().getCurrentLevel());
+
+        drawImages(getModel().getTextImagesList(), gui);
     }
 }
