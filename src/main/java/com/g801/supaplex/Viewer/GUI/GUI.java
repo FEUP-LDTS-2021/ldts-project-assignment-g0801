@@ -37,4 +37,6 @@ public interface GUI {
     void drawTextImage(Position position, char[][] textImage);
 
     TerminalScreen getScreen();
+
+
 }

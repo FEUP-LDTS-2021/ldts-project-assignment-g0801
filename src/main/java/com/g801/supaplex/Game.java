@@ -2,6 +2,7 @@ package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Menu.MainMenu;
+import com.g801.supaplex.Model.MusicPlayer;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
@@ -16,6 +17,7 @@ public class Game implements Runnable {
     private final Configuration configuration;
     private final MainMenu mainMenu;
     private final Stack<State> states;
+    private final MusicPlayer musicPlayer;
     private int currentLevel;
     private final int TOTAL_LEVELS = 5;
 
@@ -32,7 +34,7 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    private synchronized void stop() {
+    public synchronized void stop() {
         if (!running)
             return;
 
@@ -50,9 +52,12 @@ public class Game implements Runnable {
     public Game() throws IOException {
         this.currentLevel = 1;
         this.configuration = Configuration.getInstance();
+        this.musicPlayer = new MusicPlayer("jam_backingTrack.wav");
+        musicPlayer.startMusic();
 
         this.gui = new LanternaGUI(new Size(150,50));
         this.mainMenu = new MainMenu();
+
 
         states = new Stack<>();
         states.push(new MenuState(mainMenu));
@@ -70,7 +75,6 @@ public class Game implements Runnable {
         while (running) {
 
             long now = System.nanoTime(); //takes time to load from line 43 to this one
-
 
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -116,6 +120,10 @@ public class Game implements Runnable {
 
     public Configuration getConfiguration() {
         return configuration;
+    }
+
+    public void close() throws IOException {
+        gui.getScreen().close();
     }
 
     public static void main(String[] args) throws IOException {
