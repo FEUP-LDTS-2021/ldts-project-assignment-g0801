@@ -15,14 +15,36 @@ class GameMapTest extends Specification {
         when:
             int x = gameMap.getXBound();
             int y = gameMap.getYBound();
-            char[][] currentMap = gameMap.getMap();
 
         then:
             x == 0;
             y == 0;
-            currentMap != null;
-            1 * gameMap.createGameMap();
-            1 * gameMap.loadMap(new File(_));
     }
 
+    def "Map constructor"() {
+
+        when:
+            Character[][] currentMap = gameMap.getMap();
+
+        then:
+            currentMap[0].length == 43;
+            currentMap.length == 10;
+    }
+
+    def "Map colors"() {
+
+        given:
+            Character[][] currentMap = gameMap.getMap();
+
+        expect:
+            currentMap[a][b] == c
+
+        where:
+            a | b | c
+            0 | 0 | 'W'
+            1 | 1 | 'G'
+            3 | 10 | 'W'
+            9 | 42 | 'W'
+            8 | 1 | 'G'
+    }
 }

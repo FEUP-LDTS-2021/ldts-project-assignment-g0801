@@ -1,3 +1,6 @@
+import com.g801.supaplex.Model.Configuration
+import com.g801.supaplex.Model.Elements.Murphy
+import com.g801.supaplex.Model.Level.GameMap
 import com.g801.supaplex.Model.Level.GameScreen
 import com.g801.supaplex.Model.Models.Model
 import com.g801.supaplex.Model.Models.Sprite
@@ -13,9 +16,15 @@ class DisplayTest extends Specification {
     private Position position;
 
     def setup() {
-        display = Display.getInstance();
-        spriteFactory = new SpriteFactory();
+        Configuration config = Mock(Configuration.class);
+        config.getCurrentLevel() >> 1;
         position = new Position(10, 10);
+        Murphy murphy = Murphy.getInstance();
+        murphy.setPos(position);
+        display = Display.getInstance();
+        List<Model> answer = new ArrayList<Model>()
+        for (int i = 0 ; i < 4 ; i++) answer.push(new Model());
+        display.getAura(position) >> answer;
     }
 
     def "Getting Aura by Position"() {
