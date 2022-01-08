@@ -35,14 +35,24 @@ class ColorsTest extends Specification {
 
     def "Letter to Hexadecimal Code"() {
 
-        given:
-            def pairs = [["B", "#000000"]];
+        expect:
+            b == colors.getColorString((Character)a);
 
-        pairs.every() {
-            HashMap<Character, String> clone = colors.getColors();
-            Character letter = 'B';
-            String test = clone.get(letter);
-            assert test == it[1]
-        }
+        where:
+              a | b
+            'B' | "#000000"
+            'W' | "#FFFFFF"
+            'R' | "#FF0000"
+            'G' | "#00FF00"
+            'F' | null
+            'A' | "#0000FF"
+            'O' | "#FF9933"
+            'P' | "#FF66CC"
+            'Z' | null
+            'Y' | "#FFFF00"
+            'D' | "#336600"
+            'C' | "#919183"
+            'K' | "#525151"
+            'T' | null
     }
 }
