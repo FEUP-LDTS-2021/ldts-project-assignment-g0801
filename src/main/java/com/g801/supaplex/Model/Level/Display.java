@@ -1,6 +1,6 @@
 package com.g801.supaplex.Model.Level;
 
-import com.g801.supaplex.Model.Configuration;
+
 import com.g801.supaplex.Model.Elements.*;
 import com.g801.supaplex.Model.Models.*;
 import com.g801.supaplex.Model.Position;
@@ -10,7 +10,7 @@ import java.util.*;
 public class Display {
     private static Display display;
     private static Model[][] map;
-    private GameScreen gameScreen;
+    private final GameScreen gameScreen;
     private SpriteFactory spriteFactory;
 
     private Display(){
@@ -21,16 +21,14 @@ public class Display {
         render();
     }
 
-
     public static Display getInstance(){
         if(display == null)
             display = new Display();
         return display;
     }
 
-
     public static List<Model> getAura(Position p){
-        List<Model> ret = new ArrayList<Model>(4);
+        List<Model> ret = new ArrayList<>(4);
         Position blockSize = new Position(10, 5);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
         //ret[0] = block above

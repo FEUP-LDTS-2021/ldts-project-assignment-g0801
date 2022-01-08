@@ -2,6 +2,8 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 
+import java.util.Objects;
+
 class ScreenSettings{
     public static final Integer x = 5;   //How many blocks to the side of murphy
     public static final Integer y = 3;
@@ -15,7 +17,7 @@ public class Configuration {
     private static Configuration confs;
     private static ScreenSettings displayConfig;
     private Integer currentLevel;
-    private Integer NUM_LEVELS = 5;
+    private final Integer NUM_LEVELS = 5;
 
     private Configuration() {
         this.currentLevel = 1;
@@ -60,7 +62,7 @@ public class Configuration {
     }
 
     public void increaseCurrentLevel() {
-        if (currentLevel == NUM_LEVELS) {
+        if (Objects.equals(currentLevel, NUM_LEVELS)) {
             currentLevel = 1;
         }
         else currentLevel++;

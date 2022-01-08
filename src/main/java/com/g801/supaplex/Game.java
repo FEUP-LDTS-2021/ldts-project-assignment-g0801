@@ -15,11 +15,7 @@ public class Game implements Runnable {
 
     private final LanternaGUI gui;
     private final Configuration configuration;
-    private final MainMenu mainMenu;
     private final Stack<State> states;
-    private final MusicPlayer musicPlayer;
-    private int currentLevel;
-    private final int TOTAL_LEVELS = 5;
 
     private boolean running = false;
     private Thread thread;
@@ -50,14 +46,12 @@ public class Game implements Runnable {
     }
 
     public Game() throws IOException {
-        this.currentLevel = 1;
         this.configuration = Configuration.getInstance();
-        this.musicPlayer = new MusicPlayer("jam_backingTrack.wav");
+        MusicPlayer musicPlayer = new MusicPlayer("jam_backingTrack.wav");
         musicPlayer.startMusic();
 
         this.gui = new LanternaGUI(new Size(150,50));
-        this.mainMenu = new MainMenu();
-
+        MainMenu mainMenu = new MainMenu();
 
         states = new Stack<>();
         states.push(new MenuState(mainMenu));
@@ -80,7 +74,7 @@ public class Game implements Runnable {
             lastTime = now;
             if (delta >= 1) {
                 try {
-                    tick(now - lastTime);
+                    tick(lastTime);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -1,4 +1,4 @@
-## LPOO_<T><G> - <PROJECT NAME>
+## LTDS_<T>T08_<G>801 - <PROJECT NAME> SUPAPLEX CLONE
 
 > Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
 
