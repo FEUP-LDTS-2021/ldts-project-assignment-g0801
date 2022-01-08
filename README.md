@@ -8,14 +8,14 @@ We choose to clone this classic game because 1) the graphical interface is suita
 different behaviors - Murphy is player controlled, Scissors are NPCs with a crude form of AI, and Rocks are an environment block which can be moved. This
 allows us to go through different implementation challenges and apply different Design Patterns, thus increasing the learning experience.
 
-This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbeira (up201303693@edu.fe.up.pt) and Zé Diogo (202003529@edu.fe.up.pt) for LDTS 21/22.
+This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbeira (up201303693@edu.fe.up.pt) and José Diogo (202003529@edu.fe.up.pt) for LDTS 21/22.
 
 ### IMPLEMENTED FEATURES
 
 - **Move** - Murphy will move according to the arrow key pressed by the user (up, down, left, right)
 - **Eat** - The player can make Murphy eat an adjacent block without moving into it by pressing CTRL + ARROW
 - **Unit Collision** - Murphy can't move against walls, Rocks and Scissors can only move if there's no block in front of them.
-- **Menu States** - Basic Layout for menus, including main, select level and pause one.
+- **Menus** - Basic Layout for menus, including Main, select level and pause one.
 - **States** - Structure for application flow.
 
 ### PLANNED FEATURES
@@ -26,23 +26,24 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 - **Fall** - Rocks will fall if there's no supporting block underneath them
 - **Restart** - Allows the user to restart the game at any given point.
 
-
+### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
 ![alt-text](src/main/resources/Report/gifs/menu.gif)
 
+------
 ### DESIGN
 
 #### REPETITION OF OBJECTS
 
 ##### Problem in Context
 
-Having multiple instances of certain objects could take up an unecessary ammount of memory while running. For example, the Sprites of each Model are presets,
+Having multiple instances of certain objects could take up an unnecessary amount of memory while running. For example, the Sprites of each Model are presets,
 and one instance of a Model (say, a Wall) will always have the same Sprite. Having to create a new Sprite every time we created a new Model object would not
 only overload the memory with repeated objects but also require memory access through file reading, which would affect the system's performance.
 
 ##### The Pattern
 
 To solve this, we applied the Singleton Pattern. By making each Sprite a Singleton we ensured that the file would only be read upon initialization, and each
-object could get it's corresponding Sprite through the getInstance() method. In fact, we implemented the Singleton Pattern in many more objects throughout
+object could get its corresponding Sprite through the getInstance() method. In fact, we implemented the Singleton Pattern in many more objects throughout
 our game (some of which gave rise to other problems which will be discussed further down).
 
 ##### Implementation
@@ -78,8 +79,7 @@ The use of the Singleton Pattern provided the following benefits:
 However, there were certain drawbacks:
 - Constructors where private, therefore couldn't receive parameter arguments
 - Certain objects (Murphy, GameScreen, Display) have to be reset after each level
-
-
+-------
 ####CREATING SEVERAL INHERITED OBJECTS
 
 **Problem in Context**
@@ -91,8 +91,8 @@ layer, when parsing the user input to figure out which Action would Murphy do.
 
 **The Pattern**
 
-This is almost a textbook application of the Factory pattern. We applied different factories, which would either return the proper Strings (collor), the
-proper Models (ModelFactory) or the proper actions (actionFactory).
+This is almost a textbook application of the Factory pattern. We applied different factories, which would either return the proper Strings (color), the
+proper Bitmap for the Models (SpriteFactory) or the proper actions (actionFactory).
 
 **Implementation**
 
@@ -120,23 +120,37 @@ public class SpriteFactory {
 **Consequences**
 
 - Adding a new color, a new Model or a new Action to our system would require minimal effort, since the factory would handle the creation
-- We could freely use inheritance without having to instanciate new objects "by hand" each time we had to
+- We could freely use inheritance without having to instantiate new objects "by hand" each time we had to
 - We kept the code readable and free from long conditional chains
-
+------
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
-
-#### USING PRIMITIVES INSTEAD OF OBJECTS
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
 
-**Example of such a subsection**:
+#### USING PRIMITIVES INSTEAD OF OBJECTS
+
+##### Example of such a subsection:
+
+
+
+#### USING A DATA CLASS (Class that only exists to store variables)
+
+We are aware that we currently have this smell in our code, but we are still discussing 
+the best way to contour this problem.
+```java
+class ScreenSettings {
+    
+public static final Integer x = 5;   //How many blocks to the side of murphy
+public static final Integer y = 3;
+public Integer yMin;
+public Integer yMax;
+public Integer xMin;
+public Integer xMax;
+
+}
+
+```
 
 ------
-
-#### DATA CLASS
-
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
-
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
 
 ### TESTING
 
@@ -145,9 +159,8 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
+#### Example:
 
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
+- Fábio Sá: %
+- Pedro Barbeira: %
+- José Diogo: %

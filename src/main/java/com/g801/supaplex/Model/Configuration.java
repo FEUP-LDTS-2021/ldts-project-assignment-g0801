@@ -2,7 +2,7 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 
-class ScreenSettings{
+class ScreenSettings {
     public static final Integer x = 5;   //How many blocks to the side of murphy
     public static final Integer y = 3;
     public Integer yMin;
