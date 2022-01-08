@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Model.Level.GameMap
 import spock.lang.Specification;
 

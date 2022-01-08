@@ -1,3 +1,5 @@
+package com.g801.supaplex
+
 import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Aura.Aura;
 import com.g801.supaplex.Model.Elements.Murphy;
