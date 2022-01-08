@@ -1,42 +1,11 @@
+package com.g801.supaplex
+
 import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Aura.Aura;
 import com.g801.supaplex.Model.Elements.Murphy;
-import com.g801.supaplex.Model.Elements.Wall;
-import com.g801.supaplex.Model.Level.Display;
-import com.g801.supaplex.Model.Level.GameScreen;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Position
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Field
-import java.lang.reflect.Modifier
 import spock.lang.Specification;
-
-class GroovySingletonTool<T> {
-    private Class<T> clazz
-
-    GroovySingletonTool(Class<T> clazz) {
-        this.clazz = clazz
-    }
-
-    void setSingleton(T instance) {
-        // Make 'instance' field non-final
-        Field field = clazz.getDeclaredField("instance")
-        field.modifiers &= ~Modifier.FINAL
-        // Only works if singleton instance was unset before
-        field.set(clazz.instance, instance)
-    }
-
-    void unsetSingleton() {
-        setSingleton(null)
-    }
-
-    void reinitialiseSingleton() {
-        // Unset singleton instance, otherwise subsequent constructor call will fail
-        unsetSingleton()
-        setSingleton(clazz.newInstance())
-    }
-}
 
 class AuraTest extends Specification {
 
@@ -58,9 +27,6 @@ class AuraTest extends Specification {
             aura.aura.size() == 0;
     }
 
-    // Dependem de mocks de singletons, a investigar como fazer.
-    /*
-
     def "Can Move Up? "() {
 
         when:
@@ -74,27 +40,25 @@ class AuraTest extends Specification {
     def "Can Move Down with Wall?"() {
 
         when:
-        boolean result = auraMock.canMove(Action.Actions.MOVE_UP);
+            boolean result = aura.canMove(Action.Actions.MOVE_DOWN);
         then:
-        result == false;
+            result == false;
     }
 
     def "Can Move Right?"() {
 
         when:
-        boolean result = auraMock.canMove(Action.Actions.MOVE_UP);
+            boolean result = aura.canMove(Action.Actions.MOVE_RIGHT);
         then:
-        result == false;
+            result == false;
     }
 
     def "Can Move Left?"() {
 
         when:
-        boolean result = auraMock.canMove(Action.Actions.MOVE_UP);
+            boolean result = aura.canMove(Action.Actions.MOVE_LEFT);
         then:
-        result == false;
+            result == false;
     }
-
-    */
 
 }

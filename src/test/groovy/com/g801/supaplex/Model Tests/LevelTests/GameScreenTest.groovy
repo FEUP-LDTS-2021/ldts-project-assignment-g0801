@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Level.GameScreen

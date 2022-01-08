@@ -6,6 +6,7 @@ import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
 import com.googlecode.lanterna.TextColor;
 
+
 public class DisplayViewer extends Viewer<Display> {
 
     public DisplayViewer(Display model) {
@@ -22,7 +23,7 @@ public class DisplayViewer extends Viewer<Display> {
                 gui.drawTextImage(map[i][j].getPos(), map[i][j].getModel().getBitmap());
             }
         }
-
         /** gui.drawString(TextColor.ANSI.RED_BRIGHT,149, "Number of Infotrons: " + ?????getConfiguration().getCurrentInfotronsNumber().toString()) **/;
+
     }
 }

@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Model.Text;
 import spock.lang.Specification;
 

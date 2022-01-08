@@ -1,21 +1,15 @@
 package com.g801.supaplex.Model.Level;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Elements.Murphy;
-import com.g801.supaplex.Model.Models.Model;
-import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 
 //No need to make it a singleton since it is a private class
 class GameMap{
     private static Integer level;
     private static Character[][] map;
-    private Integer xBound;
-    private Integer yBound;
+    private final Integer xBound;
+    private final Integer yBound;
 
     GameMap(Integer i){
         xBound = 0;
@@ -26,7 +20,7 @@ class GameMap{
     }
 
     private void loadMap(){
-        LoadLevelBuild.getLevelMap(this.level);
+        LoadLevelBuild.getLevelMap(level);
     }
 
     public Integer getXBound(){
@@ -45,7 +39,7 @@ class GameMap{
 public class GameScreen{
 
     private static GameScreen gameScreen;
-    private GameMap map;
+    private final GameMap map;
     private static Configuration confs;
 
     private GameScreen(){

@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Models.Model
 import spock.lang.Specification
