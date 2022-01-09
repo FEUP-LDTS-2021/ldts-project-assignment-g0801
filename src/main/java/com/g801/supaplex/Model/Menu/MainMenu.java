@@ -1,6 +1,13 @@
 package com.g801.supaplex.Model.Menu;
 
-public class MainMenu {
+import com.g801.supaplex.Model.Menu.Elements.Image;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainMenu extends Menu {
+
+    private final List<Image> textImagesList;
 
     public enum Option {START, LEVEL, EXIT}
 
@@ -14,6 +21,8 @@ public class MainMenu {
 
     public MainMenu() {
         this.selected = Option.START;
+        this.textImagesList = new ArrayList<>();
+        createImages(textImagesList);
     }
 
     public int getPosElem(Option target) {
@@ -43,7 +52,6 @@ public class MainMenu {
         return optString;
     }
 
-
     public void upButton() {
         if (selected == Option.START) selected = Option.EXIT;
         else {
@@ -60,5 +68,9 @@ public class MainMenu {
             i++;
             selected = options[i];
         }
+    }
+
+    public List<Image> getTextImagesList() {
+        return textImagesList;
     }
 }

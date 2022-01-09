@@ -1,12 +1,14 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Terrain;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Models.Model;
+import com.g801.supaplex.Model.Models.SpriteFactory;
+import com.g801.supaplex.Model.Position;
 
-public class Base extends Terrain {
+public class Base extends Model {
 
-    public Base (double x, double y, HashMap<Character, String> colors) {
-        super(x, y);
-        setSprite("Base", colors);
+    public Base(Position p){
+        super.model = SpriteFactory.factoryMethod('B');
+        super.pos = p;
     }
-    }
+
+}

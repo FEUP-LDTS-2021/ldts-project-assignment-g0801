@@ -1,12 +1,12 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Terrain;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Models.SpriteFactory;
+import com.g801.supaplex.Model.Position;
 
-public class Wall extends Terrain {
+public class Wall extends Movable {
 
-    public Wall(double x, double y, HashMap<Character, String> colors){
-        super(x, y);
-        setSprite("Wall", colors);
+    public Wall(Position p){
+        super.model = SpriteFactory.factoryMethod('W');
+        super.pos = p;
     }
 }

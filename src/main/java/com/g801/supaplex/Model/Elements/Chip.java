@@ -1,13 +1,13 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Model.Models.Entity;
-import java.util.HashMap;
+import com.g801.supaplex.Model.Models.Model;
+import com.g801.supaplex.Model.Models.SpriteFactory;
+import com.g801.supaplex.Model.Position;
 
-public class Chip extends Entity {
+public class Chip extends Model {
 
-    public Chip(double x, double y, HashMap<Character, String> colors) {
-        super(x, y);
-        setSprite("Chip", colors);
+    public Chip(Position p){
+        super.model = SpriteFactory.factoryMethod('C');
+        super.pos = p;
     }
-
 }

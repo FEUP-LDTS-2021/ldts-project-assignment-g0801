@@ -1,95 +1,189 @@
-## LPOO_<T><G> - <PROJECT NAME>
+## LTDS_<T>08_<G>801 - <GameName> Supapl0x
 
-> Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
+The project is a clone of the 90's game Supaplex. We play as Murphy, a very brave and adventurous red ball on a mission to capture Infotrons. During his
+quest he's faced with a series of challenges in the form of mazes which he must go through in order to find the Infotrons he needs. The mazes are dangerous
+places, filled with scissors which can cut Murphy down, and rocks which can crush him. Murphy must use his environment wisely to beat his challenges and
+reach the much desired EndBlock which takes him back home with his loot.
+We choose to clone this classic game because 
+- 1) the graphical interface is suitable to implement in Lanterna;
+- 2) there are different blocks with
+different behaviors - Murphy is player controlled, Scissors are NPCs with a crude form of AI, and Rocks are an environment block which can be moved. This
+allows us to go through different implementation challenges and apply different Design Patterns, thus increasing the learning experience.
 
-**Example**:
-
-In this exciting platform game you can help KangarooBoy save the world, by collecting all the coins throughout ten different levels in which you will […].
-
-This project was developed by *John Doe* (*john.doe*@fe.up.pt) and *Jane Doe* (*jane.doe*@fe.up.pt) for LPOO 2018⁄19.
+This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbeira (up201303693@edu.fe.up.pt) and José Diogo (202003529@edu.fe.up.pt) for LDTS 21/22.
 
 ### IMPLEMENTED FEATURES
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
-**Examples**:
-
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+- **Game Logic** - We have most of the code logic behind most of the planned features (about the game flow) in a good position.
+- **Menus** - Basic Layout for menus, including Main, Level Select and Pause.
+- **States** - Stack Structure to allow simple application flow.
+- **Pause Menu** Currently on Main Menu START, our intention is for the user to be able to take a break and pick off right where he left the game.
 
 ### PLANNED FEATURES
 
-> This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
+- **Move** - Murphy will move according to the arrow key pressed by the user (up, down, left, right)
+- **Eat** - The player can make Murphy eat an adjacent block without moving into it by pressing CTRL + ARROW
+- **Unit Collision** - Murphy can't move against walls, Rocks and Scissors can only move if there's no block in front of them.
+- **Push** - Murphy can push Rocks which can move
+- **Specific Behavior** - Rocks which can't be moved act as Walls and Scissors rotate when moving isn't possible.
+- **Infotron Counter** - Murphy needs a certain number of Infotrons to beat each level
+- **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
+- **Fall** - Rocks will fall if there's no supporting block underneath them
+- **Restart** - Allows the user to restart the game at any given point.
+- **Sounds** - Different sounds for each animation
 
-### DESIGN
-
-> This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
-
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
-- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
-- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
-- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
-
-**Example of one of such subsections**:
+### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
+![alt-text](src/main/resources/Report/gifs/menu.gif)
 
 ------
+### DESIGN
 
-#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE
+#### REPETITION OF OBJECTS
 
-**Problem in Context**
+##### Problem in Context
 
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
+Having multiple instances of certain objects could take up an unnecessary amount of memory while running. For example, the Sprites of each Model are presets,
+and one instance of a Model (say, a Wall) will always have the same Sprite. Having to create a new Sprite every time we created a new Model object would not
+only overload the memory with repeated objects but also require memory access through file reading, which would affect the system's performance.
 
-**The Pattern**
+##### The Pattern
 
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
+To solve this, we applied the Singleton Pattern. By making each Sprite a Singleton we ensured that the file would only be read upon initialization, and each
+object could get its corresponding Sprite through the getInstance() method. In fact, we implemented the Singleton Pattern in many more objects throughout
+our game (some of which gave rise to other problems which will be discussed further down).
 
-**Implementation**
+##### Implementation
 
-The following figure shows how the pattern’s roles were mapped to the application classes.
+Singletons were implemented using the standard Singleton template (although some had to be slightly modified, as we'll soon expose). Each object has a private
+field of its own type, and a private constructor which initializes it. Instances of the object can be retrieved through the getInstance() method, which calls the private constructor if the field hasn't been initialized yet.
 
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
+```java
+class InfotronSprite extends Sprite {
 
-These classes can be found in the following files:
+    private static InfotronSprite sprite;
 
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
-- [JumpAbilityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java)
-- [DoubleJumpState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java)
-- [HelicopterState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java)
-- [IncreasedGravityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java)
+    private InfotronSprite(){
+        Reader.fillSprite("Infotron", this);
+    }
+
+    public static InfotronSprite getInstance(){
+        if (sprite == null)
+            sprite = new InfotronSprite();
+        return sprite;
+    }
+}
+```
 
 **Consequences**
 
-The use of the State Pattern in the current design allows the following benefits:
+The use of the Singleton Pattern provided the following benefits:
+- There's only one possible instance of objects which are singular in the system (Sprites, Murphy, GameScreen, Display)
+- Since the getInstance() method is a public static we can easily access the instance in any layer of the system without having to pass it as a parameter
+- Changes in a Singleton ripple throughout the whole system, therefore a change made at the Model Level will also be accessible at the View Level, and so
+  on and so forth
 
-- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.
-- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.
-- There are now more classes and instances to manage, but still in a reasonable number.
+However, there were certain drawbacks:
+- Constructors where private, therefore couldn't receive parameter arguments
+- Certain objects (Murphy, GameScreen, Display) have to be reset after each level
+-------
+####CREATING SEVERAL INHERITED OBJECTS
 
-#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+**Problem in Context**
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
+Our system is reading the Sprite information from a text document which contains a text image drawn with characters, each of which represent a color, as
+in a bitmap. The Map information was stored in the same way, but instead of a color each character represented a type of Model. We had to find a way to
+quickly translate the characters into color codes, in the first case, or into Models, in the second case. The same problem showed up in the Controller
+layer, when parsing the user input to figure out which Action would Murphy do.
 
-**Example of such a subsection**:
+**The Pattern**
+
+This is almost a textbook application of the Factory pattern. We applied different factories, which would either return the proper Strings (color), the
+proper Bitmap for the Models (SpriteFactory) or the proper actions (actionFactory).
+
+**Implementation**
+
+Again, we followed the standard Factory template. Here are the snippets:
+
+###### SPRITE FACTORY
+```java
+public class SpriteFactory {
+
+    public static Sprite factoryMethod(char c) {
+        return switch (c) {
+            case 'W' -> WallSprite.getInstance();
+            case 'B' -> BaseSprite.getInstance();
+            case 'C' -> ChipSprite.getInstance();
+            case 'E' -> EndSprite.getInstance();
+            case 'M' -> MurphySprite.getInstance();
+            case 'I' -> InfotronSprite.getInstance();
+            case 'X' -> ScissorsSprite.getInstance();
+            case 'O' -> RockSprite.getInstance();
+            default  ->  null;
+        };
+    }
+}
+```
+
+###### ACTION FACTORY
+
+```java
+public class Action {
+    public void factory(Actions a) {
+        if (murphy.canMove(a)) {
+            switch (a) {
+              case MOVE_UP -> murphy.moveUp();
+              case MOVE_DOWN -> murphy.moveDown();
+              case MOVE_LEFT -> murphy.moveLeft();
+              case MOVE_RIGHT -> murphy.moveRight();
+              case EAT_UP -> eatUp();
+              case EAT_DOWN -> eatDown();
+              case EAT_LEFT -> eatLeft();
+              case EAT_RIGHT -> eatRight();
+              case EXPLODE -> explode();
+            }
+            murphy.updateAura();
+        }
+    }
+}
+```
+**Consequences**
+
+- Adding a new color, a new Model or a new Action to our system would require minimal effort, since the factory would handle the creation.
+- We could freely use inheritance without having to instantiate new objects "by hand" each time we had to.
+- We kept the code readable and free from long conditional chains.
+------
+### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+
+#### USING A DATA CLASS (Class that only exists to store variables)
+
+We are aware that we currently have this smell in our code, but we are still discussing 
+the best way to contour this problem.
+```java
+class ScreenSettings {
+    
+public static final Integer x = 5;   //How many blocks to the side of murphy
+public static final Integer y = 3;
+public Integer yMin;
+public Integer yMax;
+public Integer xMin;
+public Integer xMax;
+
+}
+
+```
 
 ------
-
-#### DATA CLASS
-
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
-
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
 
 ### TESTING
 
 - Screenshot of coverage report.
-- Link to mutation testing report.
+
+![alt-text](src/main/resources/Report/other/tests.png)
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
+#### Example:
 
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
+- Fábio Sá: 33.(3) %
+- Pedro Barbeira: 33.(3) %
+- José Diogo: 33.(3) %
