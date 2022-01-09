@@ -4,7 +4,9 @@ The project is a clone of the 90's game Supaplex. We play as Murphy, a very brav
 quest he's faced with a series of challenges in the form of mazes which he must go through in order to find the Infotrons he needs. The mazes are dangerous
 places, filled with scissors which can cut Murphy down, and rocks which can crush him. Murphy must use his environment wisely to beat his challenges and
 reach the much desired EndBlock which takes him back home with his loot.
-We choose to clone this classic game because 1) the graphical interface is suitable to implement in Lanterna; and 2) there are different blocks with
+We choose to clone this classic game because 
+- 1) the graphical interface is suitable to implement in Lanterna;
+- 2) there are different blocks with
 different behaviors - Murphy is player controlled, Scissors are NPCs with a crude form of AI, and Rocks are an environment block which can be moved. This
 allows us to go through different implementation challenges and apply different Design Patterns, thus increasing the learning experience.
 
@@ -12,19 +14,23 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 
 ### IMPLEMENTED FEATURES
 
+- **Game Logic** - We have most of the code logic behind most of the planned features (about the game flow) in a good position.
+- **Menus** - Basic Layout for menus, including Main, Level Select and Pause.
+- **States** - Stack Structure to allow simple application flow.
+- **Pause Menu** Currently on Main Menu START, our intention is for the user to be able to take a break and pick off right where he left the game.
+
+### PLANNED FEATURES
+
 - **Move** - Murphy will move according to the arrow key pressed by the user (up, down, left, right)
 - **Eat** - The player can make Murphy eat an adjacent block without moving into it by pressing CTRL + ARROW
 - **Unit Collision** - Murphy can't move against walls, Rocks and Scissors can only move if there's no block in front of them.
-- **Menus** - Basic Layout for menus, including Main, select level and pause one.
-- **States** - Structure for application flow.
-
-### PLANNED FEATURES
 - **Push** - Murphy can push Rocks which can move
 - **Specific Behavior** - Rocks which can't be moved act as Walls and Scissors rotate when moving isn't possible.
 - **Infotron Counter** - Murphy needs a certain number of Infotrons to beat each level
 - **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
 - **Fall** - Rocks will fall if there's no supporting block underneath them
 - **Restart** - Allows the user to restart the game at any given point.
+- **Sounds** - Different sounds for each animation
 
 ### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
 ![alt-text](src/main/resources/Report/gifs/menu.gif)
@@ -98,6 +104,7 @@ proper Bitmap for the Models (SpriteFactory) or the proper actions (actionFactor
 
 Again, we followed the standard Factory template. Here are the snippets:
 
+###### SPRITE FACTORY
 ```java
 public class SpriteFactory {
 
@@ -117,20 +124,35 @@ public class SpriteFactory {
 }
 ```
 
+###### ACTION FACTORY
+
+```java
+public class Action {
+    public void factory(Actions a) {
+        if (murphy.canMove(a)) {
+            switch (a) {
+              case MOVE_UP -> murphy.moveUp();
+              case MOVE_DOWN -> murphy.moveDown();
+              case MOVE_LEFT -> murphy.moveLeft();
+              case MOVE_RIGHT -> murphy.moveRight();
+              case EAT_UP -> eatUp();
+              case EAT_DOWN -> eatDown();
+              case EAT_LEFT -> eatLeft();
+              case EAT_RIGHT -> eatRight();
+              case EXPLODE -> explode();
+            }
+            murphy.updateAura();
+        }
+    }
+}
+```
 **Consequences**
 
-- Adding a new color, a new Model or a new Action to our system would require minimal effort, since the factory would handle the creation
-- We could freely use inheritance without having to instantiate new objects "by hand" each time we had to
-- We kept the code readable and free from long conditional chains
+- Adding a new color, a new Model or a new Action to our system would require minimal effort, since the factory would handle the creation.
+- We could freely use inheritance without having to instantiate new objects "by hand" each time we had to.
+- We kept the code readable and free from long conditional chains.
 ------
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
-
-#### USING PRIMITIVES INSTEAD OF OBJECTS
-
-##### Example of such a subsection:
-
-
 
 #### USING A DATA CLASS (Class that only exists to store variables)
 
@@ -155,12 +177,13 @@ public Integer xMax;
 ### TESTING
 
 - Screenshot of coverage report.
-- Link to mutation testing report.
+
+![alt-text](src/main/resources/Report/other/tests.png)
 
 ### SELF-EVALUATION
 
 #### Example:
 
-- Fábio Sá: %
-- Pedro Barbeira: %
-- José Diogo: %
+- Fábio Sá: 33.(3) %
+- Pedro Barbeira: 33.(3) %
+- José Diogo: 33.(3) %

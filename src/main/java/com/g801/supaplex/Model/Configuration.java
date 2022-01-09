@@ -2,13 +2,10 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 
-<<<<<<< HEAD
-class ScreenSettings {
-=======
 import java.util.Objects;
 
 class ScreenSettings{
->>>>>>> 2d195b00fcd94f0b0535660e474600dde3bd4ec7
+
     public static final Integer x = 5;   //How many blocks to the side of murphy
     public static final Integer y = 3;
     public Integer yMin;
