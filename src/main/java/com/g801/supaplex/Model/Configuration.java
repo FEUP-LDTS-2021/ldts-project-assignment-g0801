@@ -1,18 +1,9 @@
 package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
+import com.g801.supaplex.Model.Level.ScreenSettings;
 
 import java.util.Objects;
-
-class ScreenSettings{
-
-    public static final Integer x = 5;   //How many blocks to the side of murphy
-    public static final Integer y = 3;
-    public Integer yMin;
-    public Integer yMax;
-    public Integer xMin;
-    public Integer xMax;
-}
 
 public class Configuration {
     private static Configuration confs;
@@ -22,6 +13,7 @@ public class Configuration {
 
     private Configuration() {
         this.currentLevel = 1;
+        //Make it count how many levels in level folder and initialize NUM_LEVELS accordingly
         displayConfig = new ScreenSettings();
     }
 
@@ -41,7 +33,7 @@ public class Configuration {
         Integer mX = m.getPos().getX();
         Integer val;
 
-        val = mY - ScreenSettings.y;
+        val = mY - ScreenSettings.;
         if(val < 0) val = 0;
         displayConfig.yMin = val;
 
@@ -74,4 +66,28 @@ public class Configuration {
             currentLevel = NUM_LEVELS;
         } else currentLevel--;
     }
+
+
+    public Integer getMurphySides(){}
+
+    public Integer getMurphyTops(){}
+
+    public Integer getYmin(){}
+
+    public Integer getYmax(){}
+
+    public Integer getXmin(){}
+
+    public Integer getXmax(){}
+    public Position getMapBounds(){}
+
+    public void setYmin(Integer y){}
+
+    public void setYmax(Integer y){}
+
+    public void setXmin(Integer x){}
+
+    public void setXmax(Integer x){}
+
+    public void setMapBounds(Integer x, Integer y){}
 }

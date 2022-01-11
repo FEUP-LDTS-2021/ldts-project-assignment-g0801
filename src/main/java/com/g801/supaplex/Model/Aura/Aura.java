@@ -1,6 +1,7 @@
 package com.g801.supaplex.Model.Aura;
 
 import com.g801.supaplex.Controller.Action;
+import com.g801.supaplex.Model.Elements.Movable;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Level.Display;
@@ -11,20 +12,23 @@ import com.g801.supaplex.Model.Position;
 import java.util.ArrayList;
 import java.util.List;
 
+//This should have an associated movable
 public class Aura{
+    private Movable movable;
 
-    public Aura() {}
+    public static List<Model> aura = new ArrayList<>();
 
-    public static List<Model> aura = new ArrayList<>(4);
+    public Aura(Movable m) {
+        movable = m;
+    }
 
     public void update(){
-        aura = Display.getAura(Murphy.getInstance().getPos());
+        aura = Display.getAura(movable.getPos());
     }
 
     public boolean canMove(Action.Actions action){
         update();
         boolean ret = true;
-        //WIll have to be extended for rocks
         switch(action){
             case MOVE_UP : if (aura.get(0) instanceof Wall) ret = false; break;
             case MOVE_DOWN: if(aura.get(1) instanceof Wall) ret = false; break;
