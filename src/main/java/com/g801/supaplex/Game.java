@@ -1,6 +1,7 @@
 package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Configuration;
+import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
@@ -16,8 +17,7 @@ public class Game implements Runnable {
     private final Configuration configuration;
     private final MainMenu mainMenu;
     private final Stack<State> states;
-    private int currentLevel;
-    private final int TOTAL_LEVELS = 5;
+    //Add a Muprhy or Display attribute
 
     private boolean running = false;
     private Thread thread;
@@ -48,7 +48,6 @@ public class Game implements Runnable {
     }
 
     public Game() throws IOException {
-        this.currentLevel = 1;
         this.configuration = Configuration.getInstance();
 
         this.gui = new LanternaGUI(new Size(150,50));
@@ -120,6 +119,11 @@ public class Game implements Runnable {
 
     public static void main(String[] args) throws IOException {
         new Game().start();
+    }
+
+    //TODO
+    public static void setMurphy(Murphy m){
+        //Sets the Murphy field
     }
 }
 

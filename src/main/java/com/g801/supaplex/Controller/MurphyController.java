@@ -4,6 +4,7 @@ import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
 public class MurphyController {
+    //Get murphy through constructor
     private static Murphy murphy = Murphy.getInstance();
     private static Action actions = new Action();
 

@@ -1,24 +1,17 @@
 package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
-
-class ScreenSettings{
-    public static final Integer x = 5;   //How many blocks to the side of murphy
-    public static final Integer y = 3;
-    public Integer yMin;
-    public Integer yMax;
-    public Integer xMin;
-    public Integer xMax;
-}
+import com.g801.supaplex.Model.Resorces.ScreenSettings;
 
 public class Configuration {
     private static Configuration confs;
     private static ScreenSettings displayConfig;
     private Integer currentLevel;
-    private Integer NUM_LEVELS = 5;
+    private final Integer NUM_LEVELS = 5;
 
     private Configuration() {
         this.currentLevel = 1;
+        //Make it count how many levels in level folder and initialize NUM_LEVELS accordingly
         displayConfig = new ScreenSettings();
     }
 

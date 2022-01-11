@@ -5,31 +5,25 @@ import com.g801.supaplex.Model.Elements.*;
 import com.g801.supaplex.Model.Models.*;
 import com.g801.supaplex.Model.Position;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Display {
-    private static Display display;
+    private Configuration configurations;
+    private final SpriteFactory spriteFactory = new SpriteFactory();
     private static Model[][] map;
-    private static Position blockSize = new Position(Sprite.width, Sprite.height);
-    private GameScreen gameScreen;
-    private SpriteFactory spriteFactory;
+    private static final Position blockSize = new Position(Sprite.width, Sprite.height);
+    private static Murphy murphy;
 
-    private Display(){
-        spriteFactory = new SpriteFactory();
-        gameScreen = GameScreen.getInstance();
-        map = new Model[120][130]; // tests
-        for (Model[] row : map) Arrays.fill(row, new Model()); // tests
+    private Display() {
+        configurations = Configuration.getInstance();
+        for (Model[] row : map) Arrays.fill(row, null); // tests
+        murphy = null;
         render();
+
     }
 
-
-    public static Display getInstance(){
-        if(display == null)
-            display = new Display();
-        return display;
-    }
-
-
+    //Make this receive a movable and process according to instanceOf
     public static List<Model> getAura(Position p){
         List<Model> ret = new ArrayList<Model>(4);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
@@ -72,7 +66,14 @@ public class Display {
     }
 
     public void render(){
-        Character[][] gameMap = gameScreen.getMap();
+        LoadLevelBuild level = null;
+        try {
+            level = new LoadLevelBuild(configurations.getCurrentLevel());
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        Character[][] gameMap = level.getLevelMap();
         Position bounds = gameScreen.getMapBounds(),
                 modelPos = null;
         Model load = null;
@@ -85,9 +86,11 @@ public class Display {
                     case 'B' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);
                     case 'E' -> load = new EndBlock(modelPos);
-                    case 'M' -> load = Murphy.getInstance();
+                    case 'M' -> {
+                        murphy = new Murphy(modelPos);
+                        load = murphy;
+                    }
                     case 'I' -> load = new Infotron(modelPos);
-                    //Add more in the future
                 }
                 map[i][j] = load;
                 load = null;
@@ -95,6 +98,8 @@ public class Display {
         }
 
     }
+
+    //Add method to set Murphy attribute
 
     //Returns the subarray to be printed
     public Model[][] getDisplayMap(){
