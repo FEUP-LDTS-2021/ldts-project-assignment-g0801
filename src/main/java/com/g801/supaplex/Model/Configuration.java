@@ -1,7 +1,7 @@
 package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
-import com.g801.supaplex.Model.Resorces.ScreenSettings;
+import com.g801.supaplex.Model.Level.ScreenSettings;
 
 public class Configuration {
     private static Configuration confs;
@@ -31,7 +31,7 @@ public class Configuration {
         Integer mX = m.getPos().getX();
         Integer val;
 
-        val = mY - ScreenSettings.y;
+        val = mY - ScreenSettings.;
         if(val < 0) val = 0;
         displayConfig.yMin = val;
 
