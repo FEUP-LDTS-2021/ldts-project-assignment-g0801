@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Controller.MenuController
 import com.g801.supaplex.Game
 import com.g801.supaplex.Model.Menu.MainMenu

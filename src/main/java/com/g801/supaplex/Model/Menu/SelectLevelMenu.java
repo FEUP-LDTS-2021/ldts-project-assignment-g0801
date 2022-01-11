@@ -1,10 +1,16 @@
 package com.g801.supaplex.Model.Menu;
 
 import com.g801.supaplex.Model.Configuration;
+import com.g801.supaplex.Model.Menu.Elements.Image;
 
-public class SelectLevelMenu {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelectLevelMenu extends Menu {
 
     Configuration configuration;
+
+    private final List<Image> textImagesList;
 
     public enum Option {LOWER, INCREASE, BACK};
 
@@ -21,6 +27,8 @@ public class SelectLevelMenu {
     public SelectLevelMenu(Configuration configuration) {
         this.selected = getOpt()[0];
         this.configuration = configuration;
+        this.textImagesList = new ArrayList<>();
+        createImages(textImagesList);
 
     }
 
@@ -71,6 +79,10 @@ public class SelectLevelMenu {
 
     public Configuration getConfiguration() {
         return configuration;
+    }
+
+    public List<Image> getTextImagesList() {
+        return textImagesList;
     }
 
 }

@@ -1,3 +1,4 @@
+package com.g801.supaplex
 import com.g801.supaplex.Model.Elements.Chip
 import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Position;
@@ -18,7 +19,7 @@ class ChipTest extends Specification {
             chipBlock.getPos() == new Position(x, y);
     }
 
-    def "Base Block Size"() {
+    def "Chip Block Size"() {
 
         given:
             int height = chipBlock.getModel().getHeight();
@@ -29,7 +30,7 @@ class ChipTest extends Specification {
             width == Sprite.width;
     }
 
-    def "Base Block Colors"() {
+    def "Chip Block Colors"() {
 
         given:
             char[][] bitmap = chipBlock.getModel().getBitmap();

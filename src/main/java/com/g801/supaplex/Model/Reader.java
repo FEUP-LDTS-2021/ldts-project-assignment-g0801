@@ -11,7 +11,7 @@ public class Reader {
     public static void fillSprite (String type, Sprite sprite) {
 
         try {
-            File file = new File("src/main/java/com/g801/supaplex/Model/Resorces/Blocks/" + type + ".txt");
+            File file = new File("src/main/resources/Blocks/" + type + ".txt");
             Scanner reader = new Scanner(file);
             int i = 0;
             while (reader.hasNextLine()) {

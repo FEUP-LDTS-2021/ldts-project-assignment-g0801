@@ -3,6 +3,7 @@ package com.g801.supaplex;
 import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Menu.MainMenu;
+import com.g801.supaplex.Model.MusicPlayer;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
@@ -15,10 +16,7 @@ public class Game implements Runnable {
 
     private final LanternaGUI gui;
     private final Configuration configuration;
-    private final MainMenu mainMenu;
     private final Stack<State> states;
-    //Add a Muprhy or Display attribute
-
     private boolean running = false;
     private Thread thread;
 
@@ -32,7 +30,7 @@ public class Game implements Runnable {
         thread.start();
     }
 
-    private synchronized void stop() {
+    public synchronized void stop() {
         if (!running)
             return;
 
@@ -49,9 +47,11 @@ public class Game implements Runnable {
 
     public Game() throws IOException {
         this.configuration = Configuration.getInstance();
+        MusicPlayer musicPlayer = new MusicPlayer("jam_backingTrack.wav");
+        musicPlayer.startMusic();
 
         this.gui = new LanternaGUI(new Size(150,50));
-        this.mainMenu = new MainMenu();
+        MainMenu mainMenu = new MainMenu();
 
         states = new Stack<>();
         states.push(new MenuState(mainMenu));
@@ -70,12 +70,11 @@ public class Game implements Runnable {
 
             long now = System.nanoTime(); //takes time to load from line 43 to this one
 
-
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
                 try {
-                    tick(now - lastTime);
+                    tick(lastTime);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -115,6 +114,10 @@ public class Game implements Runnable {
 
     public Configuration getConfiguration() {
         return configuration;
+    }
+
+    public void close() throws IOException {
+        gui.getScreen().close();
     }
 
     public static void main(String[] args) throws IOException {

@@ -1,6 +1,7 @@
 package com.g801.supaplex.Viewer.GUI;
 
 import com.g801.supaplex.Model.Colors;
+import com.g801.supaplex.Model.Menu.Elements.Image;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Model.Text;
@@ -16,6 +17,7 @@ import com.googlecode.lanterna.terminal.MouseCaptureMode;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
+import java.util.List;
 
 public class LanternaGUI implements GUI {
 
@@ -100,15 +102,6 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawText(Position position, Text text) {
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(text.getForegroundColor()));
-        tg.setBackgroundColor(TextColor.Factory.fromString(text.getBackgroundColor()));
-
-        tg.putString((int) position.getX(), (int) position.getY(), text.getString());
-    }
-
-    @Override
     public void drawRectangle(Position position) {
         TextGraphics tg = screen.newTextGraphics();
         TerminalPosition tp = new TerminalPosition((int) position.getX(), (int) position.getY());
@@ -146,5 +139,32 @@ public class LanternaGUI implements GUI {
     public void drawString(TextColor color, int row, String s) {
         tg.setForegroundColor(color);
         tg.putString(getCol(s), row, s, SGR.BOLD);
+    }
+
+    public void drawImages(List<Image> elements) {
+        for (Image img : elements) {
+            this.drawTextImage(img.getPosition(), img.getBitMap());
+        }
+    }
+
+    public void drawTitleBorder() {
+
+        TextGraphics tg = getScreen().newTextGraphics();
+
+        // drawing double line box
+
+        //CORNERS
+        tg.setForegroundColor(TextColor.ANSI.YELLOW).setCharacter(65,8, Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+        tg.setCharacter(65, 5, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+        tg.setCharacter(85, 8, Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+        tg.setCharacter(85, 5, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+
+        // HORIZONTAL LINES
+        tg.drawLine(66, 8, 84, 8, Symbols.DOUBLE_LINE_HORIZONTAL);
+        tg.drawLine(66, 5,84,5, Symbols.DOUBLE_LINE_HORIZONTAL);
+
+        // VERTICAL LINES
+        tg.drawLine(65, 7,65 ,6, Symbols.DOUBLE_LINE_VERTICAL);
+        tg.drawLine(85,7,85, 6, Symbols.DOUBLE_LINE_VERTICAL);
     }
 }

@@ -19,7 +19,7 @@ public class Colors {
         allColors = new HashMap<Character, String>();
 
         try {
-            File file = new File("src/main/java/com/g801/supaplex/Model/Resorces/Colors.txt");
+            File file = new File("src/main/resources/Colors.txt");
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();

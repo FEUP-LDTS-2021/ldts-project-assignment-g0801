@@ -53,7 +53,7 @@ public class Configuration {
     }
 
     public void increaseCurrentLevel() {
-        if (currentLevel == NUM_LEVELS) {
+        if (Objects.equals(currentLevel, NUM_LEVELS)) {
             currentLevel = 1;
         }
         else currentLevel++;
