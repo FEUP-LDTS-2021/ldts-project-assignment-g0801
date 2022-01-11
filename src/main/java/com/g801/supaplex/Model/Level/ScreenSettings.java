@@ -23,7 +23,7 @@ public class ScreenSettings{
     public Integer getXmin(){}
 
     public Integer getXmax(){}
-    public Integer getMapBounds(){}
+    public Position getMapBounds(){}
 
     public void setYmin(Integer y){}
 

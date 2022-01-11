@@ -3,6 +3,8 @@ package com.g801.supaplex.Model;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.ScreenSettings;
 
+import java.util.Objects;
+
 public class Configuration {
     private static Configuration confs;
     private static ScreenSettings displayConfig;
@@ -64,4 +66,28 @@ public class Configuration {
             currentLevel = NUM_LEVELS;
         } else currentLevel--;
     }
+
+
+    public Integer getMurphySides(){}
+
+    public Integer getMurphyTops(){}
+
+    public Integer getYmin(){}
+
+    public Integer getYmax(){}
+
+    public Integer getXmin(){}
+
+    public Integer getXmax(){}
+    public Position getMapBounds(){}
+
+    public void setYmin(Integer y){}
+
+    public void setYmax(Integer y){}
+
+    public void setXmin(Integer x){}
+
+    public void setXmax(Integer x){}
+
+    public void setMapBounds(Integer x, Integer y){}
 }

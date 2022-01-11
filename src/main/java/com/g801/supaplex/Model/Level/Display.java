@@ -75,7 +75,7 @@ public class Display {
             e.printStackTrace();
         }
         Character[][] gameMap = level.getLevelMap();
-        Position bounds = gameScreen.getMapBounds(),
+        Position bounds = configurations.getMapBounds();
                 modelPos = null;
         Model load = null;
         for(int i = 0; i < bounds.getY(); i++) {
