@@ -16,9 +16,8 @@ public class Display {
     private static Model[][] map;
     private static Murphy murphy;
 
-    private Display() {
+    public Display() {
         configurations = Configuration.getInstance();
-        for (Model[] row : map) Arrays.fill(row, null); // tests
         murphy = null;
         render();
 
@@ -79,7 +78,6 @@ public class Display {
                 load = null;
             }
         }
-
     }
 
     public Model[][] getDisplayMap(){

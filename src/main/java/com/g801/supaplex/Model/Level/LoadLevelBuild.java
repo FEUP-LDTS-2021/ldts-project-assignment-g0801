@@ -20,7 +20,7 @@ public class LoadLevelBuild {
 
         String level = lvl < 10 ? "0" + String.valueOf(lvl) : String.valueOf(lvl);
 
-        File file = new File("src/main/resources/Levels" + level + ".txt");
+        File file = new File("src/main/resources/Levels/Level" + level + ".txt");
         Scanner reader = new Scanner(file);
         int i = 0, j = 0;
         String line;
