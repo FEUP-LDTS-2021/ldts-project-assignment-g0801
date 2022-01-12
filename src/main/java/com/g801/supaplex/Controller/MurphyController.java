@@ -4,8 +4,14 @@ import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
 public class MurphyController {
-    private static Murphy murphy = Murphy.getInstance();
-    private static Action actions = new Action();
+    //Get murphy through constructor
+    private static Murphy murphy;
+    private static Action actions;
+
+    public MurphyController(Murphy m){
+        murphy = m;
+        actions = new Action(m);
+    }
 
     //Parses input and calls the correct action method
     public void makeMove(GUI.KEYACTION input){

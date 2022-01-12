@@ -1,26 +1,34 @@
 package com.g801.supaplex.Model;
 
 public class Position {
-    private int x, y;
+    private Integer x, y;
 
-    public Position(int x, int y){
+    public Position(Integer x, Integer y){
         this.x = x;
         this.y = y;
     }
 
-    public int getX(){
+    public Integer getX(){
         return x;
     }
 
-    public int getY(){
+    public Integer getY(){
         return y;
     }
 
-    public void addX(int n){
+    public void setX(Integer n){
+        x = n;
+    }
+
+    public void setY(Integer n){
+        y = n;
+    }
+
+    public void addX(Integer n){
         x += n;
     }
 
-    public void addY(int n){
+    public void addY(Integer n){
         y += n;
     }
 

@@ -1,18 +1,9 @@
 package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
+import com.g801.supaplex.Model.Level.ScreenSettings;
 
 import java.util.Objects;
-
-class ScreenSettings{
-
-    public static final Integer x = 5;   //How many blocks to the side of murphy
-    public static final Integer y = 3;
-    public Integer yMin;
-    public Integer yMax;
-    public Integer xMin;
-    public Integer xMax;
-}
 
 public class Configuration {
     private static Configuration confs;
@@ -22,6 +13,7 @@ public class Configuration {
 
     private Configuration() {
         this.currentLevel = 1;
+        //Make it count how many levels in level folder and initialize NUM_LEVELS accordingly
         displayConfig = new ScreenSettings();
     }
 
@@ -31,31 +23,54 @@ public class Configuration {
         return confs;
     }
 
-    //Returns ScreenSettings lower bound
-    public Position getScreenLowerBound(){
-        return null;
+    public Integer getWidth(){
+        return displayConfig.getWidth();
+    }
+
+    public Integer getHeight(){
+        return displayConfig.getHeight();
+    }
+
+    public Integer getYmin(){
+        return displayConfig.getYmin();
+    }
+
+    public Integer getXmin(){
+        return displayConfig.getXmin();
+    }
+
+    public Position getMapBounds(){
+        return displayConfig.getMapBounds();
+    }
+
+    private void setYmin(Integer y){
+        displayConfig.setYmin(y);
+    }
+
+
+    private void setXmin(Integer x){
+        displayConfig.setXmin(x);
+    }
+
+
+    public void setMapBounds(Integer x, Integer y){
+        displayConfig.setMapBounds(x, y);
     }
 
     public void updateSettings(Murphy m, Position bound){
-        Integer mY = m.getPos().getY();
-        Integer mX = m.getPos().getX();
-        Integer val;
+        Integer xMin;
+        Integer yMin;
+        Position pos = m.getPos();
 
-        val = mY - ScreenSettings.y;
-        if(val < 0) val = 0;
-        displayConfig.yMin = val;
+        yMin = pos.getY() - 3 < 0 ? 0 : pos.getY() - 3 ;
+        xMin = pos.getX() -5 < 0 ? 0 : pos.getX() - 5 ;
 
-        val = mX - ScreenSettings.x;
-        if(val < 0) val = 0;
-        displayConfig.xMin = val;
 
-        val = mY + ScreenSettings.y;
-        if(val > bound.getY()) val = bound.getY();
-        displayConfig.yMax = mY + val;
+        yMin = (pos.getY() + 3 > bound.getY()) && yMin != 0 ? bound.getY() - 7 : pos.getY() - 3 ;
+        xMin = (pos.getX() + 5 > bound.getX()) && xMin != 0 ? bound.getX() - 11 : pos.getX() - 5  ;
 
-        val = mX + ScreenSettings.x;
-        if(val > bound.getX()) val = bound.getX();
-        displayConfig.xMax = val;
+        setYmin(yMin);
+        setXmin(xMin);
     }
 
     public Integer getCurrentLevel() {
@@ -74,4 +89,7 @@ public class Configuration {
             currentLevel = NUM_LEVELS;
         } else currentLevel--;
     }
+
+
+
 }

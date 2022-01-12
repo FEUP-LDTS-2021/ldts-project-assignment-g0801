@@ -1,6 +1,8 @@
 package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Configuration;
+import com.g801.supaplex.Model.Elements.Murphy;
+import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.MusicPlayer;
 import com.g801.supaplex.States.MenuState;
@@ -16,7 +18,7 @@ public class Game implements Runnable {
     private final LanternaGUI gui;
     private final Configuration configuration;
     private final Stack<State> states;
-
+    private static Display display;
     private boolean running = false;
     private Thread thread;
 
@@ -122,6 +124,11 @@ public class Game implements Runnable {
 
     public static void main(String[] args) throws IOException {
         new Game().start();
+    }
+
+    //TODO
+    public static void setMurphy(Murphy m){
+        //Sets the Murphy field
     }
 }
 
