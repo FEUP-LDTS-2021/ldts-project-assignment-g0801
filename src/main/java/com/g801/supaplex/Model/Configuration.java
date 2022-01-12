@@ -13,7 +13,6 @@ public class Configuration {
 
     private Configuration() {
         this.currentLevel = 1;
-        //Make it count how many levels in level folder and initialize NUM_LEVELS accordingly
         displayConfig = new ScreenSettings();
     }
 
@@ -57,9 +56,10 @@ public class Configuration {
         displayConfig.setMapBounds(x, y);
     }
 
-    public void updateSettings(Murphy m, Position bound){
+    public void updateSettings(Murphy m){
         Integer xMin;
         Integer yMin;
+        Position bound = displayConfig.getMapBounds();
         Position pos = m.getPos();
 
         yMin = pos.getY() - 3 < 0 ? 0 : pos.getY() - 3 ;

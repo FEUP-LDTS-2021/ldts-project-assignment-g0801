@@ -20,11 +20,11 @@ public class Display {
         configurations = Configuration.getInstance();
         murphy = null;
         render();
-
     }
 
     //Make this receive a movable and process according to instanceOf
     public static List<Model> getAura(Movable m){
+        //This is for Murphy and Scissors
         Position p = m.getPos();
         List<Model> ret = new ArrayList<Model>(4);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
@@ -36,7 +36,7 @@ public class Display {
         ret.set(2, map[point.getX()-1][point.getY()]);
         //ret[3] = block to the right
         ret.set(3, map[point.getX()+1][point.getY()]);
-
+        //Over here we get rocks
         return ret;
     }
 
@@ -55,15 +55,16 @@ public class Display {
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
-        Character[][] gameMap = level.getLevelMap();
+        ArrayList<String> gameMap = level.getLevelMap();
         Position bounds = configurations.getMapBounds(),
                 modelPos = null;
-        Model load = null;
-        for(int i = 0; i < bounds.getY(); i++) {
-            map[i] = new Model[bounds.getX()];
-            for(int j = 0; j < bounds.getX(); j++){
+        map = new Model[bounds.getY()][bounds.getX()];
+        int i = 0;
+        for(String line : gameMap) {
+            for(int j = 0; j < line.length(); j++){
+                Model load = new Model();
                 modelPos = new Position(j * blockSize.getX(), i * blockSize.getY());
-                switch(gameMap[i][j]){
+                switch(line.charAt(j)){
                     case 'W' -> load = new Wall(modelPos);
                     case 'B' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);
@@ -75,8 +76,8 @@ public class Display {
                     case 'I' -> load = new Infotron(modelPos);
                 }
                 map[i][j] = load;
-                load = null;
             }
+            i++;
         }
     }
 
