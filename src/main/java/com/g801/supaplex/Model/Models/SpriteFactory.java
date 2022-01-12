@@ -127,7 +127,7 @@ public class SpriteFactory {
             case 'M' -> MurphySprite.getInstance();
             case 'I' -> InfotronSprite.getInstance();
             case 'X' -> ScissorsSprite.getInstance();
-            case 'O' -> RockSprite.getInstance();
+            case 'R' -> RockSprite.getInstance();
             default ->
 
                     // default something, retorna uma excepção de caracter inválido

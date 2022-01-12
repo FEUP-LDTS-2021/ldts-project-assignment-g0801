@@ -2,6 +2,7 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.ScreenSettings;
+import org.codehaus.groovy.transform.SourceURIASTTransformation;
 
 import java.util.Objects;
 
@@ -62,13 +63,20 @@ public class Configuration {
         Position bound = displayConfig.getMapBounds();
         Position pos = m.getPos();
 
-        yMin = pos.getY() - 3 < 0 ? 0 : pos.getY() - 3 ;
-        xMin = pos.getX() -5 < 0 ? 0 : pos.getX() - 5 ;
+        System.out.println(pos.getX() + " " + pos.getY());
+
+        Integer w = getWidth() / 2;
+        Integer h = getHeight() / 2;
 
 
-        yMin = (pos.getY() + 3 > bound.getY()) && yMin != 0 ? bound.getY() - 7 : pos.getY() - 3 ;
-        xMin = (pos.getX() + 5 > bound.getX()) && xMin != 0 ? bound.getX() - 11 : pos.getX() - 5  ;
+        yMin = pos.getY() - h < 0 ? 0 : pos.getY() - h ;
+        xMin = pos.getX() - w < 0 ? 0 : pos.getX() - w ;
 
+
+        if (yMin != 0) yMin = pos.getY() + h > bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
+        if (xMin != 0) xMin = pos.getX() + w > bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
+
+        System.out.println(xMin + " " + yMin);
         setYmin(yMin);
         setXmin(xMin);
     }
@@ -90,6 +98,15 @@ public class Configuration {
         } else currentLevel--;
     }
 
+    public static void setWidth(Integer w) {
+        displayConfig.setWidth(w);
+    }
 
+    public static void setHeight(Integer h) {
+        displayConfig.setHeight(h);
+    }
 
+    public void setDisplayTopleft(Position p){
+        displayConfig.setDisplayTopleft(p);
+    }
 }

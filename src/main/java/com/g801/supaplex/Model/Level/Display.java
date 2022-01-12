@@ -41,10 +41,11 @@ public class Display {
     }
 
     private void update(Movable m, Position old){
-        Position arrPos = new Position(old.getX() / blockSize.getX(), old.getY() / blockSize.getY());
+        Position arrPos = new Position(old.getX(), old.getY());
         map[arrPos.getY()][arrPos.getX()] = new Base(old);
-        arrPos = new Position(m.getPos().getX() / blockSize.getX(), m.getPos().getY() / blockSize.getY());
+        arrPos = new Position(m.getPos().getX(), m.getPos().getY());
         map[arrPos.getY()][arrPos.getX()] = m;
+        updateTopLeft();
     }
 
     public void render(){
@@ -63,15 +64,17 @@ public class Display {
         for(String line : gameMap) {
             for(int j = 0; j < line.length(); j++){
                 Model load = new Model();
-                modelPos = new Position(j * blockSize.getX(), i * blockSize.getY());
+                modelPos = new Position(j, i);
                 switch(line.charAt(j)){
                     case 'W' -> load = new Wall(modelPos);
-                    case 'B' -> load = new Base(modelPos);
+                    case ' ' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);
                     case 'E' -> load = new EndBlock(modelPos);
+                    case 'R' -> load = new Rock(modelPos);
                     case 'M' -> {
                         murphy = new Murphy(modelPos);
                         load = murphy;
+                        configurations.updateSettings(murphy);
                     }
                     case 'I' -> load = new Infotron(modelPos);
                 }
@@ -79,6 +82,7 @@ public class Display {
             }
             i++;
         }
+
     }
 
     public Model[][] getDisplayMap(){
@@ -87,11 +91,22 @@ public class Display {
         Integer yMin = configurations.getYmin();
         Integer xMin = configurations.getXmin();
         Model[][] ret = new Model[y][x];
+
+        System.out.println(xMin + " " + yMin);
+
         for(int i = 0; i < y; i++){
             for(int j = 0; j < x; j++)
                 ret[i][j] = map[yMin + i][xMin+j];
         }
+
         return ret;
+    }
+
+    public void updateTopLeft() {
+        Position posM = murphy.getPos();
+        Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
+                (posM.getY() / blockSize.getY()) - (configurations.getHeight() / 2));
+        configurations.setDisplayTopleft(position);
     }
 
     public void endGame(){

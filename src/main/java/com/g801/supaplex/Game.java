@@ -4,6 +4,7 @@ import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.MainMenu;
+import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.MusicPlayer;
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
@@ -52,7 +53,12 @@ public class Game implements Runnable {
         MusicPlayer musicPlayer = new MusicPlayer("jam_backingTrack.wav");
         musicPlayer.startMusic();
 
-        this.gui = new LanternaGUI(new Size(150,50));
+        Integer WIDTH = 150;
+        Integer HEIGHT = 50;
+
+        configuration.setWidth(WIDTH / Sprite.width);
+        configuration.setHeight(HEIGHT / Sprite.height);
+        this.gui = new LanternaGUI(new Size(WIDTH, HEIGHT));
         MainMenu mainMenu = new MainMenu();
 
         states = new Stack<>();
