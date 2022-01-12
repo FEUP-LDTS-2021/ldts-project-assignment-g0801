@@ -16,7 +16,7 @@ public class Murphy extends Movable {
         super.model = SpriteFactory.factoryMethod('M');
         super.pos = p;
         alive = true;
-        super.aura = new Aura();
+        super.aura = new Aura(this);
     }
 
 

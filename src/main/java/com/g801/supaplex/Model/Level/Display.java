@@ -10,10 +10,10 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Display {
-    private Configuration configurations;
     private final SpriteFactory spriteFactory = new SpriteFactory();
-    private static Model[][] map;
     private static final Position blockSize = new Position(Sprite.width, Sprite.height);
+    private Configuration configurations;
+    private static Model[][] map;
     private static Murphy murphy;
 
     private Display() {
@@ -25,7 +25,8 @@ public class Display {
     }
 
     //Make this receive a movable and process according to instanceOf
-    public static List<Model> getAura(Position p){
+    public static List<Model> getAura(Movable m){
+        Position p = m.getPos();
         List<Model> ret = new ArrayList<Model>(4);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
         //ret[0] = block above
@@ -40,30 +41,11 @@ public class Display {
         return ret;
     }
 
-    public void update(Position p){
-        //calls updateMap
-        //calls updateState
-        //prints map
-    }
-
-    private void updateMap(Position p){
-        //checks if there's a need to render new Models
-        //YES:
-        // calls renderLine or renderColumns as needed
-        //sets new models in map
-        //NO:
-        //does nothing
-        //calls gameScreen.update;
-    }
-
-    private void updateState(){
-        //makes changes on map as needed
-            //move murphy
-            //change blocks as needed
-            //move scissors
-                //this will require multithreading
-            //move rocks
-                //will also need multithreading
+    private void update(Movable m, Position old){
+        Position arrPos = new Position(old.getX() / blockSize.getX(), old.getY() / blockSize.getY());
+        map[arrPos.getY()][arrPos.getX()] = new Base(old);
+        arrPos = new Position(m.getPos().getX() / blockSize.getX(), m.getPos().getY() / blockSize.getY());
+        map[arrPos.getY()][arrPos.getX()] = m;
     }
 
     public void render(){
@@ -75,7 +57,7 @@ public class Display {
             e.printStackTrace();
         }
         Character[][] gameMap = level.getLevelMap();
-        Position bounds = configurations.getMapBounds();
+        Position bounds = configurations.getMapBounds(),
                 modelPos = null;
         Model load = null;
         for(int i = 0; i < bounds.getY(); i++) {
@@ -100,14 +82,22 @@ public class Display {
 
     }
 
-    //Add method to set Murphy attribute
-
-    //Returns the subarray to be printed
     public Model[][] getDisplayMap(){
-        return null;
+        Integer x = configurations.getWidth();
+        Integer y = configurations.getHeight();
+        Integer yMin = configurations.getYmin();
+        Integer xMin = configurations.getXmin();
+        Model[][] ret = new Model[y][x];
+        for(int i = 0; i < y; i++){
+            for(int j = 0; j < x; j++)
+                ret[i][j] = map[yMin + i][xMin+j];
+        }
+        return ret;
     }
 
     public void endGame(){
-        //Deletes everything
+        configurations = null;
+        map = null;
+        murphy = null;
     }
 }

@@ -5,7 +5,6 @@ import com.g801.supaplex.Model.Elements.Movable;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Level.Display;
-import com.g801.supaplex.Model.Level.GameScreen;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Position;
 
@@ -23,7 +22,7 @@ public class Aura{
     }
 
     public void update(){
-        aura = Display.getAura(movable.getPos());
+        aura = Display.getAura(movable);
     }
 
     public boolean canMove(Action.Actions action){

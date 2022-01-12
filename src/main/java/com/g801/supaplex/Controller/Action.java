@@ -13,7 +13,6 @@ public class Action {
         EXPLODE
     }
 
-    //Make this a movable instead of a murphy
     private static Movable movable;
 
     public Action(Movable m){

@@ -23,31 +23,54 @@ public class Configuration {
         return confs;
     }
 
-    //Returns ScreenSettings lower bound
-    public Position getScreenLowerBound(){
-        return null;
+    public Integer getWidth(){
+        return displayConfig.getWidth();
+    }
+
+    public Integer getHeight(){
+        return displayConfig.getHeight();
+    }
+
+    public Integer getYmin(){
+        return displayConfig.getYmin();
+    }
+
+    public Integer getXmin(){
+        return displayConfig.getXmin();
+    }
+
+    public Position getMapBounds(){
+        return displayConfig.getMapBounds();
+    }
+
+    private void setYmin(Integer y){
+        displayConfig.setYmin(y);
+    }
+
+
+    private void setXmin(Integer x){
+        displayConfig.setXmin(x);
+    }
+
+
+    public void setMapBounds(Integer x, Integer y){
+        displayConfig.setMapBounds(x, y);
     }
 
     public void updateSettings(Murphy m, Position bound){
-        Integer mY = m.getPos().getY();
-        Integer mX = m.getPos().getX();
-        Integer val;
+        Integer xMin;
+        Integer yMin;
+        Position pos = m.getPos();
 
-        val = mY - ScreenSettings.;
-        if(val < 0) val = 0;
-        displayConfig.yMin = val;
+        yMin = pos.getY() - 3 < 0 ? 0 : pos.getY() - 3 ;
+        xMin = pos.getX() -5 < 0 ? 0 : pos.getX() - 5 ;
 
-        val = mX - ScreenSettings.x;
-        if(val < 0) val = 0;
-        displayConfig.xMin = val;
 
-        val = mY + ScreenSettings.y;
-        if(val > bound.getY()) val = bound.getY();
-        displayConfig.yMax = mY + val;
+        yMin = (pos.getY() + 3 > bound.getY()) && yMin != 0 ? bound.getY() - 7 : pos.getY() - 3 ;
+        xMin = (pos.getX() + 5 > bound.getX()) && xMin != 0 ? bound.getX() - 11 : pos.getX() - 5  ;
 
-        val = mX + ScreenSettings.x;
-        if(val > bound.getX()) val = bound.getX();
-        displayConfig.xMax = val;
+        setYmin(yMin);
+        setXmin(xMin);
     }
 
     public Integer getCurrentLevel() {
@@ -68,26 +91,5 @@ public class Configuration {
     }
 
 
-    public Integer getMurphySides(){}
 
-    public Integer getMurphyTops(){}
-
-    public Integer getYmin(){}
-
-    public Integer getYmax(){}
-
-    public Integer getXmin(){}
-
-    public Integer getXmax(){}
-    public Position getMapBounds(){}
-
-    public void setYmin(Integer y){}
-
-    public void setYmax(Integer y){}
-
-    public void setXmin(Integer x){}
-
-    public void setXmax(Integer x){}
-
-    public void setMapBounds(Integer x, Integer y){}
 }
