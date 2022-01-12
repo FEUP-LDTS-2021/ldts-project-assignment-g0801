@@ -6,10 +6,11 @@ import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 
 public class Murphy extends Movable {
+
     enum Direction{
         UP, DOWN, LEFT, RIGHT
     }
-
+    private Integer infotrons;
     private boolean alive;
 
     public Murphy(Position p){
@@ -24,6 +25,20 @@ public class Murphy extends Movable {
     //Checks if Murphy can eat the desired block
     public boolean canEat(Direction d){
         return true;
+    }
+
+    public void setInfotrons(Integer i){
+
+    }
+
+    public void eatInfotron(Infotron i){
+
+    }
+
+    @Override
+    //Checks if Murphy collides with something
+    public boolean checkCollision() {
+        return false;
     }
 
     //Tests

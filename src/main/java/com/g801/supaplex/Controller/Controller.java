@@ -22,4 +22,5 @@ public abstract class Controller<T> {
     }
 
     public abstract void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException;
+
 }

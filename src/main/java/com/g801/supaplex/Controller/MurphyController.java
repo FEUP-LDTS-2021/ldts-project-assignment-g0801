@@ -15,6 +15,6 @@ public class MurphyController {
 
     //Parses input and calls the correct action method
     public void makeMove(GUI.KEYACTION input){
-
+        //updates aura
     }
 }

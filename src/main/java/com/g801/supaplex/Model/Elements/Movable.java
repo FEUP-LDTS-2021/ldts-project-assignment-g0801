@@ -2,10 +2,11 @@ package com.g801.supaplex.Model.Elements;
 
 import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Aura.Aura;
+import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Models.Sprite;
 
-public class Movable extends Model {
+public abstract class Movable extends Model {
     protected Aura aura;
 
     public Movable(){
@@ -34,14 +35,13 @@ public class Movable extends Model {
         return aura.canMove(action);
     }
 
-    public void updateAura(){
-        aura.update();
+    public void updateAura(Display d){
+        aura.update(d);
     }
 
-    //Put this in MoveScissors
-    public void spin(){}
+    //Checks if Movable collides with something
+    public abstract boolean checkCollision();
 
-    //Put this in MoveRock
-    public void fall(){}
-
+    //Makes Movable explode
+    public void explode(){}
 }

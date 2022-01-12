@@ -2,6 +2,7 @@ package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Model.Elements.Movable;
 import com.g801.supaplex.Model.Elements.Murphy;
+import com.g801.supaplex.Model.Level.Display;
 
 
 //This should be generalized to any Movable which it gets from constructor
@@ -38,7 +39,8 @@ public class Action {
 
     public Action() {};
 
-    public void factory(Actions a) {
+    public void factory(Display display, Actions a) {
+        movable.updateAura(display);
         if (movable.canMove(a)) {
             switch (a) {
                 case MOVE_UP -> movable.moveUp();
@@ -51,7 +53,6 @@ public class Action {
                 case EAT_RIGHT -> eatRight();
                 case EXPLODE -> explode();
             }
-            movable.updateAura();
         }
     }
 }

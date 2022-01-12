@@ -10,4 +10,10 @@ public class Infotron extends Movable {
         super.pos = p;
     }
 
+    public void getEaten(){}
+
+    @Override
+    public boolean checkCollision() {
+        return false;
+    }
 }

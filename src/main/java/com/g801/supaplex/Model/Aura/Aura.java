@@ -14,20 +14,19 @@ import java.util.List;
 //This should have an associated movable
 public class Aura{
     private Movable movable;
-
     public static List<Model> aura = new ArrayList<>();
 
     public Aura(Movable m) {
         movable = m;
     }
 
-    public void update(){
-        aura = Display.getAura(movable);
+    public void update(Display display){
+        aura = display.getAura(movable);
     }
 
     public boolean canMove(Action.Actions action){
-        update();
         boolean ret = true;
+        //This is for murphy and scissors
         switch(action){
             case MOVE_UP : if (aura.get(0) instanceof Wall) ret = false; break;
             case MOVE_DOWN: if(aura.get(1) instanceof Wall) ret = false; break;
