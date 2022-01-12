@@ -8,6 +8,9 @@ public class ScreenSettings{
     private static Position mapBounds;
     private static Position displayTopleft;
 
+    public ScreenSettings(){
+        displayTopleft = new Position(0,0);
+    }
 
     public Integer getWidth(){
         return width;

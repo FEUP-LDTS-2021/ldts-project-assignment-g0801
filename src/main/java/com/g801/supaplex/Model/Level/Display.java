@@ -16,16 +16,16 @@ public class Display {
     private static Model[][] map;
     private static Murphy murphy;
 
-    private Display() {
+    public Display() {
         configurations = Configuration.getInstance();
         for (Model[] row : map) Arrays.fill(row, null); // tests
         murphy = null;
         render();
-
     }
 
     //Make this receive a movable and process according to instanceOf
     public static List<Model> getAura(Movable m){
+        //This is for Murphy and Scissors
         Position p = m.getPos();
         List<Model> ret = new ArrayList<Model>(4);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
@@ -37,7 +37,7 @@ public class Display {
         ret.set(2, map[point.getX()-1][point.getY()]);
         //ret[3] = block to the right
         ret.set(3, map[point.getX()+1][point.getY()]);
-
+        //Over here we get rocks
         return ret;
     }
 
