@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class LoadLevelBuild {
 
-    private static Character[][] map;
+    private static ArrayList<String> map;
 
     public LoadLevelBuild(int lvl) throws FileNotFoundException {
         Configuration confs = Configuration.getInstance();
@@ -22,21 +22,18 @@ public class LoadLevelBuild {
 
         File file = new File("src/main/resources/Levels" + level + ".txt");
         Scanner reader = new Scanner(file);
-        int i = 0, j = 0;
-        String line;
+        int i = 0;
+        String line = new String("");
         while(reader.hasNextLine()){
             line = reader.nextLine();
-            map[i] = new Character[line.length()];
-            for(j = 0; j < line.length(); j++){
-                map[i][j] = line.charAt(j);
-            }
+            map.add(line);
             i++;
         }
-        confs.setMapBounds(j, i - 1);
+        confs.setMapBounds(line.length(), i - 1);
         reader.close();
     }
 
-    public Character[][] getLevelMap(){
+    public ArrayList<String> getLevelMap(){
         return map;
     }
 }

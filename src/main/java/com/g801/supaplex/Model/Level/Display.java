@@ -18,7 +18,6 @@ public class Display {
 
     public Display() {
         configurations = Configuration.getInstance();
-        for (Model[] row : map) Arrays.fill(row, null); // tests
         murphy = null;
         render();
     }
@@ -56,15 +55,16 @@ public class Display {
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
-        Character[][] gameMap = level.getLevelMap();
+        ArrayList<String> gameMap = level.getLevelMap();
         Position bounds = configurations.getMapBounds(),
                 modelPos = null;
-        Model load = null;
-        for(int i = 0; i < bounds.getY(); i++) {
-            map[i] = new Model[bounds.getX()];
-            for(int j = 0; j < bounds.getX(); j++){
+        map = new Model[bounds.getY()][bounds.getX()];
+        int i = 0;
+        for(String line : gameMap) {
+            for(int j = 0; j < line.length(); j++){
+                Model load = new Model();
                 modelPos = new Position(j * blockSize.getX(), i * blockSize.getY());
-                switch(gameMap[i][j]){
+                switch(line.charAt(j)){
                     case 'W' -> load = new Wall(modelPos);
                     case 'B' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);
@@ -76,10 +76,9 @@ public class Display {
                     case 'I' -> load = new Infotron(modelPos);
                 }
                 map[i][j] = load;
-                load = null;
             }
+            i++;
         }
-
     }
 
     public Model[][] getDisplayMap(){
