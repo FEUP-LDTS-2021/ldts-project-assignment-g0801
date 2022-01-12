@@ -66,7 +66,7 @@ public class Configuration {
         xMin = pos.getX() -5 < 0 ? 0 : pos.getX() - 5 ;
 
 
-        yMin = (pos.getY() + 3 > .getY()) && yMin != 0 ? bound.getY() - 7 : pos.getY() - 3 ;
+        yMin = (pos.getY() + 3 > bound.getY()) && yMin != 0 ? bound.getY() - 7 : pos.getY() - 3 ;
         xMin = (pos.getX() + 5 > bound.getX()) && xMin != 0 ? bound.getX() - 11 : pos.getX() - 5  ;
 
         setYmin(yMin);
