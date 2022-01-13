@@ -63,8 +63,6 @@ public class Configuration {
         Position bound = displayConfig.getMapBounds();
         Position pos = m.getPos();
 
-        System.out.println(pos.getX() + " " + pos.getY());
-
         Integer w = getWidth() / 2;
         Integer h = getHeight() / 2;
 
@@ -76,7 +74,6 @@ public class Configuration {
         if (yMin != 0) yMin = pos.getY() + h > bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
         if (xMin != 0) xMin = pos.getX() + w > bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
 
-        System.out.println(xMin + " " + yMin);
         setYmin(yMin);
         setXmin(xMin);
     }

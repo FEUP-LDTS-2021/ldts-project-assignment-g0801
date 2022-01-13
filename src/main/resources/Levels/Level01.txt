@@ -4,11 +4,11 @@ W    I          W
 W  R            W
 W               W
 W               W
-W    R  II      W
-W    R          W
-W    R   M      W
-W    R          W
-W      II       W
+W    RCCIICCCCCCW
+W    RCCCCCCCCCCW
+W    RCCCMCCCCCCW
+W    RCCCCCCCCCCW
+W    CCCIICCCCCCW
 W      CC       W
 W               W
 W               W

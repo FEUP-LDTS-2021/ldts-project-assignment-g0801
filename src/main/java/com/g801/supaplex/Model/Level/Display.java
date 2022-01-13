@@ -93,8 +93,6 @@ public class Display {
         Integer xMin = configurations.getXmin();
         Model[][] ret = new Model[y][x];
 
-        System.out.println(xMin + " " + yMin);
-
         for(int i = 0; i < y; i++){
             for(int j = 0; j < x; j++)
                 ret[i][j] = map[yMin + i][xMin+j];
