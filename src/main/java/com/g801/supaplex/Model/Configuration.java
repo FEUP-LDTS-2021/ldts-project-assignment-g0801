@@ -69,8 +69,8 @@ public class Configuration {
         Integer h = getHeight() / 2;
 
 
-        yMin = pos.getY() - h < 0 ? 0 : pos.getY() - h ;
-        xMin = pos.getX() - w < 0 ? 0 : pos.getX() - w ;
+        yMin = Math.max(pos.getY() - h, 0);
+        xMin = Math.max(pos.getX() - w, 0);
 
 
         if (yMin != 0) yMin = pos.getY() + h > bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;

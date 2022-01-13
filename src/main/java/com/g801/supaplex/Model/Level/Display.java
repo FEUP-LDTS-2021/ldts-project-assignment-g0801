@@ -86,6 +86,7 @@ public class Display {
     }
 
     public Model[][] getDisplayMap(){
+
         Integer x = configurations.getWidth();
         Integer y = configurations.getHeight();
         Integer yMin = configurations.getYmin();
