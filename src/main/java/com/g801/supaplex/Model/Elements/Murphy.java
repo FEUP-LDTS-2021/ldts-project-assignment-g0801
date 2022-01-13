@@ -19,8 +19,6 @@ public class Murphy extends Movable {
         super.aura = new Aura(this);
     }
 
-
-
     //Checks if Murphy can eat the desired block
     public boolean canEat(Direction d){
         return true;

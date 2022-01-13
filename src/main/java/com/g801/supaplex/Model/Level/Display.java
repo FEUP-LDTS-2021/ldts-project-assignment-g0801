@@ -66,6 +66,10 @@ public class Display {
                 Model load = new Model();
                 modelPos = new Position(j, i);
                 switch(line.charAt(j)){
+                    case 'K' -> {
+                        load = new Wall(modelPos);
+                        load.setSprite(SpriteFactory.factoryMethod('K'));
+                    }
                     case 'W' -> load = new Wall(modelPos);
                     case ' ' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);

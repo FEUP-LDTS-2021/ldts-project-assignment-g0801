@@ -2,7 +2,7 @@ B #000000 Black
 W #FFFFFF White
 R #FF0000 Red
 G #00FF00 Green
-g #21F20E Light Green
+g #54DA47 Light Green
 A #0000FF Blue
 O #FF9933 Orange
 P #FF66CC Pink

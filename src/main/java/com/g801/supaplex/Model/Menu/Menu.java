@@ -39,7 +39,7 @@ abstract public class Menu {
         imagesList.add(new Image(new Position( 130, 45), factory.factoryMethod('W').getBitmap()));
 
         imagesList.add(new Image(new Position( 60, 45), factory.factoryMethod('R').getBitmap()));
-        imagesList.add(new Image(new Position( 70, 45), factory.factoryMethod('C').getBitmap()));
+        imagesList.add(new Image(new Position( 70, 45), factory.factoryMethod('R').getBitmap()));
         imagesList.add(new Image(new Position( 70, 40), factory.factoryMethod('R').getBitmap()));
         imagesList.add(new Image(new Position( 80, 45), factory.factoryMethod('R').getBitmap()));
     }

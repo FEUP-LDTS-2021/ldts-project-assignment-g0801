@@ -4,12 +4,12 @@ W    I          W
 W  R            W
 W               W
 W               W
-W    RCCIICCCCCCW
+W    RCCCICCCCCCW
 W    RCCCCCCCCCCW
-W    RCCCMCCCCCCW
-W    RCCCCCCCCCCW
-W    CCCIICCCCCCW
-W      CC       W
+W    RCCCCCCCMCCW
+W    RCCCRCCCCCCW
+W    CCCRRRCCCCCW
+W   WKKWWWWWKKW W
 W               W
 W               W
 W               W
