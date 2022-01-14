@@ -1,7 +1,6 @@
 package com.g801.supaplex
 
 import com.g801.supaplex.Controller.GameController
-import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import spock.lang.Specification;

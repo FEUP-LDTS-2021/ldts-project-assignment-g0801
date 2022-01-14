@@ -1,62 +1,56 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Controller.Action
-import com.g801.supaplex.Model.Aura.Aura
-import com.g801.supaplex.Model.Elements.Murphy
-import com.g801.supaplex.Model.Position
+import com.g801.supaplex.Model.Elements.Movable
 import spock.lang.Specification
 
 class ActionTest extends Specification {
 
     private Action action;
-    private Aura aura;
+    private Movable movable;
 
     def setup() {
-        Murphy m = Murphy.getInstance();
-        m.setPos(new Position(10, 20));
-        aura = Mock(Aura.class);
-        aura.canMove(_) >> true;
-        m.setAura(aura);
-        action = new Action()
+        movable = Mock(Movable.class);
+        movable.canMove(_) >> true;
+        action = new Action(movable);
     }
 
-    def "Murphy lives in Action too!"() {
+    def "Initial configuration"() {
 
         expect:
-            action.getMovable() != null;
-            action.getMovable() instanceof Murphy;
+            movable.canMove(Action.Actions.MOVE_LEFT);
+            action.getMovable().equals(movable);
     }
 
-    def "Murphy goes Up"() {
-
-        when:
-            action.factory(Action.Actions.MOVE_UP);
-        then:
-            1 * Murphy.getInstance().moveUp();
-    }
-
-    def "Murphy goes Down"() {
-
-        when:
-            action.factory(Action.Actions.MOVE_DOWN);
-        then:
-            1 * Murphy.getInstance().moveDown();
-    }
-
-    def "Murphy turn Right"() {
-
-        when:
-            action.factory(Action.Actions.MOVE_RIGHT);
-        then:
-            1 * Murphy.getInstance().moveRight();
-    }
-
-    def "Murphy turn Left"() {
+    def "Move Left"() {
 
         when:
             action.factory(Action.Actions.MOVE_LEFT);
         then:
-            1 * Murphy.getInstance().moveLeft();
+            1 * movable.moveLeft();
     }
 
-    // explosions and eating later
+    def "Move Right"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_RIGHT);
+        then:
+            1 * movable.moveRight();
+    }
+
+    def "Move Up"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_UP);
+        then:
+            1 * movable.moveUp();
+    }
+
+    def "Move Down"() {
+
+        when:
+            action.factory(Action.Actions.MOVE_DOWN);
+        then:
+            1 * movable.moveDown();
+    }
 }
