@@ -18,7 +18,7 @@ class ConfigurationTest extends Specification {
 
     def "Initial configurations"() {
 
-        when:
+        given:
             configuration.setMapBounds(24, 15);
 
         expect:

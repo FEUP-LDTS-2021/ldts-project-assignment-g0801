@@ -1,10 +1,7 @@
 package com.g801.supaplex
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Elements.Murphy
-import com.g801.supaplex.Model.Level.GameMap
-import com.g801.supaplex.Model.Level.GameScreen
 import com.g801.supaplex.Model.Models.Model
-import com.g801.supaplex.Model.Models.Sprite
 import com.g801.supaplex.Model.Models.SpriteFactory
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification;
