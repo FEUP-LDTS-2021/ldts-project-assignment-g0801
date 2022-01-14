@@ -31,7 +31,9 @@ public interface GUI {
 
     void drawRectangle(Position position);
 
-    void drawString(TextColor color, int row, String s);
+    void drawStringCentered(TextColor color, int row, String s);
+
+    void drawString(TextColor color, int col, int row, String s);
 
     void drawTextImage(Position position, char[][] textImage);
 

@@ -15,8 +15,10 @@ public class Display {
     private Configuration configurations;
     private static Model[][] map;
     private static Murphy murphy;
+    private static Integer infotronCount = 0;
 
     public Display() {
+
         configurations = Configuration.getInstance();
         murphy = null;
         render();
@@ -46,6 +48,7 @@ public class Display {
         arrPos = new Position(m.getPos().getX(), m.getPos().getY());
         map[arrPos.getY()][arrPos.getX()] = m;
         updateTopLeft();
+        updateBottomLeft();
     }
 
     public void render(){
@@ -80,7 +83,10 @@ public class Display {
                         load = murphy;
                         configurations.updateSettings(murphy);
                     }
-                    case 'I' -> load = new Infotron(modelPos);
+                    case 'I' -> {
+                        load = new Infotron(modelPos);
+                        infotronCount++;
+                    }
                 }
                 map[i][j] = load;
             }
@@ -105,11 +111,25 @@ public class Display {
         return ret;
     }
 
+    public Integer getInfotronCount() {
+        return infotronCount;
+    }
+
     public void updateTopLeft() {
         Position posM = murphy.getPos();
         Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
                 (posM.getY() / blockSize.getY()) - (configurations.getHeight() / 2));
         configurations.setDisplayTopleft(position);
+    }
+
+    public void updateBottomLeft() {
+        Position posM = murphy.getPos();
+        Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
+                (posM.getY() / blockSize.getY()) - (configurations.getHeight()));
+    }
+
+    public Position getBlockSize() {
+        return blockSize;
     }
 
     public void endGame(){

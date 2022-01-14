@@ -136,9 +136,14 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawString(TextColor color, int row, String s) {
+    public void drawStringCentered(TextColor color, int row, String s) {
         tg.setForegroundColor(color);
         tg.putString(getCol(s), row, s, SGR.BOLD);
+    }
+
+    public void drawString(TextColor color, int col, int row, String s) {
+        tg.setForegroundColor(color);
+        tg.putString(col, row, s, SGR.BOLD);
     }
 
     public void drawImages(List<Image> elements) {

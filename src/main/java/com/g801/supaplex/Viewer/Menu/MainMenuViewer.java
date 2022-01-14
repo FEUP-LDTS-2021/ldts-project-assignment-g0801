@@ -1,6 +1,5 @@
 package com.g801.supaplex.Viewer.Menu;
 
-import com.g801.supaplex.Model.Menu.Elements.Image;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI;
@@ -32,9 +31,9 @@ public class MainMenuViewer extends Viewer<MainMenu> {
 
         for (MainMenu.Option elem : getModel().getOpt()) {
             if (getModel().getCurrentSelect() == elem) {
-                gui.drawString(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
+                gui.drawStringCentered(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
             }
-            else gui.drawString(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
+            else gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
             y += 2;
         }
 
