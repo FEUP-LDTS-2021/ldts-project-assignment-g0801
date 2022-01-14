@@ -28,6 +28,7 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_LEFT);
         then:
             1 * movable.moveLeft();
+            1 * movable.updateAura();
     }
 
     def "Move Right"() {
@@ -36,6 +37,7 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_RIGHT);
         then:
             1 * movable.moveRight();
+            1 * movable.updateAura();
     }
 
     def "Move Up"() {
@@ -44,6 +46,7 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_UP);
         then:
             1 * movable.moveUp();
+            1 * movable.updateAura();
     }
 
     def "Move Down"() {
@@ -52,5 +55,6 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_DOWN);
         then:
             1 * movable.moveDown();
+            1 * movable.updateAura();
     }
 }
