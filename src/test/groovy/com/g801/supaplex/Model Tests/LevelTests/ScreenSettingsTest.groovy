@@ -15,8 +15,8 @@ class ScreenSettingsTest extends Specification {
     def "Initialization"() {
 
         expect:
-            screenSettings.getWidth() == null;
-            screenSettings.getHeight() == null;
+            screenSettings.getWidth() == 15;
+            screenSettings.getHeight() == 15;
             screenSettings.getMapBounds() == null;
             screenSettings.getXmin() == 0;
             screenSettings.getYmin() == 0;

@@ -3,15 +3,10 @@ package com.g801.supaplex
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI
-import com.g801.supaplex.Viewer.Menu.MainMenuViewer;
-import com.g801.supaplex.Viewer.Viewer;
-import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.graphics.TextGraphics;
+import com.g801.supaplex.Viewer.GUI.LanternaGUI
+import com.g801.supaplex.Viewer.Menu.MainMenuViewer
 import com.googlecode.lanterna.screen.Screen
-import com.googlecode.lanterna.screen.TerminalScreen
-
-import java.awt.desktop.ScreenSleepEvent
-import java.io.IOException;
+import com.googlecode.lanterna.screen.TerminalScreen;
 import spock.lang.Specification;
 
 class MainMenuViewerTest extends Specification {
@@ -21,11 +16,9 @@ class MainMenuViewerTest extends Specification {
     private GUI gui;
 
     def setup() {
-        TerminalScreen screen = new TerminalScreen(new Size(40, 60));
-        gui = Mock(GUI.class);
-        gui.getScreen() >> screen;
-        gui.getSize() >> new Size(10, 20);
+        gui = new LanternaGUI(new Size(10, 20));
         mainMenu = Mock(MainMenu.class);
+        mainMenu.getOpt() >> MainMenu.Option;
         mainMenuViewer = new MainMenuViewer(mainMenu);
     }
 
@@ -37,6 +30,5 @@ class MainMenuViewerTest extends Specification {
         then:
             1 * gui.getScreen();
             1 * gui.getSize();
-
     }
 }

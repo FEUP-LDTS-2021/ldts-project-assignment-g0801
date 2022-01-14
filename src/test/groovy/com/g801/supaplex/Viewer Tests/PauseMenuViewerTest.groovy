@@ -4,14 +4,7 @@ import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.Size;
 import com.g801.supaplex.Viewer.GUI.GUI
 import com.g801.supaplex.Viewer.Menu.MainMenuViewer;
-import com.g801.supaplex.Viewer.Viewer;
-import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen
 import com.googlecode.lanterna.screen.TerminalScreen
-
-import java.awt.desktop.ScreenSleepEvent
-import java.io.IOException;
 import spock.lang.Specification;
 
 class PauseMenuViewerTest extends Specification {
