@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Elements.Chip
 import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Position;
@@ -40,10 +41,10 @@ class ChipTest extends Specification {
 
         where:
             a | b | c
-            0 | 0 | 'B'
-            0 | 2 | 'Y'
-            1 | 2 | 'C'
-            2 | 3 | 'A'
-            2 | 6 | 'G'
+            0 | 0 | 'g'
+            0 | 2 | 'G'
+            1 | 2 | 'G'
+            2 | 3 | 'g'
+            2 | 6 | 'g'
     }
 }

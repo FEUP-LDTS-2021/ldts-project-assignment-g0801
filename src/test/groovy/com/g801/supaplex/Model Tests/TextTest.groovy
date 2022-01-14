@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Text;
 import spock.lang.Specification;
 
@@ -26,5 +27,4 @@ class TextTest extends Specification {
             !textA.equals(textB);
             textA.hashCode() != textB.hashCode();
     }
-
 }

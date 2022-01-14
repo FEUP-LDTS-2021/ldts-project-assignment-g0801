@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification;
@@ -31,7 +32,7 @@ class ConfigurationTest extends Specification {
     def "Updating settings"() {
 
         when:
-            configuration.updateSettings(murphy, new Position(10, 20));
+            configuration.updateSettings(murphy);
 
         then:
             2 * murphy.getPos();
@@ -45,7 +46,7 @@ class ConfigurationTest extends Specification {
             murphy.getPos() >> new Position(11, 7);
 
         when:
-            configuration.updateSettings(murphy, bounds);
+            configuration.updateSettings(murphy);
 
         then:
             configuration.getXmin() == 6;
@@ -58,7 +59,7 @@ class ConfigurationTest extends Specification {
             murphy.getPos() >> new Position(3, 2);
 
         when:
-            configuration.updateSettings(murphy, bounds);
+            configuration.updateSettings(murphy);
 
         then:
             configuration.getXmin() == 0;
@@ -71,7 +72,7 @@ class ConfigurationTest extends Specification {
             murphy.getPos() >> new Position(22, 2);
 
         when:
-            configuration.updateSettings(murphy, bounds);
+            configuration.updateSettings(murphy);
 
         then:
             configuration.getXmin() == 14;
@@ -84,7 +85,7 @@ class ConfigurationTest extends Specification {
             murphy.getPos() >> new Position(4, 12);
 
         when:
-            configuration.updateSettings(murphy, bounds);
+            configuration.updateSettings(murphy);
 
         then:
             configuration.getXmin() == 0;
@@ -97,7 +98,7 @@ class ConfigurationTest extends Specification {
             murphy.getPos() >> new Position(24, 14);
 
         when:
-            configuration.updateSettings(murphy, bounds);
+            configuration.updateSettings(murphy);
 
         then:
             configuration.getXmin() == 14;

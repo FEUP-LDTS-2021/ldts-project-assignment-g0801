@@ -1,11 +1,11 @@
-package com.g801.supaplex
+package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Size;
 import spock.lang.Specification;
 
 class SizeTest extends Specification {
 
-    def Size size;
+    private Size size;
 
     def setup() {
         this.size = new Size(12, 34);

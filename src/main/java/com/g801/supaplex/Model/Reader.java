@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Models.Sprite;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

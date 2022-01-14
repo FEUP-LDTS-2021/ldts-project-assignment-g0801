@@ -1,21 +1,23 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Level.LoadLevelBuild
 import spock.lang.Specification;
 
 class LoadLevelBuildTest extends Specification {
 
-    private int level = 10;
-    private Character[][] map;
+    private int level = 1; // testar com um nível final e adaptar os testes
+    private ArrayList<String> map;
 
     def setup() {
-        map = LoadLevelBuild.getLevelMap(level);
+        LoadLevelBuild loadLevelBuild = new LoadLevelBuild(level);
+        map = loadLevelBuild.getLevelMap();
     }
 
     def "Configuration of Loader"() {
 
         expect:
-            map.length == 10;
-            map[0].length == 43;
+            map.size() == 10;
+            map[0].size() == 43;
     }
 
     def "Map colors"() {

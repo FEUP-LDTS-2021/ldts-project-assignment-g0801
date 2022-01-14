@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Menu.SelectLevelMenu
 import spock.lang.Specification;

@@ -1,4 +1,6 @@
 package com.g801.supaplex
+
+import com.g801.supaplex.Model.Models.Sprite
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Models.Model
 import spock.lang.Specification
@@ -13,18 +15,27 @@ class ModelTest extends Specification {
         position = new Position(10, 20);
     }
 
-    def "Initial configuration of Model"() {
+    def "Initial configuration"() {
 
         expect:
             model.getModel() == null;
             model.getPos() == null;
     }
 
-    def "New Position of Model"() {
+    def "New Position"() {
 
         given:
             model.setPos(position);
         expect:
             model.getPos() == new Position(10, 20);
+    }
+
+    def "New Sprite"() {
+
+        given:
+            Sprite s = new Sprite();
+            model.setSprite(s);
+        expect:
+            model.getModel() == s;
     }
 }

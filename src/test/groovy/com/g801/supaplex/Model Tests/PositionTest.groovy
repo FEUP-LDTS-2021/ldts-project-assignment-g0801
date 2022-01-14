@@ -5,7 +5,7 @@ import spock.lang.Specification;
 
 class PositionTest extends Specification {
 
-    def Position position;
+    private Position position;
 
     def setup() {
         this.position = new Position(10, 20);

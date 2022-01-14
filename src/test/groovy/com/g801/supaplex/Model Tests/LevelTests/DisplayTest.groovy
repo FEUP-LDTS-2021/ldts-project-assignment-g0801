@@ -1,5 +1,7 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Configuration
+import com.g801.supaplex.Model.Elements.Base
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Models.Model
 import com.g801.supaplex.Model.Models.SpriteFactory
@@ -12,14 +14,14 @@ class DisplayTest extends Specification {
     private SpriteFactory spriteFactory;
     private Display display;
     private Position position;
+    private Murphy murphy;
 
     def setup() {
         Configuration config = Mock(Configuration.class);
         config.getCurrentLevel() >> 1;
         position = new Position(10, 10);
-        Murphy murphy = Murphy.getInstance();
-        murphy.setPos(position);
-        display = Display.getInstance();
+        murphy = new Murphy(position);
+        display = new Display();
         List<Model> answer = new ArrayList<Model>()
         for (int i = 0 ; i < 4 ; i++) answer.push(new Model());
         display.getAura(position) >> answer;
@@ -28,22 +30,47 @@ class DisplayTest extends Specification {
     def "Getting Aura by Position"() {
 
         when:
-            List<Model> answer = display.getAura(position);
+            List<Model> answer = display.getAura(murphy);
         then:
             answer.size() == 4;
-            answer.get(0).getPos() == new Position(10, 9); // cima
-            answer.get(1).getPos() == new Position(10, 11); // baixo
-            answer.get(2).getPos() == new Position(9, 10); // esquerda
-            answer.get(3).getPos() == new Position(11, 10); // direita
+            answer.get(0).getPos() == new Position(10, 9);
+            answer.get(1).getPos() == new Position(10, 11);
+            answer.get(2).getPos() == new Position(9, 10);
+            answer.get(3).getPos() == new Position(11, 10);
     }
 
-    def "Updating by Position"() {
+    def "Updating blocks"() {
 
         when:
-            display.update(position);
+            murphy.getPos().addX(1);
+            display.update(murphy, new Position(position));
+            List<Model> answer = display.getAura(murphy);
+
         then:
-            1 * display.updateMap(position);
-            1 * display.updateState(position);
+            answer[position.getX()][position.getY()] instanceof Base;
+            answer[position.getX()+1][position.getY()] == murphy;
     }
 
+    def "Getting Display Map"() {
+
+        when:
+            Configuration configuration = Configuration.getInstance();
+            Model[][] map = display.getDisplayMap();
+
+        then:
+            map[0].length == configuration.getWidth();
+            map.length == configuration.getHeight();
+    }
+
+    def "Getting Infotron Counter"() {
+
+        expect:
+            display.getInfotronCount() == 0;
+    }
+
+    def "Block Size"() {
+
+        expect:
+            display.getBlockSize() == new Position(5, 10);
+    }
 }
