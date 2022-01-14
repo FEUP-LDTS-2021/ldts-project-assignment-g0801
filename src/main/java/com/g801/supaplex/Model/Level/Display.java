@@ -10,22 +10,22 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Display {
-    private Configuration configurations;
     private final SpriteFactory spriteFactory = new SpriteFactory();
-    private static Model[][] map;
     private static final Position blockSize = new Position(Sprite.width, Sprite.height);
+    private Configuration configurations;
+    private static Model[][] map;
     private static Murphy murphy;
 
-    private Display() {
+    public Display() {
         configurations = Configuration.getInstance();
-        for (Model[] row : map) Arrays.fill(row, null); // tests
         murphy = null;
         render();
-
     }
 
     //Make this receive a movable and process according to instanceOf
-    public static List<Model> getAura(Position p){
+    public static List<Model> getAura(Movable m){
+        //This is for Murphy and Scissors
+        Position p = m.getPos();
         List<Model> ret = new ArrayList<Model>(4);
         Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
         //ret[0] = block above
@@ -36,34 +36,16 @@ public class Display {
         ret.set(2, map[point.getX()-1][point.getY()]);
         //ret[3] = block to the right
         ret.set(3, map[point.getX()+1][point.getY()]);
-
+        //Over here we get rocks
         return ret;
     }
 
-    public void update(Position p){
-        //calls updateMap
-        //calls updateState
-        //prints map
-    }
-
-    private void updateMap(Position p){
-        //checks if there's a need to render new Models
-        //YES:
-        // calls renderLine or renderColumns as needed
-        //sets new models in map
-        //NO:
-        //does nothing
-        //calls gameScreen.update;
-    }
-
-    private void updateState(){
-        //makes changes on map as needed
-            //move murphy
-            //change blocks as needed
-            //move scissors
-                //this will require multithreading
-            //move rocks
-                //will also need multithreading
+    private void update(Movable m, Position old){
+        Position arrPos = new Position(old.getX(), old.getY());
+        map[arrPos.getY()][arrPos.getX()] = new Base(old);
+        arrPos = new Position(m.getPos().getX(), m.getPos().getY());
+        map[arrPos.getY()][arrPos.getX()] = m;
+        updateTopLeft();
     }
 
     public void render(){
@@ -74,40 +56,65 @@ public class Display {
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
-        Character[][] gameMap = level.getLevelMap();
-        Position bounds = configurations.getMapBounds();
+        ArrayList<String> gameMap = level.getLevelMap();
+        Position bounds = configurations.getMapBounds(),
                 modelPos = null;
-        Model load = null;
-        for(int i = 0; i < bounds.getY(); i++) {
-            map[i] = new Model[bounds.getX()];
-            for(int j = 0; j < bounds.getX(); j++){
-                modelPos = new Position(j * blockSize.getX(), i * blockSize.getY());
-                switch(gameMap[i][j]){
+        map = new Model[bounds.getY()][bounds.getX()];
+        int i = 0;
+        for(String line : gameMap) {
+            for(int j = 0; j < line.length(); j++){
+                Model load = new Model();
+                modelPos = new Position(j, i);
+                switch(line.charAt(j)){
+                    case 'K' -> {
+                        load = new Wall(modelPos);
+                        load.setSprite(SpriteFactory.factoryMethod('K'));
+                    }
                     case 'W' -> load = new Wall(modelPos);
-                    case 'B' -> load = new Base(modelPos);
+                    case ' ' -> load = new Base(modelPos);
                     case 'C' -> load = new Chip(modelPos);
                     case 'E' -> load = new EndBlock(modelPos);
+                    case 'R' -> load = new Rock(modelPos);
                     case 'M' -> {
                         murphy = new Murphy(modelPos);
                         load = murphy;
+                        configurations.updateSettings(murphy);
                     }
                     case 'I' -> load = new Infotron(modelPos);
                 }
                 map[i][j] = load;
-                load = null;
             }
+            i++;
         }
 
     }
 
-    //Add method to set Murphy attribute
-
-    //Returns the subarray to be printed
     public Model[][] getDisplayMap(){
-        return null;
+
+        Integer x = configurations.getWidth();
+        Integer y = configurations.getHeight();
+        Integer yMin = configurations.getYmin();
+        Integer xMin = configurations.getXmin();
+        Model[][] ret = new Model[y][x];
+
+        for(int i = 0; i < y; i++){
+            for(int j = 0; j < x; j++)
+                ret[i][j] = map[yMin + i][xMin+j];
+        }
+
+        return ret;
+    }
+
+    public void updateTopLeft() {
+        Position posM = murphy.getPos();
+        Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
+                (posM.getY() / blockSize.getY()) - (configurations.getHeight() / 2));
+        configurations.setDisplayTopleft(position);
     }
 
     public void endGame(){
-        //Deletes everything
+        configurations = null;
+        map = null;
+        murphy = null;
     }
 }

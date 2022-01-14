@@ -19,5 +19,7 @@ public class Model {
     public Sprite getModel() {
         return model;
     }
+
+    public void setSprite(Sprite s) {this.model = s;}
 }
 

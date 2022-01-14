@@ -7,13 +7,11 @@ import com.g801.supaplex.Model.Models.Sprite;
 
 public class Movable extends Model {
     protected Aura aura;
-    //Create an Aura field
 
     public Movable(){
         super.model = new Sprite();
         super.pos = null;
     }
-
 
     public void moveUp(){
         super.pos.addY(-model.getHeight());

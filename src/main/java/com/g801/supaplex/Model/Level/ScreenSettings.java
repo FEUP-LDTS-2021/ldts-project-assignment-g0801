@@ -3,35 +3,57 @@ package com.g801.supaplex.Model.Level;
 import com.g801.supaplex.Model.Position;
 
 public class ScreenSettings{
-    private static final Integer x = 5;   //How many blocks to the side of murphy
-    private static final Integer y = 3;
+    private static Integer width;   //How many blocks to the side of murphy
+    private static Integer height;
     private static Position mapBounds;
-    private Integer yMin;
-    private Integer yMax;
-    private Integer xMin;
-    private Integer xMax;
+    private static Position displayTopleft;
+
+    public ScreenSettings(){
+        displayTopleft = new Position(0,0);
+    }
+
+    public Integer getWidth(){
+        return width;
+    }
+
+    public Integer getHeight(){
+        return height;
+    }
+
+    public Integer getYmin(){
+        return displayTopleft.getY();
+    }
+
+    public Integer getXmin(){
+        return displayTopleft.getX();
+    }
 
 
-    public Integer getMurphySides(){}
+    public Position getMapBounds(){
+        return mapBounds;
+    }
 
-    public Integer getMurphyTops(){}
+    public void setYmin(Integer y){
+        displayTopleft.setY(y);
+    }
 
-    public Integer getYmin(){}
+    public void setXmin(Integer x){
+        displayTopleft.setX(x);
+    }
 
-    public Integer getYmax(){}
+    public void setMapBounds(Integer x, Integer y){
+        mapBounds = new Position(x, y);
+    }
 
-    public Integer getXmin(){}
+    public static void setHeight(Integer h) {
+        height = h;
+    }
 
-    public Integer getXmax(){}
-    public Position getMapBounds(){}
+    public static void setWidth(Integer w) {
+        width = w;
+    }
 
-    public void setYmin(Integer y){}
-
-    public void setYmax(Integer y){}
-
-    public void setXmin(Integer x){}
-
-    public void setXmax(Integer x){}
-
-    public void setMapBounds(Integer x, Integer y){}
+    public void setDisplayTopleft(Position p){
+        displayTopleft = p;
+    }
 }

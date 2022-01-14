@@ -16,6 +16,21 @@ class WallSprite extends Sprite {
     }
 }
 
+class WallChipSprite extends Sprite {
+
+    private static WallChipSprite sprite;
+
+    private WallChipSprite(){
+        Reader.fillSprite("Wall_Chip", this);
+    }
+
+    public static WallChipSprite getInstance(){
+        if (sprite == null)
+            sprite = new WallChipSprite();
+        return sprite;
+    }
+}
+
 class MurphySprite extends Sprite {
 
     private static MurphySprite sprite;
@@ -121,13 +136,15 @@ public class SpriteFactory {
     public static Sprite factoryMethod(char c) {
         return switch (c) {
             case 'W' -> WallSprite.getInstance();
+            case 'K' -> WallChipSprite.getInstance();
             case 'B' -> BaseSprite.getInstance();
             case 'C' -> ChipSprite.getInstance();
             case 'E' -> EndSprite.getInstance();
             case 'M' -> MurphySprite.getInstance();
             case 'I' -> InfotronSprite.getInstance();
             case 'X' -> ScissorsSprite.getInstance();
-            case 'O' -> RockSprite.getInstance();
+            case 'R' -> RockSprite.getInstance();
+
             default ->
 
                     // default something, retorna uma excepção de caracter inválido

@@ -2,6 +2,7 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.ScreenSettings;
+import org.codehaus.groovy.transform.SourceURIASTTransformation;
 
 import java.util.Objects;
 
@@ -13,7 +14,6 @@ public class Configuration {
 
     private Configuration() {
         this.currentLevel = 1;
-        //Make it count how many levels in level folder and initialize NUM_LEVELS accordingly
         displayConfig = new ScreenSettings();
     }
 
@@ -23,31 +23,59 @@ public class Configuration {
         return confs;
     }
 
-    //Returns ScreenSettings lower bound
-    public Position getScreenLowerBound(){
-        return null;
+    public Integer getWidth(){
+        return displayConfig.getWidth();
     }
 
-    public void updateSettings(Murphy m, Position bound){
-        Integer mY = m.getPos().getY();
-        Integer mX = m.getPos().getX();
-        Integer val;
+    public Integer getHeight(){
+        return displayConfig.getHeight();
+    }
 
-        val = mY - ScreenSettings.;
-        if(val < 0) val = 0;
-        displayConfig.yMin = val;
+    public Integer getYmin(){
+        return displayConfig.getYmin();
+    }
 
-        val = mX - ScreenSettings.x;
-        if(val < 0) val = 0;
-        displayConfig.xMin = val;
+    public Integer getXmin(){
+        return displayConfig.getXmin();
+    }
 
-        val = mY + ScreenSettings.y;
-        if(val > bound.getY()) val = bound.getY();
-        displayConfig.yMax = mY + val;
+    public Position getMapBounds(){
+        return displayConfig.getMapBounds();
+    }
 
-        val = mX + ScreenSettings.x;
-        if(val > bound.getX()) val = bound.getX();
-        displayConfig.xMax = val;
+    private void setYmin(Integer y){
+        displayConfig.setYmin(y);
+    }
+
+
+    private void setXmin(Integer x){
+        displayConfig.setXmin(x);
+    }
+
+
+    public void setMapBounds(Integer x, Integer y){
+        displayConfig.setMapBounds(x, y);
+    }
+
+    public void updateSettings(Murphy m){
+        Integer xMin;
+        Integer yMin;
+        Position bound = displayConfig.getMapBounds();
+        Position pos = m.getPos();
+
+        Integer w = getWidth() / 2;
+        Integer h = getHeight() / 2;
+
+
+        yMin = Math.max(pos.getY() - h, 0);
+        xMin = Math.max(pos.getX() - w, 0);
+
+
+        if (yMin != 0) yMin = pos.getY() + h > bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
+        if (xMin != 0) xMin = pos.getX() + w > bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
+
+        setYmin(yMin);
+        setXmin(xMin);
     }
 
     public Integer getCurrentLevel() {
@@ -67,27 +95,15 @@ public class Configuration {
         } else currentLevel--;
     }
 
+    public static void setWidth(Integer w) {
+        displayConfig.setWidth(w);
+    }
 
-    public Integer getMurphySides(){}
+    public static void setHeight(Integer h) {
+        displayConfig.setHeight(h);
+    }
 
-    public Integer getMurphyTops(){}
-
-    public Integer getYmin(){}
-
-    public Integer getYmax(){}
-
-    public Integer getXmin(){}
-
-    public Integer getXmax(){}
-    public Position getMapBounds(){}
-
-    public void setYmin(Integer y){}
-
-    public void setYmax(Integer y){}
-
-    public void setXmin(Integer x){}
-
-    public void setXmax(Integer x){}
-
-    public void setMapBounds(Integer x, Integer y){}
+    public void setDisplayTopleft(Position p){
+        displayConfig.setDisplayTopleft(p);
+    }
 }
