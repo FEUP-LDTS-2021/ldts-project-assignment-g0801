@@ -50,6 +50,7 @@ public class Display {
     }
 
     public void render(){
+
         LoadLevelBuild level = null;
         try {
             level = new LoadLevelBuild(configurations.getCurrentLevel());
@@ -57,15 +58,16 @@ public class Display {
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
+
         ArrayList<String> gameMap = level.getLevelMap();
-        Position bounds = configurations.getMapBounds(),
-                modelPos = null;
+        Position bounds = configurations.getMapBounds(), modelPos;
         map = new Model[bounds.getY()][bounds.getX()];
-        int i = 0;
-        for(String line : gameMap) {
+
+        for(int i = 0; i < gameMap.size(); i++) {
+            String line = gameMap.get(i);
             for(int j = 0; j < line.length(); j++){
                 Model load = new Model();
-                modelPos = new Position(j, i);
+                modelPos = new Position(i, j);
                 switch(line.charAt(j)){
                     case 'K' -> {
                         load = new Wall(modelPos);
@@ -88,7 +90,6 @@ public class Display {
                 }
                 map[i][j] = load;
             }
-            i++;
         }
 
     }

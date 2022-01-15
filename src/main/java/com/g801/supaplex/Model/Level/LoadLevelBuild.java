@@ -17,11 +17,11 @@ public class LoadLevelBuild {
     private static ArrayList<String> map = new ArrayList<>();
 
     public LoadLevelBuild(int lvl) throws FileNotFoundException {
+
+        map.clear();
         Configuration confs = Configuration.getInstance();
 
-
         String level = lvl < 10 ? "0" + String.valueOf(lvl) : String.valueOf(lvl);
-
         File file = new File("src/main/resources/Levels/Level" + level + ".txt");
         Scanner reader = new Scanner(file);
         int i = 0;
@@ -31,6 +31,7 @@ public class LoadLevelBuild {
             map.add(line);
             i++;
         }
+
         confs.setMapBounds(line.length(), i);
         reader.close();
     }
