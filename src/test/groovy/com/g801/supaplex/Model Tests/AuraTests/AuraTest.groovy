@@ -2,10 +2,12 @@ package com.g801.supaplex
 
 import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Aura.Aura
+import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Position
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy
 import spock.lang.Specification;
 
 class AuraTest extends Specification {
@@ -16,6 +18,8 @@ class AuraTest extends Specification {
 
     def setup() {
 
+        Configuration configuration = Configuration.getInstance();
+        configuration.setMapBounds(17, 17);
         murphy = Mock(Murphy.class);
         murphy.getPos() >> new Position(10, 10);
         aura = new Aura(murphy);

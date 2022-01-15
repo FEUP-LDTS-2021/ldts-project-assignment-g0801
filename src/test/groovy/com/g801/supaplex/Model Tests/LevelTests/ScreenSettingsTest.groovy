@@ -16,7 +16,7 @@ class ScreenSettingsTest extends Specification {
 
         expect:
             screenSettings.getWidth() == 15;
-            screenSettings.getHeight() == 15;
+            screenSettings.getHeight() == 10;
             screenSettings.getMapBounds() == null;
             screenSettings.getXmin() == 0;
             screenSettings.getYmin() == 0;
@@ -36,7 +36,7 @@ class ScreenSettingsTest extends Specification {
         when:
             screenSettings.setYmin(10);
         then:
-            screenSettings.getDisplayTopLeft().getY() == 10;
+            screenSettings.getYmin() == 10;
     }
 
     def "Screen set X min"() {
@@ -44,7 +44,7 @@ class ScreenSettingsTest extends Specification {
         when:
             screenSettings.setXmin(17);
         then:
-            screenSettings.getDisplayTopLeft().getX() == 17;
+            screenSettings.getXmin() == 17;
     }
 
     def "Screen set Top Left"() {

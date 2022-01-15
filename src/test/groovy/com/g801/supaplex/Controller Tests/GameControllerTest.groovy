@@ -18,6 +18,19 @@ class GameControllerTest extends Specification {
         gameController = new GameController(display);
     }
 
+    def "Initial state"() {
+
+        expect:
+            gameController.getModel() == display;
+
+        when:
+            Display anotherDisplay = new Display();
+            gameController.setModel(anotherDisplay);
+
+        then:
+            gameController.getModel() == anotherDisplay;
+    }
+
     def "Pause the Game"() {
 
         when:

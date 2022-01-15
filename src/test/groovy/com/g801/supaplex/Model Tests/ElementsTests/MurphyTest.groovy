@@ -69,4 +69,19 @@ class MurphyTest extends Specification {
             3 | 4 | 'W'
             3 | 6 | 'R'
     }
+
+    def "Can Murphy Eat?"() {
+
+
+        expect:
+            b == murphy.canEat(a);
+
+        where:
+            a | b
+            Murphy.Direction.RIGHT | true;
+            Murphy.Direction.LEFT | true;
+            Murphy.Direction.UP | true;
+            Murphy.Direction.DOWN | true;
+
+    }
 }

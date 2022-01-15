@@ -1,5 +1,6 @@
 package com.g801.supaplex
 
+import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Elements.Movable
 import com.g801.supaplex.Model.Models.Sprite
 import com.g801.supaplex.Model.Position;
@@ -18,10 +19,10 @@ class MovableTest extends Specification {
         movable.setPos(new Position(originalX, originalY));
     }
 
-    def "initial state"() {
+    def "Initial state"() {
 
         expect:
-            movable.getPos() == new Position(originalX, originalX);
+            movable.getPos() == new Position(originalX, originalY);
             movable.getModel() != null;
     }
 
@@ -55,5 +56,41 @@ class MovableTest extends Specification {
             movable.moveDown();
         then:
             movable.getPos() == new Position(originalX, originalY + y);
+    }
+
+    def "Can Move?"() {
+
+        expect:
+            !movable.canMove(Action.Actions.MOVE_DOWN);
+            !movable.canMove(Action.Actions.MOVE_UP);
+            !movable.canMove(Action.Actions.MOVE_LEFT);
+            !movable.canMove(Action.Actions.MOVE_RIGHT);
+    }
+
+    def "Aura Update"() {
+
+        when:
+            movable.updateAura();
+        then:
+            movable.getPos() == new Position(originalX, originalY);
+            movable.getModel() != null;
+    }
+
+    def "Spin"() {
+
+        given:
+            Sprite oldSprite = movable.getModel();
+        when:
+            movable.spin();
+        then:
+            movable.getModel() != oldSprite;
+    }
+
+    def "Fall"() {
+
+        when:
+            movable.fall();
+        then:
+            movable.getPos() == new Position(originalX, originalY+1);
     }
 }

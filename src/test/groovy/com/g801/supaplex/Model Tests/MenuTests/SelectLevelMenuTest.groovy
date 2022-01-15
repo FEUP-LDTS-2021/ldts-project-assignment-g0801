@@ -19,6 +19,7 @@ class SelectLevelMenuTest extends Specification {
         expect:
             menu.getCurrentSelect() == SelectLevelMenu.Option.LOWER;
             menu.getConfiguration() == configuration;
+            menu.getTextImagesList().size() != 0;
     }
 
     def "Position of options in level menu"() {
