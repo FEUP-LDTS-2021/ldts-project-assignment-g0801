@@ -23,7 +23,7 @@ public class MusicPlayer {
 
     private Clip loadMusic(String fileName) throws NullPointerException{
         try {
-            File musicFile = new File(MusicPlayer.class.getResource("/music/" + fileName).getFile());
+            File musicFile = new File(MusicPlayer.class.getResource("/Music/" + fileName).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);
