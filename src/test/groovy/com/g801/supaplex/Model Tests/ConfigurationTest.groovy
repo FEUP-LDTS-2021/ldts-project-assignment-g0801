@@ -25,19 +25,7 @@ class ConfigurationTest extends Specification {
         expect:
             configuration.getCurrentLevel() == 1;
             configuration.getScreenLowerBound() != null;
-            configuration.getMurphySides() == 5;
-            configuration.getMapBounds() == 3;
-    }
-
-    def "Updating settings"() {
-
-        when:
-            configuration.updateSettings(murphy);
-
-        then:
-            2 * murphy.getPos();
-            1 * murphy.getPos().getY();
-            1 * murphy.getPos().getX();
+            configuration.getMapBounds() == new Position(24, 15);
     }
 
     def "Murphy is in the middle of the map"() {
@@ -49,8 +37,8 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 6;
-            configuration.getYmin() == 4;
+            configuration.getXmin() == 4;
+            configuration.getYmin() == 2;
     }
 
     def "Murphy is in the upper left corner"() {
@@ -75,7 +63,7 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 14;
+            configuration.getXmin() == 9;
             configuration.getYmin() == 0;
     }
 
@@ -89,7 +77,7 @@ class ConfigurationTest extends Specification {
 
         then:
             configuration.getXmin() == 0;
-            configuration.getYmin() == 9;
+            configuration.getYmin() == 5;
     }
 
     def "Murphy is in the lower right corner"() {
@@ -101,8 +89,8 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 14;
-            configuration.getYmin() == 9;
+            configuration.getXmin() == 9;
+            configuration.getYmin() == 5;
     }
 
     def "Increasing current level"() {

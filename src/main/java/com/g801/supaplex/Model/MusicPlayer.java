@@ -5,10 +5,21 @@ import java.io.File;
 
 public class MusicPlayer {
     private Clip backgroundMusic;
+    private String file;
 
     public MusicPlayer(String fileName) {
+        this.file = fileName;
         this.backgroundMusic = loadMusic(fileName);
     }
+
+    public String getFile() { return file; }
+
+    public void setFile(String file) {
+        this.file = file;
+        this.backgroundMusic = loadMusic(file);
+    }
+
+    public Clip getClip() { return backgroundMusic; }
 
     private Clip loadMusic(String fileName) throws NullPointerException{
         try {
