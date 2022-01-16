@@ -11,7 +11,6 @@ public class Movable extends Model {
     public Movable(){
         super.model = new Sprite();
         super.pos = null;
-        aura = new Aura(this);
     }
 
     public void moveUp(){

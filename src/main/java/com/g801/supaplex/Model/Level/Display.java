@@ -4,12 +4,13 @@ import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Elements.*;
 import com.g801.supaplex.Model.Models.*;
 import com.g801.supaplex.Model.Position;
+import com.g801.supaplex.Viewer.GUI.GUI;
 
+import javax.accessibility.AccessibleTable;
 import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Display {
-    private final SpriteFactory spriteFactory = new SpriteFactory();
     private static final Position blockSize = new Position(Sprite.width, Sprite.height);
     private Configuration configurations;
     private static Model[][] map;
@@ -40,16 +41,37 @@ public class Display {
 //        //Over here we get rocks
 //        return ret;
 //    }
-public void update(Movable m, Position old){
-            Position arrPos = new Position(old.getX(), old.getY());
-            map[arrPos.getY()][arrPos.getX()] = new Base(old);
-            arrPos = new Position(m.getPos().getX(), m.getPos().getY());
-            map[arrPos.getY()][arrPos.getX()] = m;
 
-            updateTopLeft();
+    public void update(Movable m, GUI.KEYACTION keyaction){
+
+        switch (keyaction) {
+            case DOWN -> {
+                Position oldPosDown = new Position(m.getPos().getX(), m.getPos().getY() - 1);
+                map[m.getPos().getY()][m.getPos().getX()] = m;
+                map[m.getPos().getY() - 1][m.getPos().getX()] = new Base(oldPosDown);
+            }
+            case UP -> {
+                Position oldPosUp = new Position(m.getPos().getX(), m.getPos().getY() + 1);
+                map[m.getPos().getY()][m.getPos().getX()] = m;
+                map[m.getPos().getY() + 1][m.getPos().getX()] = new Base(oldPosUp);
+            }
+
+            case LEFT -> {
+                Position oldPosLeft = new Position(m.getPos().getX() - 1, m.getPos().getY());
+                map[m.getPos().getY()][m.getPos().getX()] = m;
+                map[m.getPos().getY()][m.getPos().getX() + 1] = new Base(oldPosLeft);
+            }
+            case RIGHT -> {
+                Position oldPosRight = new Position(m.getPos().getX() + 1, m.getPos().getY());
+                map[m.getPos().getY()][m.getPos().getX()] = m;
+                map[m.getPos().getY()][m.getPos().getX() - 1] = new Base(oldPosRight);
+            }
         }
 
-        public void render () {
+        updateTopLeft();
+    }
+
+    public void render () {
 
             LoadLevelBuild level = null;
             try {
@@ -58,10 +80,11 @@ public void update(Movable m, Position old){
                 e.printStackTrace();
             }
 
+            assert level != null;
             ArrayList<String> gameMap = level.getLevelMap();
             Position bounds = configurations.getMapBounds(), modelPos;
             map = new Model[bounds.getY()][bounds.getX()];
-
+            ArrayList<ArrayList<Model>> map1 = new ArrayList<>();
             for (int i = 0; i < gameMap.size(); i++) {
                 String line = gameMap.get(i);
                 for (int j = 0; j < line.length(); j++) {
@@ -90,7 +113,6 @@ public void update(Movable m, Position old){
                     map[i][j] = load;
                 }
             }
-
         }
 
         public Model[][] getDisplayMap () {
@@ -114,9 +136,7 @@ public void update(Movable m, Position old){
         }
 
         public void updateTopLeft () {
-
             configurations.updateSettings(murphy);
-
         }
 
         public Position getBlockSize() {
