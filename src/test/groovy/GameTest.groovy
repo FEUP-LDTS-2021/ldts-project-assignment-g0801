@@ -1,6 +1,5 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Game
 import spock.lang.Specification;
 
 class GameTest extends Specification {
@@ -24,5 +23,6 @@ class GameTest extends Specification {
 
         then:
             0 * game.close();
+            0 * game.render();
     }
 }

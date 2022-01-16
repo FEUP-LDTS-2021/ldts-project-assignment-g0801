@@ -1,10 +1,11 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Colors;
 import spock.lang.Specification
 
 class ColorsTest extends Specification {
 
-    private int colorsNumber = 11;
+    private int colorsNumber = 12;
     private Colors colors;
 
     def setup() {
@@ -55,5 +56,6 @@ class ColorsTest extends Specification {
             'C' | "#919183"
             'K' | "#525151"
             'T' | null
+            'g' | "#54DA47"
     }
 }

@@ -31,7 +31,6 @@ public class ScreenSettings{
         return displayTopleft.getX();
     }
 
-
     public Position getMapBounds(){
         return mapBounds;
     }

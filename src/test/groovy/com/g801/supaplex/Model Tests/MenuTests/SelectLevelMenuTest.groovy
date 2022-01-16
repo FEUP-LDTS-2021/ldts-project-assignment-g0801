@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Menu.SelectLevelMenu
 import spock.lang.Specification;
@@ -18,6 +19,7 @@ class SelectLevelMenuTest extends Specification {
         expect:
             menu.getCurrentSelect() == SelectLevelMenu.Option.LOWER;
             menu.getConfiguration() == configuration;
+            menu.getTextImagesList().size() != 0;
     }
 
     def "Position of options in level menu"() {

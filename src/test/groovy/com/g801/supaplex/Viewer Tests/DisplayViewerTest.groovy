@@ -7,7 +7,6 @@ import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Viewer.GUI.GUI
 import com.g801.supaplex.Viewer.GUI.LanternaGUI
 import com.g801.supaplex.Viewer.MapViewer.DisplayViewer;
-import com.g801.supaplex.Viewer.Viewer
 import spock.lang.Specification
 
 class DisplayViewerTest extends Specification {
@@ -37,6 +36,5 @@ class DisplayViewerTest extends Specification {
         then:
             1 * display.getDisplayMap();
             72 * gui.drawTextImage(new Position(9, 10), _ );
-
     }
 }

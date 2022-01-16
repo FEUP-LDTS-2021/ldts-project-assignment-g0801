@@ -1,6 +1,6 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Menu.Elements.Image
-import com.g801.supaplex.Model.Menu.MainMenu
 import com.g801.supaplex.Model.Menu.PauseMenu
 import spock.lang.Specification;
 

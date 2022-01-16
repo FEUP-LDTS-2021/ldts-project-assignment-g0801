@@ -36,8 +36,6 @@ public class Action {
 
     public Movable getMovable() { return movable;}
 
-    public Action() {};
-
     public void factory(Actions a) {
         if (movable.canMove(a)) {
             switch (a) {

@@ -21,8 +21,14 @@ public class Aura{
         movable = m;
     }
 
+
 //    public void update(){
 //        aura = Display.getAura(movable);
+//    }
+
+//    public void update(){
+//        Display display = new Display();
+//        aura = display.getAura(movable);
 //    }
 
     public boolean canMove(Action.Actions action){

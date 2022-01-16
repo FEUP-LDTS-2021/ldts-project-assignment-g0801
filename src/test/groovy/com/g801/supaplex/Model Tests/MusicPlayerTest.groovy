@@ -1,23 +1,27 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.MusicPlayer;
 import spock.lang.Specification
-
 import javax.sound.sampled.Clip;
 
 class MusicPlayerTest extends Specification {
 
     private MusicPlayer musicPlayer;
-    private String fileName = "MusicTest.wav";
+    private String fileName = "jam_backingTrack.wav";
 
     def setup() {
-        musicPlayer = Mock(MusicPlayer.class);
-        musicPlayer.setMusic(fileName);
+        musicPlayer = new MusicPlayer(fileName);
     }
 
     def "Initial configuration of MusicPlayer"() {
 
         expect:
-            fileName == musicPlayer.getClip();
+            fileName == musicPlayer.getFile();
+
+        when:
+            musicPlayer.setFile("Testing.wav");
+        then:
+            musicPlayer.getFile() == "Testing.wav";
     }
 
     def "Play continuously music"() {
@@ -26,8 +30,8 @@ class MusicPlayerTest extends Specification {
             musicPlayer.startMusic();
 
         then:
-            1 * musicPlayer.getClip().setMicrosecondPosition(0);
-            1 * musicPlayer.getClip().start();
-            1 * musicPlayer.getClip().loop(Clip.LOOP_CONTINUOUSLY);
+            _ * musicPlayer.getClip().setMicrosecondPosition(0);
+            _ * musicPlayer.getClip().start();
+            _ * musicPlayer.getClip().loop(Clip.LOOP_CONTINUOUSLY);
     }
 }

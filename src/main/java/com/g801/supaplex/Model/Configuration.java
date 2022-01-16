@@ -2,7 +2,6 @@ package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.ScreenSettings;
-import org.codehaus.groovy.transform.SourceURIASTTransformation;
 
 import java.util.Objects;
 
@@ -47,11 +46,9 @@ public class Configuration {
         displayConfig.setYmin(y);
     }
 
-
     private void setXmin(Integer x){
         displayConfig.setXmin(x);
     }
-
 
     public void setMapBounds(Integer x, Integer y){
         displayConfig.setMapBounds(x, y);
@@ -79,6 +76,8 @@ public class Configuration {
     public Integer getCurrentLevel() {
         return currentLevel;
     }
+
+    public Position getScreenLowerBound() { return displayConfig.getMapBounds(); }
 
     public void increaseCurrentLevel() {
         if (Objects.equals(currentLevel, NUM_LEVELS)) {

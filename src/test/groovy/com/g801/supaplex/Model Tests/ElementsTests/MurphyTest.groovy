@@ -1,4 +1,5 @@
 package com.g801.supaplex
+
 import com.g801.supaplex.Model.Aura.Aura
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Models.Sprite
@@ -12,11 +13,11 @@ class MurphyTest extends Specification {
     private int y = 20;
 
     def setup() {
-        murphy = Murphy.getInstance();
-        murphy.setPos(new Position(x, y));
+        murphy = new Murphy(new Position(x, y));
     }
 
     def "Murphy initial Position"() {
+
         expect:
             murphy.getPos() == new Position(x, y);
     }
@@ -45,11 +46,11 @@ class MurphyTest extends Specification {
     def "Murphy set Aura"() {
 
         given:
-        Aura newAura = new Aura();
+            Aura newAura = new Aura(murphy);
         when:
-        murphy.setAura(newAura);
+            murphy.setAura(newAura);
         then:
-        murphy.getAura() == newAura;
+            murphy.getAura() == newAura;
     }
 
     def "Murphy Colors"() {
@@ -67,5 +68,20 @@ class MurphyTest extends Specification {
             1 | 6 | 'A'
             3 | 4 | 'W'
             3 | 6 | 'R'
+    }
+
+    def "Can Murphy Eat?"() {
+
+
+        expect:
+            b == murphy.canEat(a);
+
+        where:
+            a | b
+            Murphy.Direction.RIGHT | true;
+            Murphy.Direction.LEFT | true;
+            Murphy.Direction.UP | true;
+            Murphy.Direction.DOWN | true;
+
     }
 }
