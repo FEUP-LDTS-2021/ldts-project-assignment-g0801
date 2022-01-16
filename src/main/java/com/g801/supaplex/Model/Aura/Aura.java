@@ -21,12 +21,11 @@ public class Aura{
         movable = m;
     }
 
-    public void update(){
-        aura = Display.getAura(movable);
-    }
+//    public void update(){
+//        aura = Display.getAura(movable);
+//    }
 
     public boolean canMove(Action.Actions action){
-        update();
         boolean ret = true;
         switch(action){
             case MOVE_UP : if (aura.get(0) instanceof Wall) ret = false; break;

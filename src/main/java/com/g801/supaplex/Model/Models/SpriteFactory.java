@@ -137,7 +137,7 @@ public class SpriteFactory {
         return switch (c) {
             case 'W' -> WallSprite.getInstance();
             case 'K' -> WallChipSprite.getInstance();
-            case 'B' -> BaseSprite.getInstance();
+            case ' ' -> BaseSprite.getInstance();
             case 'C' -> ChipSprite.getInstance();
             case 'E' -> EndSprite.getInstance();
             case 'M' -> MurphySprite.getInstance();

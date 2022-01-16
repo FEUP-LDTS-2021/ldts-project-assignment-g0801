@@ -14,19 +14,18 @@ public class Movable extends Model {
     }
 
     public void moveUp(){
-        super.pos.addY(-model.getHeight());
+        super.pos.addY(-1);
     }
 
-    public void moveDown(){
-        super.pos.addY(model.getHeight());
+    public void moveDown(){ super.pos.addY(1);
     }
 
     public void moveLeft(){
-        super.pos.addX(-model.getWidth());
+        super.pos.addX(-1);
     }
 
     public void moveRight(){
-        super.pos.addX(model.getWidth());
+        super.pos.addX(1);
     }
 
     //Checks if Murphy can move to the desired block
@@ -34,9 +33,9 @@ public class Movable extends Model {
         return aura.canMove(action);
     }
 
-    public void updateAura(){
-        aura.update();
-    }
+//    public void updateAura(){
+//        aura.update();
+//    }
 
     //Put this in MoveScissors
     public void spin(){}

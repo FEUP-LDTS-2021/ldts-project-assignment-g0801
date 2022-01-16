@@ -94,7 +94,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println(updates + " Ticks, FPS: " + frames);
+//                System.out.println(updates + " Ticks, FPS: " + frames);
                 // Resetting
                 updates = 0;
                 frames = 0;

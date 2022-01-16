@@ -9,9 +9,11 @@ import com.g801.supaplex.Viewer.GUI.GUI;
 import java.io.IOException;
 
 public class GameController extends Controller <Display> {
+    private final MurphyController murphyController;
 
     public GameController(Display model) {
         super(model);
+        this.murphyController = new MurphyController(model);
     }
 
     @Override
@@ -24,6 +26,8 @@ public class GameController extends Controller <Display> {
              *  case LEFT:
              *  case RIGHT:
              */
+            default -> murphyController.execute(game, keyaction, time);
         }
+
     }
 }

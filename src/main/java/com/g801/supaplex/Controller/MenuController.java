@@ -32,8 +32,6 @@ public class MenuController extends Controller<MainMenu> {
             case SELECT:
                 switch(getModel().getCurrentSelect()) {
                     case START:
-                        //game.run();
-//                        game.pushState(new PauseMenuState(new PauseMenu()));
                         game.pushState(new GameState(new Display()));
                         break;
                     case LEVEL:

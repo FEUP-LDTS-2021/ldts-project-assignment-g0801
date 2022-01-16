@@ -66,13 +66,11 @@ public class Configuration {
         Integer w = getWidth() / 2;
         Integer h = getHeight() / 2;
 
-
         yMin = Math.max(pos.getY() - h, 0);
         xMin = Math.max(pos.getX() - w, 0);
 
-
-        if (yMin != 0) yMin = pos.getY() + h > bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
-        if (xMin != 0) xMin = pos.getX() + w > bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
+        if (yMin != 0) yMin = pos.getY() + h >= bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
+        if (xMin != 0) xMin = pos.getX() + w >= bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
 
         setYmin(yMin);
         setXmin(xMin);
@@ -101,9 +99,5 @@ public class Configuration {
 
     public static void setHeight(Integer h) {
         displayConfig.setHeight(h);
-    }
-
-    public void setDisplayTopleft(Position p){
-        displayConfig.setDisplayTopleft(p);
     }
 }

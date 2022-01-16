@@ -7,10 +7,12 @@ public class ScreenSettings{
     private static Integer height;
     private static Position mapBounds;
     private static Position displayTopleft;
-    private static Position displayBottomLeft;
 
     public ScreenSettings(){
+
         displayTopleft = new Position(0,0);
+        width = 7;
+        height = 9;
     }
 
     public Integer getWidth(){
@@ -52,9 +54,5 @@ public class ScreenSettings{
 
     public static void setWidth(Integer w) {
         width = w;
-    }
-
-    public void setDisplayTopleft(Position p){
-        displayTopleft = p;
     }
 }

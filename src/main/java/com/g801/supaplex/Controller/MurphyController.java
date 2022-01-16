@@ -1,20 +1,34 @@
 package com.g801.supaplex.Controller;
 
+import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Elements.Murphy;
+import com.g801.supaplex.Model.Level.Display;
+import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
-public class MurphyController {
+import java.io.IOException;
+
+public class MurphyController extends Controller<Display> {
     //Get murphy through constructor
-    private static Murphy murphy;
     private static Action actions;
 
-    public MurphyController(Murphy m){
-        murphy = m;
-        actions = new Action(m);
+    public MurphyController(Display model){
+        super(model);
+        actions = new Action(getModel().getMurphy());
     }
 
-    //Parses input and calls the correct action method
-    public void makeMove(GUI.KEYACTION input){
+    @Override
+    public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
+
+        Position oldPos = getModel().getMurphy().getPos();
+
+        switch(keyaction) {
+            case DOWN -> this.getModel().getMurphy().moveDown();
+            case UP -> this.getModel().getMurphy().moveUp();
+            case LEFT -> this.getModel().getMurphy().moveLeft();
+            case RIGHT -> this.getModel().getMurphy().moveRight();
+            default -> getModel().update(getModel().getMurphy(), oldPos);
+        }
 
     }
 }

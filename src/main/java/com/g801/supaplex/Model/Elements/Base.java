@@ -7,7 +7,7 @@ import com.g801.supaplex.Model.Position;
 public class Base extends Model {
 
     public Base(Position p){
-        super.model = SpriteFactory.factoryMethod('B');
+        super.model = SpriteFactory.factoryMethod(' ');
         super.pos = p;
     }
 

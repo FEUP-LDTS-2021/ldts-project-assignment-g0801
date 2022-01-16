@@ -51,7 +51,7 @@ public class Action {
                 case EAT_RIGHT -> eatRight();
                 case EXPLODE -> explode();
             }
-            movable.updateAura();
+//            movable.updateAura();
         }
     }
 }

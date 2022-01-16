@@ -25,30 +25,28 @@ public class Display {
     }
 
     //Make this receive a movable and process according to instanceOf
-    public static List<Model> getAura(Movable m){
-        //This is for Murphy and Scissors
-        Position p = m.getPos();
-        List<Model> ret = new ArrayList<Model>(4);
-        Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
-        //ret[0] = block above
-        ret.set(0, map[point.getX()][point.getY() - 1]);
-        //ret[1] = block below
-        ret.set(1, map[point.getX()][point.getY()+1]);
-        //ret[2] = block to the left
-        ret.set(2, map[point.getX()-1][point.getY()]);
-        //ret[3] = block to the right
-        ret.set(3, map[point.getX()+1][point.getY()]);
-        //Over here we get rocks
-        return ret;
-    }
+//    public static List<Model> getAura(Movable m){
+//        //This is for Murphy and Scissors
+//        Position p = m.getPos();
+//        List<Model> ret = new ArrayList<Model>(4);
+//        Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
+//        //ret[0] = block above
+//        ret.set(0, map[point.getX()][point.getY() - 1]);
+//        //ret[1] = block below
+//        ret.set(1, map[point.getX()][point.getY()+1]);
+//        //ret[2] = block to the left
+//        ret.set(2, map[point.getX()-1][point.getY()]);
+//        //ret[3] = block to the right
+//        ret.set(3, map[point.getX()+1][point.getY()]);
+//        //Over here we get rocks
+//        return ret;
+//    }
 
-    private void update(Movable m, Position old){
-        Position arrPos = new Position(old.getX(), old.getY());
-        map[arrPos.getY()][arrPos.getX()] = new Base(old);
-        arrPos = new Position(m.getPos().getX(), m.getPos().getY());
-        map[arrPos.getY()][arrPos.getX()] = m;
+    public void update(Movable m, Position old){
+        Position arrPos = new Position(m.getPos().getX(), m.getPos().getY());
+        map[old.getY()][old.getX()] = new Base(old);
+        map[arrPos.getY()][arrPos.getX()] = new Murphy(arrPos);
         updateTopLeft();
-        updateBottomLeft();
     }
 
     public void render(){
@@ -116,20 +114,21 @@ public class Display {
     }
 
     public void updateTopLeft() {
-        Position posM = murphy.getPos();
-        Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
-                (posM.getY() / blockSize.getY()) - (configurations.getHeight() / 2));
-        configurations.setDisplayTopleft(position);
-    }
 
-    public void updateBottomLeft() {
-        Position posM = murphy.getPos();
-        Position position = new Position((posM.getX() / blockSize.getX()) - (configurations.getWidth() /  2) ,
-                (posM.getY() / blockSize.getY()) - (configurations.getHeight()));
+        configurations.updateSettings(murphy);
+//        Position posM = murphy.getPos();
+//
+//        Position position = new Position(((posM.getX() / blockSize.getX()) - (configurations.getWidth())) ,
+//                ((posM.getY() / blockSize.getY()) - (configurations.getHeight())));
+//        configurations.setDisplayTopleft(position);
     }
 
     public Position getBlockSize() {
         return blockSize;
+    }
+
+    public Murphy getMurphy() {
+        return murphy;
     }
 
     public void endGame(){

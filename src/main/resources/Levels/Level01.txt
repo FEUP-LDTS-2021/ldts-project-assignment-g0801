@@ -6,10 +6,12 @@ W               W
 W               W
 W    RCCCICCCCCCW
 W    RCCCCCCCCCCW
-W    RCCCCCCCMCCW
+W    RCCMCCCCCCCW
 W    RCCCRCCCCCCW
 W    CCCRRRCCCCCW
 W   WKKWWWWWKKW W
+W               W
+W               W
 W               W
 W               W
 W               W

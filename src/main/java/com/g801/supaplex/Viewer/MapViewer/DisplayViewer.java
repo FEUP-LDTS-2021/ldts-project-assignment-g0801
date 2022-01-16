@@ -26,6 +26,7 @@ public class DisplayViewer extends Viewer<Display> {
                 gui.drawTextImage(new Position(j * Sprite.width, i * Sprite.height) , map[i][j].getModel().getBitmap());
             }
         }
+
         gui.drawString(TextColor.ANSI.RED_BRIGHT, Configuration.getInstance().getXmin() - 1,
                 (Configuration.getInstance().getHeight() * getModel().getBlockSize().getY()) - 1,
                 "Number of Infotrons: " + getModel().getInfotronCount().toString());
