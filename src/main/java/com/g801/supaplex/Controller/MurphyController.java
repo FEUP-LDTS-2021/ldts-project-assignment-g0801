@@ -1,11 +1,14 @@
 package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Game;
+import com.g801.supaplex.Model.Elements.EndBlock;
 import com.g801.supaplex.Model.Elements.Infotron;
 import com.g801.supaplex.Model.Elements.Rock;
 import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Level.Display;
+import com.g801.supaplex.Model.Menu.PauseMenu;
 import com.g801.supaplex.Model.Position;
+import com.g801.supaplex.States.PauseMenuState;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import java.io.IOException;
 
@@ -18,7 +21,7 @@ public class MurphyController extends Controller<Display> {
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
-        if (canMove(keyaction)) {
+        if (canMove(keyaction, game)) {
             switch(keyaction) {
                 case DOWN -> this.getModel().getMurphy().moveDown();
                 case UP -> this.getModel().getMurphy().moveUp();
@@ -30,7 +33,7 @@ public class MurphyController extends Controller<Display> {
         }
     }
 
-    public boolean canMove(GUI.KEYACTION keyaction){
+    public boolean canMove(GUI.KEYACTION keyaction, Game game){
         boolean ret = true;
         Position pos = getModel().getMurphy().getPos();
 
@@ -38,6 +41,7 @@ public class MurphyController extends Controller<Display> {
             case UP -> {
                 if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new PauseMenuState(new PauseMenu()));
                 if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
             case DOWN -> {

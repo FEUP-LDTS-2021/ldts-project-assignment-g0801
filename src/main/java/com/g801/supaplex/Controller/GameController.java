@@ -34,10 +34,9 @@ public class GameController extends Controller <Display> {
             default -> {
 
                 murphyController.execute(game, keyaction, time);
-//                rockController.execute(game, keyaction, time);
+                rockController.execute(game, keyaction, time);
                 scissorController.execute(game, keyaction, time);
             }
         }
-
     }
 }
