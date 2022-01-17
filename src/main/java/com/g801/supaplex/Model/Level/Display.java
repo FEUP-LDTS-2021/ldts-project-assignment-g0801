@@ -115,7 +115,7 @@ public class Display {
                 String line = gameMap.get(i);
                 for (int j = 0; j < line.length(); j++) {
                     Model load = new Model();
-                    modelPos = new Position(i, j);
+                    modelPos = new Position(j, i);
                     switch (line.charAt(j)) {
                         case 'K' -> {
                             load = new Wall(modelPos);
@@ -162,8 +162,6 @@ public class Display {
                     ret[i][j] = map[yMin + i][xMin + j];
             }
 
-            System.out.println("Numero de rocks na lista: " + rockList.size());
-
             return ret;
         }
 
@@ -176,7 +174,7 @@ public class Display {
         }
 
         public void updateTopLeft () {
-            configurations.updateSettings(murphy);
+            configurations.updateSettings(getMurphy());
         }
 
         public Position getBlockSize() {
