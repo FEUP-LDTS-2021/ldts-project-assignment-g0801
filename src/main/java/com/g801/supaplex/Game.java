@@ -56,8 +56,8 @@ public class Game implements Runnable {
         Integer WIDTH = 150;
         Integer HEIGHT = 50;
 
-        configuration.setWidth(WIDTH / Sprite.width);
-        configuration.setHeight(HEIGHT / Sprite.height);
+        Configuration.setWidth(WIDTH / Sprite.width);
+        Configuration.setHeight(HEIGHT / Sprite.height);
         this.gui = new LanternaGUI(new Size(WIDTH, HEIGHT));
         MainMenu mainMenu = new MainMenu();
 
@@ -67,11 +67,9 @@ public class Game implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 30;
+        final double amountOfTicks = 15;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
-        int updates = 0;
-        int frames = 0;
         long timer = System.currentTimeMillis();
 
         while (running) {
@@ -86,18 +84,14 @@ public class Game implements Runnable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                updates++;
+
                 delta--;
             }
-            render();
-            frames++;
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
 //                System.out.println(updates + " Ticks, FPS: " + frames);
                 // Resetting
-                updates = 0;
-                frames = 0;
             }
 
         }
@@ -106,11 +100,6 @@ public class Game implements Runnable {
     // EVERYTHING THAT UPDATES
     private void tick(long time) throws IOException {
         states.peek().step(this, this.gui, time);
-    }
-
-    // EVERYTHING THAT IS RENDERED (PROBABLY BOTH WILL BE PUT SOMEWHERE ELSE)
-    private void render() {
-
     }
 
     public void pushState(State state) {

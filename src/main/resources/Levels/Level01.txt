@@ -1,18 +1,18 @@
 WWWWWWWWWWWWWWWWW
 W               W
-W    I          W
-W  R            W
-W               W
-W               W
-W    RCCCICCCCCCW
-W    RCCCCCCCCCCW
-W    RCCMCCCCCCCW
-W    RCCCRCCCCCCW
-W    CCCRRRCCCCCW
-W   WKKWWWWWKKW W
-W               W
-W               W
-W               W
+W   I           W
+W  R     X      W
+W  C    M    E  W
+W    R  R  R    W
+WCRCCRCCCICCCCCCW
+WCRCCCCCCCCCCCCCW
+WCCCCCCCCCCCCCCCW
+WCCCCCCCCCCCCCCCW
+WCCCCCCCCCCCCCCCW
+WCCCWKKWWWWWKKWWW
+WCCCCCCCCCCCCCCCW
+WCCCCCX    CCCCCW
+WCCCCCECCCCCCCCCW
 W               W
 W               W
 W               W

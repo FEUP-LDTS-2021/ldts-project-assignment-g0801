@@ -10,10 +10,15 @@ import java.io.IOException;
 
 public class GameController extends Controller <Display> {
     private final MurphyController murphyController;
+    private final RockController rockController;
+    private final ScissorController scissorController;
+
 
     public GameController(Display model) {
         super(model);
         this.murphyController = new MurphyController(model);
+        this.rockController = new RockController(model);
+        this.scissorController = new ScissorController(model);
     }
 
     @Override
@@ -26,7 +31,12 @@ public class GameController extends Controller <Display> {
              *  case LEFT:
              *  case RIGHT:
              */
-            default -> murphyController.execute(game, keyaction, time);
+            default -> {
+
+                murphyController.execute(game, keyaction, time);
+//                rockController.execute(game, keyaction, time);
+                scissorController.execute(game, keyaction, time);
+            }
         }
 
     }

@@ -91,12 +91,42 @@ class EndSprite extends Sprite {
     }
 }
 
-class ScissorsSprite extends Sprite {
-    private static ScissorsSprite sprite;
-    private ScissorsSprite() { Reader.fillSprite("Scissor", this);}
-    public static ScissorsSprite getInstance(){
+class ScissorsSpriteUp extends Sprite {
+    private static ScissorsSpriteUp sprite;
+    private ScissorsSpriteUp() { Reader.fillSprite("Scissor_up", this);}
+    public static ScissorsSpriteUp getInstance(){
         if (sprite == null)
-            sprite = new ScissorsSprite();
+            sprite = new ScissorsSpriteUp();
+        return sprite;
+    }
+}
+
+class ScissorsSpriteLeft extends Sprite {
+    private static ScissorsSpriteLeft sprite;
+    private ScissorsSpriteLeft() { Reader.fillSprite("Scissor_left", this);}
+    public static ScissorsSpriteLeft getInstance(){
+        if (sprite == null)
+            sprite = new ScissorsSpriteLeft();
+        return sprite;
+    }
+}
+
+class ScissorsSpriteDown extends Sprite {
+    private static ScissorsSpriteDown sprite;
+    private ScissorsSpriteDown() { Reader.fillSprite("Scissor_down", this);}
+    public static ScissorsSpriteDown getInstance(){
+        if (sprite == null)
+            sprite = new ScissorsSpriteDown();
+        return sprite;
+    }
+}
+
+class ScissorsSpriteRight extends Sprite {
+    private static ScissorsSpriteRight sprite;
+    private ScissorsSpriteRight() { Reader.fillSprite("Scissor_right", this);}
+    public static ScissorsSpriteRight getInstance(){
+        if (sprite == null)
+            sprite = new ScissorsSpriteRight();
         return sprite;
     }
 }
@@ -142,9 +172,11 @@ public class SpriteFactory {
             case 'E' -> EndSprite.getInstance();
             case 'M' -> MurphySprite.getInstance();
             case 'I' -> InfotronSprite.getInstance();
-            case 'X' -> ScissorsSprite.getInstance();
+            case 'X' -> ScissorsSpriteUp.getInstance();
+            case '1' -> ScissorsSpriteDown.getInstance();
+            case '2' -> ScissorsSpriteRight.getInstance();
+            case '3' -> ScissorsSpriteLeft.getInstance();
             case 'R' -> RockSprite.getInstance();
-
             default ->
 
                     // default something, retorna uma excepção de caracter inválido

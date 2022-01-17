@@ -20,6 +20,6 @@ public class Model {
         return model;
     }
 
-    public void setSprite(Sprite s) {this.model = s;}
+    public void setSprite(Character s) {this.model = SpriteFactory.factoryMethod(s);}
 }
 

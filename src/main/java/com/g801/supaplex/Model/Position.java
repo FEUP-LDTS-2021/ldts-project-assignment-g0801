@@ -39,4 +39,20 @@ public class Position {
         Position position = (Position) o;
         return x == position.x && y == position.y;
     }
+
+    public Position getDown() {
+        return new Position(this.x, this.y + 1);
+    }
+
+    public Position getUp() {
+        return new Position(this.x, this.y - 1);
+    }
+
+    public Position getRight() {
+        return new Position(this.x + 1, this.y);
+    }
+
+    public Position getLeft() {
+        return new Position(this.x - 1, this.y);
+    }
 }

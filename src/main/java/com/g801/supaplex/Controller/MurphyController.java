@@ -1,41 +1,61 @@
 package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Game;
+import com.g801.supaplex.Model.Elements.Infotron;
+import com.g801.supaplex.Model.Elements.Rock;
+import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Viewer.GUI.GUI;
-
 import java.io.IOException;
 
 public class MurphyController extends Controller<Display> {
 
     public MurphyController(Display model){
         super(model);
-        //Get murphy through constructor
-        Action actions = new Action(getModel().getMurphy());
     }
 
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
-        switch(keyaction) {
-
-            case DOWN -> {
-                this.getModel().getMurphy().moveDown();
-                getModel().update(getModel().getMurphy(),keyaction);
+        if (canMove(keyaction)) {
+            switch(keyaction) {
+                case DOWN -> this.getModel().getMurphy().moveDown();
+                case UP -> this.getModel().getMurphy().moveUp();
+                case LEFT -> this.getModel().getMurphy().moveLeft();
+                case RIGHT -> this.getModel().getMurphy().moveRight();
             }
+            getModel().update(getModel().getMurphy(),keyaction);
+            getModel().updateTopLeft();
+        }
+    }
+
+    public boolean canMove(GUI.KEYACTION keyaction){
+        boolean ret = true;
+        Position pos = getModel().getMurphy().getPos();
+
+        switch(keyaction){
             case UP -> {
-                this.getModel().getMurphy().moveUp();
-                getModel().update(getModel().getMurphy(),keyaction);
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Wall) ret = false;
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Infotron) getModel().decrementInfotronCount();
+            }
+            case DOWN -> {
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Wall) ret = false;
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
             case LEFT -> {
-                this.getModel().getMurphy().moveLeft();
-                getModel().update(getModel().getMurphy(),keyaction);
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Wall) ret = false;
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
-            case RIGHT ->  {
-                this.getModel().getMurphy().moveRight();
-                getModel().update(getModel().getMurphy(),keyaction);
+            case RIGHT -> {
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Wall) ret = false;
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
         }
+        return ret;
     }
 }
