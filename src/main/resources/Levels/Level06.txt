@@ -2,13 +2,19 @@ WWWWWWWWWWWWWWW
 W             W
 W             W
 W             W
-W             W
-W             W
-W             W
+W       R  X  W
+W      RRR    W
+W      CCC    W
 W    E        W
 W             W
+W I           W
+W    M KWK    W
 W             W
-W    M        W
+W I    WWKKWW W
+W      K    K W
+W      W  X W W
+W      K    K W
+W      WWKKWW W
 W             W
 W             W
 W             W

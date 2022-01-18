@@ -1,6 +1,6 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.PauseMenuController
+import com.g801.supaplex.Controller.Menu.PauseMenuController
 import com.g801.supaplex.Model.Menu.PauseMenu
 import com.g801.supaplex.Viewer.GUI.GUI
 import spock.lang.Specification

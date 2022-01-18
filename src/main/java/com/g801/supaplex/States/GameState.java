@@ -1,8 +1,7 @@
 package com.g801.supaplex.States;
 
 import com.g801.supaplex.Controller.Controller;
-import com.g801.supaplex.Controller.GameController;
-import com.g801.supaplex.Game;
+import com.g801.supaplex.Controller.Display.GameController;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Viewer.MapViewer.DisplayViewer;
 import com.g801.supaplex.Viewer.Viewer;

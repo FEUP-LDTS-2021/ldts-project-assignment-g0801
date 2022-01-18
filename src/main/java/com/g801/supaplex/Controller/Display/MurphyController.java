@@ -1,5 +1,6 @@
-package com.g801.supaplex.Controller;
+package com.g801.supaplex.Controller.Display;
 
+import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Elements.*;
 import com.g801.supaplex.Model.Level.Display;
@@ -51,16 +52,19 @@ public class MurphyController extends Controller<Display> {
             case DOWN -> {
                 if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
                 if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
             case LEFT -> {
                 if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
                 if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
             case RIGHT -> {
                 if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Rock) ret = false;
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
                 if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Infotron) getModel().decrementInfotronCount();
             }
             case EAT_DOWN -> ret = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Chip;

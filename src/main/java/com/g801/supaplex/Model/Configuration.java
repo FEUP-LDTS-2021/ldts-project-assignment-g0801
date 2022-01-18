@@ -9,7 +9,7 @@ public class Configuration {
     private static Configuration confs;
     private static ScreenSettings displayConfig;
     private Integer currentLevel;
-    private final Integer NUM_LEVELS = 6;
+    private final Integer NUM_LEVELS = 7;
 
     private Configuration() {
         this.currentLevel = 1;

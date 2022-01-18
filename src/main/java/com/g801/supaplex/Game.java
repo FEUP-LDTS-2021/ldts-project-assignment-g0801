@@ -67,7 +67,7 @@ public class Game implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 5;
+        final double amountOfTicks = 15;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
         long timer = System.currentTimeMillis();

@@ -1,9 +1,8 @@
 package com.g801.supaplex.States;
 
 import com.g801.supaplex.Controller.Controller;
-import com.g801.supaplex.Controller.GameWinMenuController;
+import com.g801.supaplex.Controller.Menu.GameWinMenuController;
 import com.g801.supaplex.Model.Menu.GameWinMenu;
-import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Viewer.Menu.GameWinMenuViewer;
 import com.g801.supaplex.Viewer.Viewer;
 

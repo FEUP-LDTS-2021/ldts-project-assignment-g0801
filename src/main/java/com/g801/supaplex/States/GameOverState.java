@@ -1,7 +1,7 @@
 package com.g801.supaplex.States;
 
 import com.g801.supaplex.Controller.Controller;
-import com.g801.supaplex.Controller.GameOverMenuController;
+import com.g801.supaplex.Controller.Menu.GameOverMenuController;
 import com.g801.supaplex.Model.Menu.GameOverMenu;
 import com.g801.supaplex.Viewer.Menu.GameOverMenuViewer;
 import com.g801.supaplex.Viewer.Viewer;

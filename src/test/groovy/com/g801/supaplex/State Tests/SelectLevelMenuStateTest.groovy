@@ -1,6 +1,6 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.SelectLevelMenuController
+import com.g801.supaplex.Controller.Menu.SelectLevelMenuController
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Menu.SelectLevelMenu
 import com.g801.supaplex.States.SelectLevelMenuState
