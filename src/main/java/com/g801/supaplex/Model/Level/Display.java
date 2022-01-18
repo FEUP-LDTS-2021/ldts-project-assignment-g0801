@@ -24,25 +24,6 @@ public class Display {
         render();
     }
 
-    //Make this receive a movable and process according to instanceOf
-
-//    public static List<Model> getAura(Movable m){
-//        //This is for Murphy and Scissors
-//        Position p = m.getPos();
-//        List<Model> ret = new ArrayList<Model>(4);
-//        Position point = new Position(p.getX()/blockSize.getX(), p.getY()/blockSize.getY());
-//        //ret[0] = block above
-//        ret.set(0, map[point.getX()][point.getY() - 1]);
-//        //ret[1] = block below
-//        ret.set(1, map[point.getX()][point.getY()+1]);
-//        //ret[2] = block to the left
-//        ret.set(2, map[point.getX()-1][point.getY()]);
-//        //ret[3] = block to the right
-//        ret.set(3, map[point.getX()+1][point.getY()]);
-//        //Over here we get rocks
-//        return ret;
-//    }
-
     public void update(Movable m, GUI.KEYACTION keyaction){
 
         switch (keyaction) {
@@ -98,7 +79,7 @@ public class Display {
     }
 
     public void render () {
-            map = null;
+            endGame();
             LoadLevelBuild level = null;
             try {
                 level = new LoadLevelBuild(configurations.getCurrentLevel());
@@ -186,9 +167,11 @@ public class Display {
         }
 
         public void endGame() {
-            configurations = null;
             map = null;
             murphy = null;
+            scissorList.clear();
+            rockList.clear();
+            infotronCount = 0;
         }
 
     public Model[][] getMap() {

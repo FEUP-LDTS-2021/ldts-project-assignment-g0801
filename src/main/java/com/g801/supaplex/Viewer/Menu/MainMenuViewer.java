@@ -21,9 +21,10 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
+        String title = "SUPAPL0X";
 
         tg.setForegroundColor(TextColor.ANSI.RED);
-        tg.putString((size.getWidth() - "SUPAPLEX".length())/ 2 + 1, 7, "SUPAPLEX", SGR.BOLD);
+        tg.putString((size.getWidth() - title.length())/ 2 + 1, 7, title, SGR.BOLD);
 
         gui.drawTitleBorder();
 

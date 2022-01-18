@@ -2,6 +2,7 @@ package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Elements.Base;
+import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Elements.Scissors;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Viewer.GUI.GUI;
@@ -31,10 +32,12 @@ public class ScissorController extends ElementController {
     }
     public boolean canMove(Scissors elem) {
         boolean ret = false;
+        if (elem.getPos().equals(getModel().getMurphy())) System.exit(0);
         switch (elem.getDirection()) {
             case RIGHT -> {
                 if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Base)
                     ret = true;
+                else if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Murphy) System.exit(0);
                 else  {
                     elem.setDirection(Scissors.Direction.DOWN);
                     elem.setSprite('1');
@@ -43,6 +46,7 @@ public class ScissorController extends ElementController {
             case LEFT -> {
                 if (getModel().getMap()[elem.getPos().getLeft().getY()][elem.getPos().getLeft().getX()] instanceof Base)
                     ret = true;
+                else if (getModel().getMap()[elem.getPos().getLeft().getY()][elem.getPos().getLeft().getX()] instanceof Murphy) System.exit(0);
                 else {
                     elem.setDirection(Scissors.Direction.UP);
                     elem.setSprite('X');
@@ -51,6 +55,7 @@ public class ScissorController extends ElementController {
             case UP -> {
                 if (getModel().getMap()[elem.getPos().getUp().getY()][elem.getPos().getUp().getX()] instanceof Base)
                     ret = true;
+                else if (getModel().getMap()[elem.getPos().getUp().getY()][elem.getPos().getUp().getX()] instanceof Murphy) System.exit(0);
                 else {
                     elem.setDirection(Scissors.Direction.RIGHT);
                     elem.setSprite('2');
@@ -59,6 +64,7 @@ public class ScissorController extends ElementController {
             case DOWN -> {
                 if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Base)
                     ret = true;
+                else if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Murphy) System.exit(0);
                 else {
                     elem.setDirection(Scissors.Direction.LEFT);
                     elem.setSprite('3');

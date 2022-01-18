@@ -24,9 +24,10 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
         Size size = gui.getSize();
         Screen screen = gui.getScreen();
         TextGraphics tg = screen.newTextGraphics();
+        String title = "PAUSED";
 
         tg.setForegroundColor(TextColor.ANSI.RED);
-        tg.putString((size.getWidth() - "PAUSED".length())/ 2 + 1, 7, "PAUSED", SGR.BOLD);
+        tg.putString((size.getWidth() - title.length())/ 2 + 1, 7, title, SGR.BOLD);
 
         gui.drawTitleBorder();
 

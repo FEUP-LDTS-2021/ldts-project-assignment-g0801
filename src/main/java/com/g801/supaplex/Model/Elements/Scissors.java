@@ -26,6 +26,4 @@ public class Scissors extends Movable {
         UP,
         DOWN
     }
-
-
 }

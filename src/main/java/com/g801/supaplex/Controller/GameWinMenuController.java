@@ -1,21 +1,22 @@
 package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Game;
+import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Level.Display;
-import com.g801.supaplex.Model.Menu.PauseMenu;
+import com.g801.supaplex.Model.Menu.GameWinMenu;
 import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.Viewer.GUI.GUI;
+
 import java.io.IOException;
 
-public class PauseMenuController extends Controller<PauseMenu> {
+public class GameWinMenuController extends Controller<GameWinMenu> {
 
-    public PauseMenuController(PauseMenu model) {
+    public GameWinMenuController(GameWinMenu model) {
         super(model);
     }
 
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
-
         switch(keyaction) {
             case DOWN:
                 getModel().downButton();
@@ -25,15 +26,15 @@ public class PauseMenuController extends Controller<PauseMenu> {
                 break;
             case SELECT:
                 switch (getModel().getCurrentSelect()) {
-                    case CONTINUE -> game.popState();
-                    case RESTART -> {
-                        game.popState();
+                    case NEXT_LEVEL -> {
+                        Configuration.getInstance().increaseCurrentLevel();
                         game.pushState(new GameState(new Display()));
                     }
-                    case QUIT -> {
+                    case MENU_RET -> {
                         game.popState();
                         game.popState();
                     }
+                    case QUIT -> System.exit(0);
                 }
         }
     }

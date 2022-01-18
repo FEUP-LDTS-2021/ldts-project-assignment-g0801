@@ -17,14 +17,11 @@ public class RockController extends ElementController {
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
-        int i = 0;
         for (Rock elem : getModel().getRockList()) {
             if (canMove(elem)) {
                 elem.moveDown();
                 getModel().update(elem);
             }
-            i++;
-            System.out.print("Rock " + i + ": tem debaixo uma base? ");
         }
     }
 
@@ -33,7 +30,6 @@ public class RockController extends ElementController {
         Position pos = elem.getPos();
         Model attemp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
         if (attemp instanceof Base) ret = true;
-        System.out.println(attemp instanceof Base);
         return ret;
     }
 

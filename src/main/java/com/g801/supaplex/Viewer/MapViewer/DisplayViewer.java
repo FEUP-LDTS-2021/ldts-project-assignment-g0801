@@ -27,8 +27,7 @@ public class DisplayViewer extends Viewer<Display> {
             }
         }
 
-        gui.drawString(TextColor.ANSI.RED_BRIGHT, Configuration.getInstance().getXmin() - 1,
-                (Configuration.getInstance().getHeight() * getModel().getBlockSize().getY()) - 1,
+        gui.drawString(TextColor.ANSI.RED_BRIGHT, 0, gui.getSize().getHeight() - 1,
                 "Number of Infotrons: " + getModel().getInfotronCount().toString());
     }
 }

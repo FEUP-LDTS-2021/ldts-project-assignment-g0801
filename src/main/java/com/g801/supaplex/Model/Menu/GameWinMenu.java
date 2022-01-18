@@ -1,49 +1,51 @@
 package com.g801.supaplex.Model.Menu;
 
+import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Menu.Elements.Image;
-import com.g801.supaplex.Model.Position;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PauseMenu extends Menu {
+public class GameWinMenu extends Menu {
 
     private final List<Image> textImagesList;
 
-    public enum Option {CONTINUE, RESTART, QUIT}
+    public enum Option {NEXT_LEVEL, MENU_RET, QUIT}
 
-    public String[] optString = {"CONTINUE GAME", "RESTART", "RETURN TO MENU"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"NEXT LEVEL", "RETURN TO MAIN MENU", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
-    PauseMenu.Option selected;
+    Option selected;
 
-    PauseMenu.Option[] options = PauseMenu.Option.values();
+    Option[] options = Option.values();
 
-    public PauseMenu() {
-        this.selected = PauseMenu.Option.CONTINUE;
+    private int currentSelect;
+
+    public GameWinMenu() {
+        this.selected = GameWinMenu.Option.NEXT_LEVEL;
         this.textImagesList = new ArrayList<>();
         createImages(textImagesList);
     }
 
-    public int getPosElem(PauseMenu.Option target) {
+    public int getPosElem(GameWinMenu.Option target) {
         int i = 0;
         for (; options[i] != target; i++);
         return i;
     }
 
-    public String enumToString(PauseMenu.Option menuOption) {
+    public String enumToString(GameWinMenu.Option menuOption) {
         int pos = getPosElem(menuOption);
         return optString[pos];
     }
 
-    public void setSelected(PauseMenu.Option selected) {
+    public void setSelected(GameWinMenu.Option selected) {
         this.selected = selected;
     }
 
-    public PauseMenu.Option[] getOpt() {
+    public GameWinMenu.Option[] getOpt() {
         return options;
     }
 
-    public PauseMenu.Option getCurrentSelect() {
+    public GameWinMenu.Option getCurrentSelect() {
         return selected;
     }
 
@@ -56,7 +58,7 @@ public class PauseMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.CONTINUE) selected = PauseMenu.Option.QUIT;
+        if (selected == Option.NEXT_LEVEL) selected = GameWinMenu.Option.QUIT;
         else {
             int i = getPosElem(selected);
             i--;
@@ -65,7 +67,7 @@ public class PauseMenu extends Menu {
     }
 
     public void downButton() {
-        if (selected == PauseMenu.Option.QUIT) selected = PauseMenu.Option.CONTINUE;
+        if (selected == GameWinMenu.Option.QUIT) selected = Option.NEXT_LEVEL;
         else {
             int i = getPosElem(selected);
             i++;

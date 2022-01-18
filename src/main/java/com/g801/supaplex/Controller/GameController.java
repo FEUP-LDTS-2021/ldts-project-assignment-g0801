@@ -26,11 +26,6 @@ public class GameController extends Controller <Display> {
 
         switch(keyaction) {
             case PAUSE -> game.pushState(new PauseMenuState(new PauseMenu()));
-            /** case UP:
-             *  case DOWN:
-             *  case LEFT:
-             *  case RIGHT:
-             */
             default -> {
                 murphyController.execute(game, keyaction, time);
                 rockController.execute(game, keyaction, time);
