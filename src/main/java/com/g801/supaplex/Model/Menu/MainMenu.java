@@ -1,6 +1,6 @@
 package com.g801.supaplex.Model.Menu;
 
-import com.g801.supaplex.Model.Menu.Elements.Image;
+import com.g801.supaplex.Model.Image;
 
 import java.util.ArrayList;
 import java.util.List;

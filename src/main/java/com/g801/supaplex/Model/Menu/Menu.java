@@ -1,6 +1,6 @@
 package com.g801.supaplex.Model.Menu;
 
-import com.g801.supaplex.Model.Menu.Elements.Image;
+import com.g801.supaplex.Model.Image;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 

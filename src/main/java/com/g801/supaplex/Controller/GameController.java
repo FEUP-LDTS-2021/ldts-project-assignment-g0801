@@ -3,6 +3,8 @@ package com.g801.supaplex.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.PauseMenu;
+import com.g801.supaplex.States.GameOverState;
+import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.States.PauseMenuState;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
@@ -26,6 +28,10 @@ public class GameController extends Controller <Display> {
 
         switch(keyaction) {
             case PAUSE -> game.pushState(new PauseMenuState(new PauseMenu()));
+            case RESTART -> {
+                game.popState();
+                game.pushState(new GameState(new Display()));
+            }
             default -> {
                 murphyController.execute(game, keyaction, time);
                 rockController.execute(game, keyaction, time);

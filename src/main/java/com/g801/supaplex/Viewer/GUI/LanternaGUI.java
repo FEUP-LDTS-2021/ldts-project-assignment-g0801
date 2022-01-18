@@ -1,14 +1,12 @@
 package com.g801.supaplex.Viewer.GUI;
 
 import com.g801.supaplex.Model.Colors;
-import com.g801.supaplex.Model.Menu.Elements.Image;
+import com.g801.supaplex.Model.Image;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
-import com.g801.supaplex.Model.Text;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.BasicTextImage;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.graphics.TextImage;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;

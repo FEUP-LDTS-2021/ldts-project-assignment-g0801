@@ -5,6 +5,8 @@ import com.g801.supaplex.Model.Elements.Base;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Elements.Scissors;
 import com.g801.supaplex.Model.Level.Display;
+import com.g801.supaplex.Model.Menu.GameOverMenu;
+import com.g801.supaplex.States.GameOverState;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
 import java.io.IOException;
@@ -19,7 +21,7 @@ public class ScissorController extends ElementController {
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
         for (Scissors elem : getModel().getScissorList()) {
-            if (canMove(elem)) {
+            if (canMove(elem, game)) {
                 switch(elem.getDirection()) {
                     case RIGHT -> elem.moveRight();
                     case LEFT -> elem.moveLeft();
@@ -30,14 +32,14 @@ public class ScissorController extends ElementController {
             }
         }
     }
-    public boolean canMove(Scissors elem) {
+    public boolean canMove(Scissors elem, Game game) {
         boolean ret = false;
         if (elem.getPos().equals(getModel().getMurphy())) System.exit(0);
         switch (elem.getDirection()) {
             case RIGHT -> {
                 if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Base)
                     ret = true;
-                else if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Murphy) System.exit(0);
+                else if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Murphy) game.pushState(new GameOverState(new GameOverMenu()));
                 else  {
                     elem.setDirection(Scissors.Direction.DOWN);
                     elem.setSprite('1');
@@ -46,7 +48,7 @@ public class ScissorController extends ElementController {
             case LEFT -> {
                 if (getModel().getMap()[elem.getPos().getLeft().getY()][elem.getPos().getLeft().getX()] instanceof Base)
                     ret = true;
-                else if (getModel().getMap()[elem.getPos().getLeft().getY()][elem.getPos().getLeft().getX()] instanceof Murphy) System.exit(0);
+                else if (getModel().getMap()[elem.getPos().getLeft().getY()][elem.getPos().getLeft().getX()] instanceof Murphy) game.pushState(new GameOverState(new GameOverMenu()));
                 else {
                     elem.setDirection(Scissors.Direction.UP);
                     elem.setSprite('X');
@@ -55,7 +57,7 @@ public class ScissorController extends ElementController {
             case UP -> {
                 if (getModel().getMap()[elem.getPos().getUp().getY()][elem.getPos().getUp().getX()] instanceof Base)
                     ret = true;
-                else if (getModel().getMap()[elem.getPos().getUp().getY()][elem.getPos().getUp().getX()] instanceof Murphy) System.exit(0);
+                else if (getModel().getMap()[elem.getPos().getUp().getY()][elem.getPos().getUp().getX()] instanceof Murphy) game.pushState(new GameOverState(new GameOverMenu()));
                 else {
                     elem.setDirection(Scissors.Direction.RIGHT);
                     elem.setSprite('2');
@@ -64,7 +66,7 @@ public class ScissorController extends ElementController {
             case DOWN -> {
                 if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Base)
                     ret = true;
-                else if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Murphy) System.exit(0);
+                else if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Murphy) ;
                 else {
                     elem.setDirection(Scissors.Direction.LEFT);
                     elem.setSprite('3');

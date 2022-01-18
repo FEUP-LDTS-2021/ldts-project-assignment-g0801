@@ -1,9 +1,8 @@
 package com.g801.supaplex.Viewer.GUI;
 
-import com.g801.supaplex.Model.Menu.Elements.Image;
+import com.g801.supaplex.Model.Image;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
-import com.g801.supaplex.Model.Text;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.screen.TerminalScreen;
 
