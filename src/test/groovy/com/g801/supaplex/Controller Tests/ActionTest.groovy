@@ -29,7 +29,6 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_LEFT);
         then:
             1 * movable.moveLeft();
-            1 * movable.updateAura();
     }
 
     def "Move Right"() {
@@ -38,7 +37,6 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_RIGHT);
         then:
             1 * movable.moveRight();
-            1 * movable.updateAura();
     }
 
     def "Move Up"() {
@@ -47,7 +45,6 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_UP);
         then:
             1 * movable.moveUp();
-            1 * movable.updateAura();
     }
 
     def "Move Down"() {
@@ -56,50 +53,5 @@ class ActionTest extends Specification {
             action.factory(Action.Actions.MOVE_DOWN);
         then:
             1 * movable.moveDown();
-            1 * movable.updateAura();
-    }
-
-    def "Eat Up"() {
-
-        when:
-            action.factory(Action.Actions.EAT_UP);
-        then:
-            1 * movable.eatUp();
-            1 * movable.updateAura();
-    }
-    def "Eat Down"() {
-
-        when:
-            action.factory(Action.Actions.EAT_DOWN);
-        then:
-            1 * movable.eatDown();
-            1 * movable.updateAura();
-    }
-
-    def "Eat Left"() {
-
-        when:
-            action.factory(Action.Actions.EAT_LEFT);
-        then:
-            1 * movable.eatLeft();
-            1 * movable.updateAura();
-    }
-
-    def "Eat Right"() {
-
-        when:
-            action.factory(Action.Actions.EAT_RIGHT);
-        then:
-            1 * movable.eatRight();
-            1 * movable.updateAura();
-    }
-
-    def "Explode"() {
-
-        when:
-            action.factory(Action.Actions.EXPLODE);
-        then:
-            1 * movable.explode();
-            1 * movable.updateAura();
     }
 }
