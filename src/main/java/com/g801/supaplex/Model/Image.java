@@ -1,4 +1,4 @@
-package com.g801.supaplex.Model.Menu.Elements;
+package com.g801.supaplex.Model;
 
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Text;

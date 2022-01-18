@@ -3,7 +3,7 @@ package com.g801.supaplex
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Viewer.GUI.GUI;
-import com.g801.supaplex.Controller.SelectLevelMenuController
+import com.g801.supaplex.Controller.Menu.SelectLevelMenuController
 import spock.lang.Specification;
 
 class SelectLevelMenuControllerTest extends Specification {

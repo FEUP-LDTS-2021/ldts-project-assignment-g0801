@@ -1,5 +1,6 @@
-package com.g801.supaplex.Controller;
+package com.g801.supaplex.Controller.Menu;
 
+import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Viewer.GUI.GUI;

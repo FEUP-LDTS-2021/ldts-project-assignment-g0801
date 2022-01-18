@@ -1,17 +1,17 @@
-package com.g801.supaplex.Controller;
+package com.g801.supaplex.Controller.Menu;
 
+import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
-import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Level.Display;
-import com.g801.supaplex.Model.Menu.GameWinMenu;
+import com.g801.supaplex.Model.Menu.GameOverMenu;
 import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
 import java.io.IOException;
 
-public class GameWinMenuController extends Controller<GameWinMenu> {
+public class GameOverMenuController extends Controller<GameOverMenu> {
 
-    public GameWinMenuController(GameWinMenu model) {
+    public GameOverMenuController(GameOverMenu model) {
         super(model);
     }
 
@@ -26,15 +26,15 @@ public class GameWinMenuController extends Controller<GameWinMenu> {
                 break;
             case SELECT:
                 switch (getModel().getCurrentSelect()) {
-                    case NEXT_LEVEL -> {
-                        Configuration.getInstance().increaseCurrentLevel();
+                    case RESTART -> {
+                        game.popState();
                         game.pushState(new GameState(new Display()));
                     }
                     case MENU_RET -> {
                         game.popState();
                         game.popState();
+                        game.popState();
                     }
-                    case QUIT -> System.exit(0);
                 }
         }
     }

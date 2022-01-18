@@ -1,10 +1,7 @@
 package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Model.Elements.Movable;
-import com.g801.supaplex.Model.Elements.Murphy;
 
-
-//This should be generalized to any Movable which it gets from constructor
 public class Action {
 
     public enum Actions {
@@ -19,21 +16,6 @@ public class Action {
         movable = m;
     }
 
-    private static void eatUp() {
-    }
-
-    private static void eatDown() {
-    }
-
-    private static void eatLeft() {
-    }
-
-    private static void eatRight() {
-    }
-
-    private static void explode() {
-    }
-
     public Movable getMovable() { return movable;}
 
     public void factory(Actions a) {
@@ -43,13 +25,7 @@ public class Action {
                 case MOVE_DOWN -> movable.moveDown();
                 case MOVE_LEFT -> movable.moveLeft();
                 case MOVE_RIGHT -> movable.moveRight();
-                case EAT_UP -> eatUp();
-                case EAT_DOWN -> eatDown();
-                case EAT_LEFT -> eatLeft();
-                case EAT_RIGHT -> eatRight();
-                case EXPLODE -> explode();
             }
-//            movable.updateAura();
         }
     }
 }

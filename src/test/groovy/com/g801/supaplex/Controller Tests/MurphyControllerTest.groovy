@@ -1,6 +1,5 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.MurphyController
 import com.g801.supaplex.Model.Elements.Base
 import com.g801.supaplex.Model.Elements.Chip
 import com.g801.supaplex.Model.Elements.Infotron;
@@ -9,6 +8,8 @@ import com.g801.supaplex.Model.Elements.Wall
 import com.g801.supaplex.Model.Level.Display
 import com.g801.supaplex.Model.Models.Model
 import com.g801.supaplex.Model.Position;
+import com.g801.supaplex.Controller.Display.MurphyController;
+import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import spock.lang.Specification;
 

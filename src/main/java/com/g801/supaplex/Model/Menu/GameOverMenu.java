@@ -5,46 +5,44 @@ import com.g801.supaplex.Model.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameWinMenu extends Menu {
+public class GameOverMenu extends Menu {
 
     private final List<Image> textImagesList;
 
-    public enum Option {NEXT_LEVEL, MENU_RET, QUIT}
+    public enum Option {RESTART, MENU_RET}
 
-    public String[] optString = {"NEXT LEVEL", "RETURN TO MAIN MENU", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"RESTART LEVEL", "RETURN TO MENU"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
     Option selected;
 
     Option[] options = Option.values();
 
-    private int currentSelect;
-
-    public GameWinMenu() {
-        this.selected = GameWinMenu.Option.NEXT_LEVEL;
+    public GameOverMenu() {
+        this.selected = Option.RESTART;
         this.textImagesList = new ArrayList<>();
         createImages(textImagesList);
     }
 
-    public int getPosElem(GameWinMenu.Option target) {
+    public int getPosElem(Option target) {
         int i = 0;
         for (; options[i] != target; i++);
         return i;
     }
 
-    public String enumToString(GameWinMenu.Option menuOption) {
+    public String enumToString(Option menuOption) {
         int pos = getPosElem(menuOption);
         return optString[pos];
     }
 
-    public void setSelected(GameWinMenu.Option selected) {
+    public void setSelected(Option selected) {
         this.selected = selected;
     }
 
-    public GameWinMenu.Option[] getOpt() {
+    public Option[] getOpt() {
         return options;
     }
 
-    public GameWinMenu.Option getCurrentSelect() {
+    public Option getCurrentSelect() {
         return selected;
     }
 
@@ -57,7 +55,7 @@ public class GameWinMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.NEXT_LEVEL) selected = GameWinMenu.Option.QUIT;
+        if (selected == Option.RESTART) selected = Option.MENU_RET;
         else {
             int i = getPosElem(selected);
             i--;
@@ -66,7 +64,7 @@ public class GameWinMenu extends Menu {
     }
 
     public void downButton() {
-        if (selected == GameWinMenu.Option.QUIT) selected = Option.NEXT_LEVEL;
+        if (selected == Option.MENU_RET) selected = Option.RESTART;
         else {
             int i = getPosElem(selected);
             i++;
