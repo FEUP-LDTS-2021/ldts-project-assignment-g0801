@@ -29,13 +29,4 @@ class ModelTest extends Specification {
         expect:
             model.getPos() == new Position(10, 20);
     }
-
-    def "New Sprite"() {
-
-        given:
-            Sprite s = new Sprite();
-            model.setSprite(s);
-        expect:
-            model.getModel() == s;
-    }
 }

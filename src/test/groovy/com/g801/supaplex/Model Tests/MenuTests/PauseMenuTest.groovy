@@ -40,7 +40,7 @@ class PauseMenuTest extends Specification {
             a                           | b
             PauseMenu.Option.CONTINUE   | "CONTINUE GAME"
             PauseMenu.Option.RESTART    | "RESTART"
-            PauseMenu.Option.QUIT       | "QUIT"
+            PauseMenu.Option.QUIT       | "RETURN TO MENU"
     }
 
     def "Select another option"() {
@@ -77,7 +77,7 @@ class PauseMenuTest extends Specification {
             a | b
             0 | "CONTINUE GAME"
             1 | "RESTART"
-            2 | "QUIT"
+            2 | "RETURN TO MENU"
     }
 
     def "Upper Button Click"() {

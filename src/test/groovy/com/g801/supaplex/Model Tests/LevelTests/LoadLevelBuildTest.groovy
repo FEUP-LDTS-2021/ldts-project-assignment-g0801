@@ -16,8 +16,8 @@ class LoadLevelBuildTest extends Specification {
     def "Configuration of Loader"() {
 
         expect:
-            map.size() == 17;
-            map[0].size() == 17;
+            map.size() == 16;
+            map[0].size() == 60;
     }
 
     def "Map colors"() {
@@ -28,9 +28,9 @@ class LoadLevelBuildTest extends Specification {
         where:
             a | b | c
             0 | 0 | 'W'
-            1 | 1 | ' '
+            1 | 1 | 'K'
             3 | 4 | ' '
-            9 | 4 | ' '
-            8 | 1 | ' '
+            9 | 4 | 'R'
+            8 | 1 | 'K'
     }
 }
