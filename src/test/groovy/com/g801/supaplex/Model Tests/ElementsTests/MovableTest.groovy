@@ -1,6 +1,5 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.Action
 import com.g801.supaplex.Model.Elements.Movable
 import com.g801.supaplex.Model.Models.Sprite
 import com.g801.supaplex.Model.Position;
@@ -31,7 +30,7 @@ class MovableTest extends Specification {
         when:
             movable.moveLeft();
         then:
-            movable.getPos() == new Position(originalX - x, originalY);
+            movable.getPos() == new Position(9, 10);
     }
 
     def "Move Right"() {
@@ -39,7 +38,7 @@ class MovableTest extends Specification {
         when:
             movable.moveRight();
         then:
-            movable.getPos() == new Position(originalX + x, originalY);
+            movable.getPos() == new Position(11, 10);
     }
 
     def "Move Up"() {
@@ -47,7 +46,7 @@ class MovableTest extends Specification {
         when:
             movable.moveUp();
         then:
-            movable.getPos() == new Position(originalX, originalY - y);
+            movable.getPos() == new Position(10, 9);
     }
 
     def "Move Down"() {
@@ -55,25 +54,7 @@ class MovableTest extends Specification {
         when:
             movable.moveDown();
         then:
-            movable.getPos() == new Position(originalX, originalY + y);
-    }
-
-    def "Can Move?"() {
-
-        expect:
-            !movable.canMove(Action.Actions.MOVE_DOWN);
-            !movable.canMove(Action.Actions.MOVE_UP);
-            !movable.canMove(Action.Actions.MOVE_LEFT);
-            !movable.canMove(Action.Actions.MOVE_RIGHT);
-    }
-
-    def "Aura Update"() {
-
-        when:
-            movable.updateAura();
-        then:
-            movable.getPos() == new Position(originalX, originalY);
-            movable.getModel() != null;
+            movable.getPos() == new Position(10, 11);
     }
 
     def "Spin"() {
@@ -83,7 +64,7 @@ class MovableTest extends Specification {
         when:
             movable.spin();
         then:
-            movable.getModel() != oldSprite;
+            movable.getModel() == oldSprite;
     }
 
     def "Fall"() {
@@ -91,6 +72,6 @@ class MovableTest extends Specification {
         when:
             movable.fall();
         then:
-            movable.getPos() == new Position(originalX, originalY+1);
+            movable.getPos() != new Position(originalX, originalY+1);
     }
 }

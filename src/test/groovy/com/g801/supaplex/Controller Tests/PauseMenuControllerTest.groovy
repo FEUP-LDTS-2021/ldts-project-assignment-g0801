@@ -51,6 +51,17 @@ class PauseMenuControllerTest extends Specification {
         when:
             menuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
-            1 * game.restart();
+            1 * game.popState();
+            1 * game.pushState(_);
+    }
+
+    def "Let's quit the game!"() {
+
+        given:
+            pauseMenu.getCurrentSelect() >> PauseMenu.Option.QUIT;
+        when:
+            menuController.execute(game, GUI.KEYACTION.SELECT, time);
+        then:
+            2 * game.popState();
     }
 }

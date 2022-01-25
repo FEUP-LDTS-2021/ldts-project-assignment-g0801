@@ -23,7 +23,7 @@ class ConfigurationTest extends Specification {
             configuration.setMapBounds(24, 15);
 
         expect:
-            configuration.getCurrentLevel() == 1;
+            configuration.getCurrentLevel() == 2;
             configuration.getScreenLowerBound() != null;
             configuration.getMapBounds() == new Position(24, 15);
     }
@@ -37,8 +37,8 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 4;
-            configuration.getYmin() == 2;
+            configuration.getXmin() == 8;
+            configuration.getYmin() == 3;
     }
 
     def "Murphy is in the upper left corner"() {
@@ -63,7 +63,7 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 9;
+            configuration.getXmin() == 17;
             configuration.getYmin() == 0;
     }
 
@@ -76,8 +76,8 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 0;
-            configuration.getYmin() == 5;
+            configuration.getXmin() == 1;
+            configuration.getYmin() == 6;
     }
 
     def "Murphy is in the lower right corner"() {
@@ -89,8 +89,8 @@ class ConfigurationTest extends Specification {
             configuration.updateSettings(murphy);
 
         then:
-            configuration.getXmin() == 9;
-            configuration.getYmin() == 5;
+            configuration.getXmin() == 17;
+            configuration.getYmin() == 6;
     }
 
     def "Increasing current level"() {
@@ -105,8 +105,8 @@ class ConfigurationTest extends Specification {
             a | b
             1 | 2
             2 | 4
-            3 | 2
-            1 | 3
+            3 | 7
+            1 | 1
     }
 
     def "Decreasing current level"() {
@@ -119,9 +119,9 @@ class ConfigurationTest extends Specification {
             configuration.getCurrentLevel() == b;
         where:
             a | b
-            1 | 2
+            1 | 7
             2 | 5
             3 | 2
-            4 | 3
+            4 | 5
     }
 }

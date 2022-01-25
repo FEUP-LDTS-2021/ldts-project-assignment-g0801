@@ -38,4 +38,13 @@ class GameControllerTest extends Specification {
         then:
             1 * game.pushState(_);
     }
+
+    def "Restart the Game"() {
+
+        when:
+            gameController.execute(game, GUI.KEYACTION.RESTART, time);
+        then:
+            1 * game.popState();
+            1 * game.pushState(_);
+    }
 }
