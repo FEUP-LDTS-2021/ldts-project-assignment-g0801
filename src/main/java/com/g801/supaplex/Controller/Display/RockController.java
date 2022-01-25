@@ -19,6 +19,7 @@ public class RockController extends ElementController {
 
         for (Rock elem : getModel().getRockList()) {
             if (canMove(elem)) {
+                this.soundPlayer.playFallSound();
                 elem.moveDown();
                 getModel().update(elem);
             }

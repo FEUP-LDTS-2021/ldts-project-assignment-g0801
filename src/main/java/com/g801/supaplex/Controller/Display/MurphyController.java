@@ -46,26 +46,50 @@ public class MurphyController extends Controller<Display> {
             case UP -> {
                 if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Rock) ret = false;
-                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
-                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Infotron) getModel().decrementInfotronCount();
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) {
+                    this.soundPlayer.playGameWinSound();
+                    game.pushState(new GameWinMenuState(new GameWinMenu()));
+                }
+                if (getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Infotron) {
+                    this.soundPlayer.decreaseInfotronSound();
+                    getModel().decrementInfotronCount();
+                }
             }
             case DOWN -> {
                 if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Rock) ret = false;
-                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
-                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Infotron) getModel().decrementInfotronCount();
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) {
+                    this.soundPlayer.playGameWinSound();
+                    game.pushState(new GameWinMenuState(new GameWinMenu()));
+                }
+                if (getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Infotron) {
+                    this.soundPlayer.decreaseInfotronSound();
+                    getModel().decrementInfotronCount();
+                }
             }
             case LEFT -> {
                 if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Rock) ret = false;
-                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
-                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Infotron) getModel().decrementInfotronCount();
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) {
+                    this.soundPlayer.playGameWinSound();
+                    game.pushState(new GameWinMenuState(new GameWinMenu()));
+                }
+                if (getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Infotron) {
+                    this.soundPlayer.decreaseInfotronSound();
+                    getModel().decrementInfotronCount();
+                }
             }
             case RIGHT -> {
                 if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Wall) ret = false;
                 if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Rock) ret = false;
-                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) game.pushState(new GameWinMenuState(new GameWinMenu()));
-                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Infotron) getModel().decrementInfotronCount();
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof EndBlock && getModel().getInfotronCount() == 0) {
+                    this.soundPlayer.playGameWinSound();
+                    game.pushState(new GameWinMenuState(new GameWinMenu()));
+                }
+                if (getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()] instanceof Infotron) {
+                    this.soundPlayer.decreaseInfotronSound();
+                    getModel().decrementInfotronCount();
+                }
             }
             case EAT_DOWN -> ret = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()] instanceof Chip;
             case EAT_UP -> ret = getModel().getMap()[pos.getUp().getY()][pos.getUp().getX()] instanceof Chip;
@@ -75,4 +99,8 @@ public class MurphyController extends Controller<Display> {
         }
         return ret;
     }
+
+
+
+
 }

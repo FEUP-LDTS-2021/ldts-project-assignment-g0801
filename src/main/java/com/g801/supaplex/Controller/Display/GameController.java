@@ -4,6 +4,7 @@ import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.PauseMenu;
+import com.g801.supaplex.Model.SoundPlayer;
 import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.States.PauseMenuState;
 import com.g801.supaplex.Viewer.GUI.GUI;
@@ -11,16 +12,17 @@ import com.g801.supaplex.Viewer.GUI.GUI;
 import java.io.IOException;
 
 public class GameController extends Controller<Display> {
+
     private final MurphyController murphyController;
     private final RockController rockController;
     private final ScissorController scissorController;
-
 
     public GameController(Display model) {
         super(model);
         this.murphyController = new MurphyController(model);
         this.rockController = new RockController(model);
         this.scissorController = new ScissorController(model);
+        this.soundPlayer = new SoundPlayer();
     }
 
     @Override

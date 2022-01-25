@@ -17,8 +17,7 @@ public class Movable extends Model {
         super.pos.addY(-1);
     }
 
-    public void moveDown(){ super.pos.addY(1);
-    }
+    public void moveDown(){ super.pos.addY(1);}
 
     public void moveLeft(){
         super.pos.addX(-1);
@@ -33,14 +32,9 @@ public class Movable extends Model {
         return aura.canMove(action);
     }
 
-//    public void updateAura(){
-//        aura.update();
-//    }
-
     //Put this in MoveScissors
     public void spin(){}
 
     //Put this in MoveRock
     public void fall(){}
-
 }

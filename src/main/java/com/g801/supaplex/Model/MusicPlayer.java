@@ -41,4 +41,9 @@ public class MusicPlayer {
         backgroundMusic.start();
         backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    public void playSound() {
+        backgroundMusic.setMicrosecondPosition(0);
+        backgroundMusic.start();
+    }
 }
