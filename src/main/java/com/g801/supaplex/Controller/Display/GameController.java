@@ -4,7 +4,7 @@ import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.PauseMenu;
-import com.g801.supaplex.Model.SoundPlayer;
+import com.g801.supaplex.Model.Audio.SoundPlayer;
 import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.States.PauseMenuState;
 import com.g801.supaplex.Viewer.GUI.GUI;

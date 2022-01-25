@@ -1,4 +1,4 @@
-package com.g801.supaplex.Model;
+package com.g801.supaplex.Model.Audio;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

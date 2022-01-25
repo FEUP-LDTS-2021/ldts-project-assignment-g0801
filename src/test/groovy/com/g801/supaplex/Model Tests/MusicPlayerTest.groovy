@@ -1,6 +1,6 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Model.MusicPlayer;
+import com.g801.supaplex.Model.Audio.MusicPlayer;
 import spock.lang.Specification
 import javax.sound.sampled.Clip;
 

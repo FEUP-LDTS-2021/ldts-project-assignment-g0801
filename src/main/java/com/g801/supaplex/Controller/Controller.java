@@ -1,7 +1,7 @@
 package com.g801.supaplex.Controller;
 
 import com.g801.supaplex.Game;
-import com.g801.supaplex.Model.SoundPlayer;
+import com.g801.supaplex.Model.Audio.SoundPlayer;
 import com.g801.supaplex.Viewer.GUI.GUI;
 
 import java.io.IOException;

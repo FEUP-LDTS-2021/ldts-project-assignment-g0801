@@ -57,6 +57,21 @@ public class Display {
         map[m.getPos().getY() - 1][m.getPos().getX()] = new Base(oldPosDown);
     }
 
+    public void updateRockRight(Model m) {
+
+        Position oldPosLeft = new Position(m.getPos().getX() - 1, m.getPos().getY());
+        Position oldPosDown = new Position(oldPosLeft.getUp().getX(), oldPosLeft.getUp().getY());
+        map[m.getPos().getY()][m.getPos().getX()] = m;
+        map[oldPosDown.getY()][oldPosDown.getX()] = new Base(oldPosDown);
+    }
+
+    public void updateRockLeft(Model m) {
+        Position oldPosRight = new Position(m.getPos().getX() + 1, m.getPos().getY());
+        Position oldPosDown = new Position(oldPosRight.getUp().getX(), oldPosRight.getUp().getY());
+        map[m.getPos().getY()][m.getPos().getX()] = m;
+        map[oldPosDown.getY()][oldPosDown.getX()] = new Base(oldPosDown);
+    }
+
     public void updateScissor(Scissors m) {
 
         if (m.getDirection() == Scissors.Direction.RIGHT) {
