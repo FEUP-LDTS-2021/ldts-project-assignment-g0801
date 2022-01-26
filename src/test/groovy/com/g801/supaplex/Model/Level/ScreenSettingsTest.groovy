@@ -1,7 +1,5 @@
 package com.g801.supaplex.Model.Level
 
-import com.g801.supaplex.Model.Level.ScreenSettings
-import com.g801.supaplex.Model.Position
 import spock.lang.Specification
 
 class ScreenSettingsTest extends Specification {

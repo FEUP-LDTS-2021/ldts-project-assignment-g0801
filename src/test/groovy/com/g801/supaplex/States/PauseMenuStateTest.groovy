@@ -2,7 +2,6 @@ package com.g801.supaplex.States
 
 import com.g801.supaplex.Controller.Menu.PauseMenuController
 import com.g801.supaplex.Model.Menu.PauseMenu
-import com.g801.supaplex.States.PauseMenuState
 import com.g801.supaplex.Viewer.Menu.PauseMenuViewer;
 import spock.lang.Specification;
 

@@ -1,13 +1,11 @@
 package com.g801.supaplex.Model.Aura
 
 import com.g801.supaplex.Controller.Action
-import com.g801.supaplex.Model.Aura.Aura
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Elements.Wall;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Position
-import net.bytebuddy.dynamic.loading.ClassLoadingStrategy
 import spock.lang.Specification;
 
 class AuraTest extends Specification {

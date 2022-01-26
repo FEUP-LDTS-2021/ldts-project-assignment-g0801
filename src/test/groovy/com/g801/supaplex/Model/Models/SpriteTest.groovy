@@ -1,6 +1,5 @@
 package com.g801.supaplex.Model.Models
 
-import com.g801.supaplex.Model.Models.Sprite;
 import spock.lang.Specification;
 
 class SpriteTest extends Specification {

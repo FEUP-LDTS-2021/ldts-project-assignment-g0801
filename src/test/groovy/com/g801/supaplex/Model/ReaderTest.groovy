@@ -1,6 +1,6 @@
 package com.g801.supaplex.Model
+
 import com.g801.supaplex.Model.Models.Sprite
-import com.g801.supaplex.Model.Reader;
 import spock.lang.Specification
 
 class ReaderTest extends Specification {

@@ -2,7 +2,6 @@ package com.g801.supaplex.States
 
 import com.g801.supaplex.Controller.Display.GameController
 import com.g801.supaplex.Model.Level.Display
-import com.g801.supaplex.States.GameState
 import com.g801.supaplex.Viewer.MapViewer.DisplayViewer
 import spock.lang.Specification;
 

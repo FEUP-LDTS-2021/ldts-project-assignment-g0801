@@ -1,6 +1,5 @@
 package com.g801.supaplex.Controller.Menu;
 
-import com.g801.supaplex.Controller.Menu.MenuController
 import com.g801.supaplex.Game
 import com.g801.supaplex.Model.Menu.MainMenu
 import com.g801.supaplex.Viewer.GUI.GUI;

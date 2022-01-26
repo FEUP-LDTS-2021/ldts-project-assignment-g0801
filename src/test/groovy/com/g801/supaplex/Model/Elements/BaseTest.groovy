@@ -2,7 +2,6 @@ package com.g801.supaplex.Model.Elements
 
 import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Position;
-import com.g801.supaplex.Model.Elements.Base
 import spock.lang.Specification;
 
 class BaseTest extends Specification {

@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model.Menu
 
 import com.g801.supaplex.Model.Configuration
-import com.g801.supaplex.Model.Menu.SelectLevelMenu
 import spock.lang.Specification;
 
 class SelectLevelMenuTest extends Specification {

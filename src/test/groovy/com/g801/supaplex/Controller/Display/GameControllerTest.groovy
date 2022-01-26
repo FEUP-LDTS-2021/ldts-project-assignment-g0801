@@ -1,6 +1,5 @@
 package com.g801.supaplex.Controller.Display
 
-import com.g801.supaplex.Controller.Display.GameController
 import com.g801.supaplex.Game
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Viewer.GUI.GUI;

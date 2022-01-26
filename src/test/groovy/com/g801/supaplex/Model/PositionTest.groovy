@@ -1,6 +1,5 @@
 package com.g801.supaplex.Model
 
-import com.g801.supaplex.Model.Position;
 import spock.lang.Specification;
 
 class PositionTest extends Specification {

@@ -1,10 +1,7 @@
 package com.g801.supaplex.Controller.Menu;
 
-import com.g801.supaplex.Controller.Menu.GameOverMenuController
 import com.g801.supaplex.Game
-import com.g801.supaplex.Model.Level.Display
 import com.g801.supaplex.Model.Menu.GameOverMenu
-import com.g801.supaplex.States.GameState
 import com.g801.supaplex.Viewer.GUI.GUI
 import spock.lang.Specification;
 

@@ -1,6 +1,5 @@
 package com.g801.supaplex.Model.Level
 
-import com.g801.supaplex.Model.Level.LoadLevelBuild
 import spock.lang.Specification;
 
 class LoadLevelBuildTest extends Specification {

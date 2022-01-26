@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model.Menu
 
 import com.g801.supaplex.Model.Image
-import com.g801.supaplex.Model.Menu.MainMenu
 import spock.lang.Specification;
 
 class MainMenuTest extends Specification {

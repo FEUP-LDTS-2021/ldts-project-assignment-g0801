@@ -1,9 +1,7 @@
 package com.g801.supaplex.Model
 
 import com.g801.supaplex.Model.Elements.Murphy
-import com.g801.supaplex.Model.Position
 import spock.lang.Specification;
-import com.g801.supaplex.Model.Configuration;
 
 class ConfigurationTest extends Specification {
 

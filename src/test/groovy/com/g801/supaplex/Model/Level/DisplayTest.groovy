@@ -3,10 +3,8 @@ package com.g801.supaplex.Model.Level
 import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Elements.Murphy
 import com.g801.supaplex.Model.Models.Model
-import com.g801.supaplex.Model.Models.SpriteFactory
 import com.g801.supaplex.Model.Position
 import spock.lang.Specification;
-import com.g801.supaplex.Model.Level.Display;
 
 class DisplayTest extends Specification {
 

@@ -2,7 +2,6 @@ package com.g801.supaplex.States
 
 import com.g801.supaplex.Controller.Menu.MenuController
 import com.g801.supaplex.Model.Menu.MainMenu
-import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.Viewer.Menu.MainMenuViewer
 import spock.lang.Specification;
 
