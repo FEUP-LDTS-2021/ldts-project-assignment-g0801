@@ -99,4 +99,8 @@ public class Configuration {
     public static void setHeight(Integer h) {
         displayConfig.setHeight(h);
     }
+
+    public static void reset() {
+        confs = new Configuration();
+    }
 }

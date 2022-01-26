@@ -24,6 +24,10 @@ class DisplayTest extends Specification {
         for (int i = 0 ; i < 4 ; i++) answer.push(new Model());
     }
 
+    def cleanup() {
+        Configuration.reset();
+    }
+
     def "Getting Display Map"() {
 
         when:
@@ -38,7 +42,7 @@ class DisplayTest extends Specification {
     def "Getting Infotron Counter"() {
 
         expect:
-            display.getInfotronCount() == 2;
+            display.getInfotronCount() == 19;
     }
 
     def "Block Size"() {
@@ -54,4 +58,5 @@ class DisplayTest extends Specification {
             display.getScissorList() != null;
             display.getRockList() != null;
     }
+
 }

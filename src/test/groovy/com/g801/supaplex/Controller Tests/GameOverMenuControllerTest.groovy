@@ -1,3 +1,5 @@
+package com.g801.supaplex
+
 import com.g801.supaplex.Controller.Menu.GameOverMenuController
 import com.g801.supaplex.Game
 import com.g801.supaplex.Model.Level.Display
@@ -16,8 +18,8 @@ class GameOverMenuControllerTest extends Specification {
     def setup() {
         time = 9000;
         game = new Game();
-        game.pushState(new GameState(new Display()));
-        game.pushState(new GameState(new Display()));
+        //game.pushState(new GameState(new Display()));
+        //game.pushState(new GameState(new Display()));
         gameOverMenu = Mock(GameOverMenu.class);
         gameOverMenuController = new GameOverMenuController(gameOverMenu);
     }
@@ -42,17 +44,6 @@ class GameOverMenuControllerTest extends Specification {
 
         given:
             gameOverMenu.getCurrentSelect() >> GameOverMenu.Option.RESTART;
-        when:
-            gameOverMenuController.execute(game, GUI.KEYACTION.SELECT, time);
-        then:
-            0 * game.popState();
-            0 * game.pushState(_);
-    }
-
-    def "Key Select -> Menu Ret"() {
-
-        given:
-            gameOverMenu.getCurrentSelect() >> GameOverMenu.Option.MENU_RET;
         when:
             gameOverMenuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:

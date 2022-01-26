@@ -17,7 +17,7 @@ class ScreenSettingsTest extends Specification {
         expect:
             screenSettings.getWidth() == 7;
             screenSettings.getHeight() == 9;
-            screenSettings.getMapBounds() == null;
+            screenSettings.getMapBounds() != null;
             screenSettings.getXmin() == 0;
             screenSettings.getYmin() == 0;
     }

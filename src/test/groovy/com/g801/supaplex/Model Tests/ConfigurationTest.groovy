@@ -17,13 +17,17 @@ class ConfigurationTest extends Specification {
         bounds = new Position(24, 15);
     }
 
+    def cleanup() {
+        Configuration.reset();
+    }
+
     def "Initial configurations"() {
 
         given:
             configuration.setMapBounds(24, 15);
 
         expect:
-            configuration.getCurrentLevel() == 2;
+            configuration.getCurrentLevel() == 1;
             configuration.getScreenLowerBound() != null;
             configuration.getMapBounds() == new Position(24, 15);
     }
@@ -104,9 +108,9 @@ class ConfigurationTest extends Specification {
         where:
             a | b
             1 | 2
-            2 | 4
-            3 | 7
-            1 | 1
+            2 | 3
+            3 | 4
+            1 | 2
     }
 
     def "Decreasing current level"() {
@@ -120,8 +124,8 @@ class ConfigurationTest extends Specification {
         where:
             a | b
             1 | 7
-            2 | 5
-            3 | 2
-            4 | 5
+            2 | 6
+            3 | 5
+            4 | 4
     }
 }

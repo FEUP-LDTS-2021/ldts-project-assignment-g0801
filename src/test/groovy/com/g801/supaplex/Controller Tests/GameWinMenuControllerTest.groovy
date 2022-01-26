@@ -1,5 +1,8 @@
+package com.g801.supaplex
+
 import com.g801.supaplex.Controller.Menu.GameWinMenuController
 import com.g801.supaplex.Game
+import com.g801.supaplex.Model.Configuration
 import com.g801.supaplex.Model.Level.Display
 import com.g801.supaplex.Model.Menu.GameWinMenu
 import com.g801.supaplex.States.GameState
@@ -22,6 +25,10 @@ class GameWinMenuControllerTest extends Specification {
         gameWinMenuController = new GameWinMenuController(gameWinMenu);
     }
 
+    def cleanup() {
+        Configuration.reset();
+    }
+
     def "Key Down"() {
 
         when:
@@ -42,17 +49,6 @@ class GameWinMenuControllerTest extends Specification {
 
         given:
             gameWinMenu.getCurrentSelect() >> GameWinMenu.Option.NEXT_LEVEL;
-        when:
-            gameWinMenuController.execute(game, GUI.KEYACTION.SELECT, time);
-        then:
-            0 * game.popState();
-            0 * game.pushState(_);
-    }
-
-    def "Key Select -> Menu Ret"() {
-
-        given:
-            gameWinMenu.getCurrentSelect() >> GameWinMenu.Option.MENU_RET;
         when:
             gameWinMenuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
