@@ -29,5 +29,7 @@ test {
 }
 
 pitest {
+    pitestVersion = '1.7.0'
     junit5PluginVersion = '0.12'
+    targetClasses = ['com.g801.supaplex.*']
 }
