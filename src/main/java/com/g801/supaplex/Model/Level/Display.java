@@ -93,7 +93,7 @@ public class Display {
         map[m.getPos().getY()][m.getPos().getX()] = m;
     }
 
-    public void render () {
+    public void render() {
             endGame();
             LoadLevelBuild level = null;
             try {
