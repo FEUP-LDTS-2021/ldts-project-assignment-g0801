@@ -56,5 +56,4 @@ class RockControllerTest extends Specification {
         expect:
             ! rockController.canMoveRight(new Movable());
     }
-
 }
