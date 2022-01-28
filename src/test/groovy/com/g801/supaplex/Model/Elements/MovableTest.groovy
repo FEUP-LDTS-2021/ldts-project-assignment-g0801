@@ -55,22 +55,4 @@ class MovableTest extends Specification {
         then:
             movable.getPos() == new Position(10, 11);
     }
-
-    def "Spin"() {
-
-        given:
-            Sprite oldSprite = movable.getModel();
-        when:
-            movable.spin();
-        then:
-            movable.getModel() == oldSprite;
-    }
-
-    def "Fall"() {
-
-        when:
-            movable.fall();
-        then:
-            movable.getPos() != new Position(originalX, originalY+1);
-    }
 }
