@@ -4,7 +4,6 @@ import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Menu.SelectLevelMenu;
 import com.g801.supaplex.Viewer.GUI.GUI;
-
 import java.io.IOException;
 
 public class SelectLevelMenuController extends Controller<SelectLevelMenu> {
@@ -16,19 +15,18 @@ public class SelectLevelMenuController extends Controller<SelectLevelMenu> {
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
+        SelectLevelMenu model = getModel();
+
         switch(keyaction) {
-            case DOWN:
-                getModel().downButton();
-                break;
-            case UP:
-                getModel().upButton();
-                break;
-            case SELECT:
-                switch (getModel().getCurrentSelect()) {
-                    case LOWER -> getModel().getConfiguration().lowerCurrentLevel();
-                    case INCREASE -> getModel().getConfiguration().increaseCurrentLevel();
+            case DOWN -> model.downButton();
+            case UP -> model.upButton();
+            case SELECT -> {
+                switch (model.getCurrentSelect()) {
+                    case LOWER -> model.getConfiguration().lowerCurrentLevel();
+                    case INCREASE -> model.getConfiguration().increaseCurrentLevel();
                     case BACK -> game.popState();
                 }
+            }
         }
     }
 }

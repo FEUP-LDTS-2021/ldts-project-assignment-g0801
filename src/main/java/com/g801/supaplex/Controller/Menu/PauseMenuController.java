@@ -17,15 +17,13 @@ public class PauseMenuController extends Controller<PauseMenu> {
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
+        PauseMenu model = getModel();
+
         switch(keyaction) {
-            case DOWN:
-                getModel().downButton();
-                break;
-            case UP:
-                getModel().upButton();
-                break;
-            case SELECT:
-                switch (getModel().getCurrentSelect()) {
+            case DOWN -> model.downButton();
+            case UP -> model.upButton();
+            case SELECT -> {
+                switch (model.getCurrentSelect()) {
                     case CONTINUE -> game.popState();
                     case RESTART -> {
                         game.popState();
@@ -36,6 +34,7 @@ public class PauseMenuController extends Controller<PauseMenu> {
                         game.popState();
                     }
                 }
+            }
         }
     }
 }

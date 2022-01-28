@@ -17,15 +17,14 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
 
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
+
+        GameOverMenu model = getModel();
+
         switch(keyaction) {
-            case DOWN:
-                getModel().downButton();
-                break;
-            case UP:
-                getModel().upButton();
-                break;
-            case SELECT:
-                switch (getModel().getCurrentSelect()) {
+            case DOWN -> model.downButton();
+            case UP -> model.upButton();
+            case SELECT -> {
+                switch (model.getCurrentSelect()) {
                     case RESTART -> {
                         game.popState();
                         game.pushState(new GameState(new Display()));
@@ -35,6 +34,7 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
                         game.popState();
                     }
                 }
+            }
         }
     }
 }

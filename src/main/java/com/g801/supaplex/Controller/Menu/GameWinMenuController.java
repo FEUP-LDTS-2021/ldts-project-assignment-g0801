@@ -7,7 +7,6 @@ import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.GameWinMenu;
 import com.g801.supaplex.States.GameState;
 import com.g801.supaplex.Viewer.GUI.GUI;
-
 import java.io.IOException;
 
 public class GameWinMenuController extends Controller<GameWinMenu> {
@@ -18,15 +17,14 @@ public class GameWinMenuController extends Controller<GameWinMenu> {
 
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
+
+        GameWinMenu model = getModel();
+
         switch(keyaction) {
-            case DOWN:
-                getModel().downButton();
-                break;
-            case UP:
-                getModel().upButton();
-                break;
-            case SELECT:
-                switch (getModel().getCurrentSelect()) {
+            case DOWN -> model.downButton();
+            case UP -> model.upButton();
+            case SELECT -> {
+                switch (model.getCurrentSelect()) {
                     case NEXT_LEVEL -> {
                         game.popState();
                         game.popState();
@@ -39,6 +37,7 @@ public class GameWinMenuController extends Controller<GameWinMenu> {
                     }
                     case QUIT -> System.exit(0);
                 }
+            }
         }
     }
 }
