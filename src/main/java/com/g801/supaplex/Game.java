@@ -1,7 +1,6 @@
 package com.g801.supaplex;
 
 import com.g801.supaplex.Model.Configuration;
-import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Model.Models.Sprite;
 import com.g801.supaplex.Model.Audio.MusicPlayer;
@@ -65,7 +64,7 @@ public class Game implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 10;
+        final double amountOfTicks = 13;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0; // to allow CPU to catch up
         long timer = System.currentTimeMillis();
@@ -103,6 +102,7 @@ public class Game implements Runnable {
     public void pushState(State state) {
         states.push(state);
     }
+
     public void popState() {
         states.pop();
     }

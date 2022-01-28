@@ -31,10 +31,4 @@ public class Movable extends Model {
     public boolean canMove(Action.Actions action){
         return aura.canMove(action);
     }
-
-    //Put this in MoveScissors
-    public void spin(){}
-
-    //Put this in MoveRock
-    public void fall(){}
 }

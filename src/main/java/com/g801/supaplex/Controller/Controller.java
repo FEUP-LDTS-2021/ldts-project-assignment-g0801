@@ -9,7 +9,6 @@ import java.io.IOException;
 public abstract class Controller<T> {
 
     private T model;
-
     protected SoundPlayer soundPlayer;
 
     public Controller(T model) {

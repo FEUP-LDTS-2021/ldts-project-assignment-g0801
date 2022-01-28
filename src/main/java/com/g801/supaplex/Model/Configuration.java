@@ -93,10 +93,10 @@ public class Configuration {
     }
 
     public static void setWidth(Integer w) {
-        displayConfig.setWidth(w);
+        ScreenSettings.setWidth(w);
     }
 
     public static void setHeight(Integer h) {
-        displayConfig.setHeight(h);
+        ScreenSettings.setHeight(h);
     }
 }

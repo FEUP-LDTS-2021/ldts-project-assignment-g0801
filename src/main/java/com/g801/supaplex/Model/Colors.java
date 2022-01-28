@@ -16,7 +16,7 @@ public class Colors {
 
     private static void readColors() {
 
-        allColors = new HashMap<Character, String>();
+        allColors = new HashMap<>();
 
         try {
             File file = new File("src/main/resources/Colors.txt");

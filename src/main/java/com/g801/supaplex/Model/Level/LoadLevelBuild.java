@@ -1,31 +1,25 @@
 package com.g801.supaplex.Model.Level;
 
 import com.g801.supaplex.Model.Configuration;
-import org.codehaus.groovy.transform.SourceURIASTTransformation;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class LoadLevelBuild {
 
-    private static ArrayList<String> map = new ArrayList<>();
+    private static final ArrayList<String> map = new ArrayList<>();
 
     public LoadLevelBuild(int lvl) throws FileNotFoundException {
 
         map.clear();
         Configuration confs = Configuration.getInstance();
 
-        String level = lvl < 10 ? "0" + String.valueOf(lvl) : String.valueOf(lvl);
+        String level = lvl < 10 ? "0" + lvl : String.valueOf(lvl);
         File file = new File("src/main/resources/Levels/Level" + level + ".txt");
         Scanner reader = new Scanner(file);
         int i = 0;
-        String line = new String("");
+        String line = "";
         while(reader.hasNextLine()){
             line = reader.nextLine();
             map.add(line);

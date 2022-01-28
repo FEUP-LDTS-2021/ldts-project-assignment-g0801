@@ -1,6 +1,5 @@
 package com.g801.supaplex.Viewer.MapViewer;
 
-import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Models.Model;
 import com.g801.supaplex.Model.Models.Sprite;

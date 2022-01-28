@@ -5,10 +5,8 @@ import com.g801.supaplex.Game;
 import com.g801.supaplex.Model.Elements.*;
 import com.g801.supaplex.Model.Level.Display;
 import com.g801.supaplex.Model.Menu.GameWinMenu;
-import com.g801.supaplex.Model.Menu.PauseMenu;
 import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.States.GameWinMenuState;
-import com.g801.supaplex.States.PauseMenuState;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import java.io.IOException;
 
@@ -111,7 +109,6 @@ public class MurphyController extends Controller<Display> {
         if (getModel().getInfotronCount() == 0) {
             this.soundPlayer.playGameWinSound();
             game.pushState(new GameWinMenuState(new GameWinMenu()));
-            return true;
         }
         return false;
     }

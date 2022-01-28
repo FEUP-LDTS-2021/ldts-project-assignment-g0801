@@ -5,6 +5,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import java.io.File;
+import java.util.Objects;
 
 
 public class SoundPlayer {
@@ -13,7 +14,7 @@ public class SoundPlayer {
 
     private Clip loadSound(String fileName) throws NullPointerException{
         try {
-            File musicFile = new File(MusicPlayer.class.getResource("/Sounds/" + fileName).getFile());
+            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/Sounds/" + fileName)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);
@@ -30,6 +31,7 @@ public class SoundPlayer {
     public void setSound(String fileName) {
         this.sound = loadSound(fileName);
     }
+
     public void playSound() {
         sound.setMicrosecondPosition(0);
         sound.start();

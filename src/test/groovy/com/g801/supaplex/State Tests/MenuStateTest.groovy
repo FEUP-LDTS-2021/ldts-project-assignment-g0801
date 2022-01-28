@@ -1,6 +1,6 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.Menu.MenuController
+import com.g801.supaplex.Controller.Menu.MainMenuController
 import com.g801.supaplex.Model.Menu.MainMenu
 import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.Viewer.Menu.MainMenuViewer
@@ -15,6 +15,6 @@ class MenuStateTest extends Specification {
         expect:
             menuState.getModel() instanceof MainMenu;
             menuState.getViewer() instanceof MainMenuViewer;
-            menuState.getController() instanceof MenuController;
+            menuState.getController() instanceof MainMenuController;
     }
 }

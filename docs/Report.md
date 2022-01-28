@@ -18,22 +18,23 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 - **Menus** - Basic Layout for menus, including Main, Level Select and Pause.
 - **States** - Stack Structure to allow simple application flow.
 - **Pause Menu** Currently on Main Menu START, our intention is for the user to be able to take a break and pick off right where he left the game.
-
-### PLANNED FEATURES
-
 - **Move** - Murphy will move according to the arrow key pressed by the user (up, down, left, right)
 - **Eat** - The player can make Murphy eat an adjacent block without moving into it by pressing CTRL + ARROW
 - **Unit Collision** - Murphy can't move against walls, Rocks and Scissors can only move if there's no block in front of them.
-- **Push** - Murphy can push Rocks which can move
 - **Specific Behavior** - Rocks which can't be moved act as Walls and Scissors rotate when moving isn't possible.
 - **Infotron Counter** - Murphy needs a certain number of Infotrons to beat each level
-- **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
-- **Fall** - Rocks will fall if there's no supporting block underneath them
+- **Fall** - Rocks will fall if there's no supporting block underneath them, also they can fall sideways (right/left) it the block
+    underneath them is also a Rock.
 - **Restart** - Allows the user to restart the game at any given point.
-- **Sounds** - Different sounds for each animation
+- **Sounds** - Different sounds for some animations (for example, when murphy captures an Infotron).
+### PLANNED FEATURE LEFT OUT
+
+
+- **Push** - Murphy can push Rocks which can move
+- **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
 
 ### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
-![alt-text](src/main/resources/Report/gifs/menu.gif)
+![alt-text](docs/Gifs/MainMenu.gif)
 
 ------
 ### DESIGN
@@ -84,7 +85,8 @@ The use of the Singleton Pattern provided the following benefits:
 
 However, there were certain drawbacks:
 - Constructors where private, therefore couldn't receive parameter arguments
-- Certain objects (Murphy, GameScreen, Display) have to be reset after each level
+- Certain objects (Murphy, GameScreen, Display) have to be reset after each level, therefore, it's hard to implement a Singleton Pattern
+  for them.
 -------
 ####CREATING SEVERAL INHERITED OBJECTS
 

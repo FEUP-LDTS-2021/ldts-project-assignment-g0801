@@ -17,8 +17,6 @@ public class GameWinMenu extends Menu {
 
     Option[] options = Option.values();
 
-    private int currentSelect;
-
     public GameWinMenu() {
         this.selected = GameWinMenu.Option.NEXT_LEVEL;
         this.textImagesList = new ArrayList<>();
@@ -36,20 +34,12 @@ public class GameWinMenu extends Menu {
         return optString[pos];
     }
 
-    public void setSelected(GameWinMenu.Option selected) {
-        this.selected = selected;
-    }
-
     public GameWinMenu.Option[] getOpt() {
         return options;
     }
 
     public GameWinMenu.Option getCurrentSelect() {
         return selected;
-    }
-
-    public String[] getOptString() {
-        return optString;
     }
 
     public List<Image> getTextImagesList() {

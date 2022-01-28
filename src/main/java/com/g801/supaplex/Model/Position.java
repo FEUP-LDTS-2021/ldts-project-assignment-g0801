@@ -1,5 +1,7 @@
 package com.g801.supaplex.Model;
 
+import java.util.Objects;
+
 public class Position {
     private Integer x, y;
 
@@ -37,7 +39,7 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
-        return x == position.x && y == position.y;
+        return Objects.equals(x, position.x) && Objects.equals(y, position.y);
     }
 
     public Position getDown() {

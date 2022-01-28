@@ -33,7 +33,6 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
                     case MENU_RET -> {
                         game.popState();
                         game.popState();
-                        game.popState();
                     }
                 }
         }

@@ -34,7 +34,6 @@ public class ScissorController extends ElementController {
     }
     public boolean canMove(Scissors elem, Game game) {
         boolean ret = false;
-        if (elem.getPos().equals(getModel().getMurphy())) System.exit(0);
         switch (elem.getDirection()) {
             case RIGHT -> {
                 if (getModel().getMap()[elem.getPos().getRight().getY()][elem.getPos().getRight().getX()] instanceof Base)
@@ -66,7 +65,7 @@ public class ScissorController extends ElementController {
             case DOWN -> {
                 if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Base)
                     ret = true;
-                else if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Murphy) ;
+                else if (getModel().getMap()[elem.getPos().getDown().getY()][elem.getPos().getDown().getX()] instanceof Murphy) game.pushState(new GameOverState(new GameOverMenu()));
                 else {
                     elem.setDirection(Scissors.Direction.LEFT);
                     elem.setSprite('3');

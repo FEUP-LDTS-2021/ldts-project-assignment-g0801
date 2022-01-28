@@ -2,6 +2,7 @@ package com.g801.supaplex.Model.Audio;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.util.Objects;
 
 public class MusicPlayer {
     private Clip backgroundMusic;
@@ -23,7 +24,7 @@ public class MusicPlayer {
 
     private Clip loadMusic(String fileName) throws NullPointerException{
         try {
-            File musicFile = new File(MusicPlayer.class.getResource("/Music/" + fileName).getFile());
+            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/Music/" + fileName)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);
@@ -40,10 +41,5 @@ public class MusicPlayer {
         backgroundMusic.setMicrosecondPosition(0);
         backgroundMusic.start();
         backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-
-    public void playSound() {
-        backgroundMusic.setMicrosecondPosition(0);
-        backgroundMusic.start();
     }
 }

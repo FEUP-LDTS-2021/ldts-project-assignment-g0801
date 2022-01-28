@@ -42,7 +42,7 @@ class RockControllerTest extends Specification {
         when:
             rockController.execute(game, GUI.KEYACTION.LEFT, time);
         then:
-            1 * display.update(_);
+            1 * display.updateRock(_);
     }
 
     def "Can move?"() {

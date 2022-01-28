@@ -10,9 +10,9 @@ import java.util.*;
 
 public class Display {
     private static final Position blockSize = new Position(Sprite.width, Sprite.height);
-    private Configuration configurations;
-    private static List<Rock> rockList = new ArrayList<>();
-    private static List<Scissors> scissorList = new ArrayList<>();
+    private final Configuration configurations;
+    private static final List<Rock> rockList = new ArrayList<>();
+    private static final List<Scissors> scissorList = new ArrayList<>();
     private static Model[][] map;
     private static Murphy murphy;
     private static Integer infotronCount = 0;
@@ -51,7 +51,7 @@ public class Display {
         }
     }
 
-    public void update(Model m) {
+    public void updateRock(Model m) {
         Position oldPosDown = new Position(m.getPos().getX(), m.getPos().getY() + 1);
         map[m.getPos().getY()][m.getPos().getX()] = m;
         map[m.getPos().getY() - 1][m.getPos().getX()] = new Base(oldPosDown);
@@ -154,8 +154,7 @@ public class Display {
             Model[][] ret = new Model[y][x];
 
             for (int i = 0; i < y; i++) {
-                for (int j = 0; j < x; j++)
-                    ret[i][j] = map[yMin + i][xMin + j];
+                System.arraycopy(map[yMin + i], xMin, ret[i], 0, x);
             }
 
             return ret;

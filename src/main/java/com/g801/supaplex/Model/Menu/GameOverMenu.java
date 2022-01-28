@@ -34,20 +34,12 @@ public class GameOverMenu extends Menu {
         return optString[pos];
     }
 
-    public void setSelected(Option selected) {
-        this.selected = selected;
-    }
-
     public Option[] getOpt() {
         return options;
     }
 
     public Option getCurrentSelect() {
         return selected;
-    }
-
-    public String[] getOptString() {
-        return optString;
     }
 
     public List<Image> getTextImagesList() {

@@ -24,8 +24,6 @@ public interface GUI {
 
     void refresh() throws IOException;
 
-    void close() throws IOException;
-
     Size getSize();
 
     void drawRectangle(Position position);

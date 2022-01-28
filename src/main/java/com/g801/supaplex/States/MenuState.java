@@ -1,7 +1,7 @@
 package com.g801.supaplex.States;
 
 import com.g801.supaplex.Controller.Controller;
-import com.g801.supaplex.Controller.Menu.MenuController;
+import com.g801.supaplex.Controller.Menu.MainMenuController;
 import com.g801.supaplex.Model.Menu.MainMenu;
 import com.g801.supaplex.Viewer.Menu.MainMenuViewer;
 import com.g801.supaplex.Viewer.Viewer;
@@ -18,6 +18,6 @@ public class MenuState extends State<MainMenu> {
 
     @Override
     protected Controller<MainMenu> getController() {
-        return new MenuController(getModel());
+        return new MainMenuController(getModel());
     }
 }

@@ -17,8 +17,6 @@ public class MainMenu extends Menu {
 
     Option[] options = Option.values();
 
-    private int currentSelect;
-
     public MainMenu() {
         this.selected = Option.START;
         this.textImagesList = new ArrayList<>();

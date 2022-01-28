@@ -18,10 +18,10 @@ public class RockController extends ElementController {
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
         for (Rock elem : getModel().getRockList()) {
-            if (canMove(elem)) {
+            if (canMoveDown(elem)) {
                 this.soundPlayer.playFallSound();
                 elem.moveDown();
-                getModel().update(elem);
+                getModel().updateRock(elem);
             }
             else if (canMoveRight(elem)) {
                 elem.moveRight(); elem.moveDown();
@@ -34,11 +34,11 @@ public class RockController extends ElementController {
         }
     }
 
-    public boolean canMove(Rock elem){
+    public boolean canMoveDown(Rock elem){
         boolean ret = false;
         Position pos = elem.getPos();
-        Model attemp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        if (attemp instanceof Base) ret = true;
+        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
+        if (tmp instanceof Base) ret = true;
 
         return ret;
     }
@@ -47,11 +47,11 @@ public class RockController extends ElementController {
         boolean ret = false;
 
         Position pos = elem.getPos();
-        Model attemp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        Model attemp1 = getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()];
-        Model attemp2 = getModel().getMap()[pos.getRight().getDown().getY()][pos.getRight().getDown().getX()];
+        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
+        Model tmp1 = getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()];
+        Model tmp2 = getModel().getMap()[pos.getRight().getDown().getY()][pos.getRight().getDown().getX()];
 
-        if (attemp instanceof Rock && (attemp1 instanceof Base && attemp2 instanceof Base)) ret = true;
+        if (tmp instanceof Rock && (tmp1 instanceof Base && tmp2 instanceof Base)) ret = true;
 
         return ret;
     }
@@ -60,11 +60,11 @@ public class RockController extends ElementController {
         boolean ret = false;
 
         Position pos = elem.getPos();
-        Model attemp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        Model attemp1 = getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()];
-        Model attemp2 = getModel().getMap()[pos.getLeft().getDown().getY()][pos.getLeft().getDown().getX()];
+        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
+        Model tmp1 = getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()];
+        Model tmp2 = getModel().getMap()[pos.getLeft().getDown().getY()][pos.getLeft().getDown().getX()];
 
-        if (attemp instanceof Rock && (attemp1 instanceof Base && attemp2 instanceof Base)) ret = true;
+        if (tmp instanceof Rock && (tmp1 instanceof Base && tmp2 instanceof Base)) ret = true;
 
         return ret;
     }

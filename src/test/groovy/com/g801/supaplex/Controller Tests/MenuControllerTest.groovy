@@ -1,13 +1,13 @@
 package com.g801.supaplex
 
-import com.g801.supaplex.Controller.Menu.MenuController
+import com.g801.supaplex.Controller.Menu.MainMenuController
 import com.g801.supaplex.Model.Menu.MainMenu
 import com.g801.supaplex.Viewer.GUI.GUI;
 import spock.lang.Specification;
 
 class MenuControllerTest extends Specification {
 
-    private MenuController menuController;
+    private MainMenuController menuController;
     private MainMenu mainMenu;
     private Game game;
     private time = 900000;
@@ -15,7 +15,7 @@ class MenuControllerTest extends Specification {
     def setup() {
         game = Mock(Game.class);
         mainMenu = Mock(MainMenu.class);
-        menuController = new MenuController(mainMenu);
+        menuController = new MainMenuController(mainMenu);
     }
 
     def "Main Menu receives DOWN key pressed"() {

@@ -12,17 +12,13 @@ public class SelectLevelMenu extends Menu {
 
     private final List<Image> textImagesList;
 
-    public enum Option {LOWER, INCREASE, BACK};
+    public enum Option {LOWER, INCREASE, BACK}
 
     public String[] optString = {"LOWER", "INCREASE", "BACK"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
 
     Option selected;
 
     Option[] options = Option.values();
-
-    private int currentSelect;
-
-    private int currentLevelSelect;
 
     public SelectLevelMenu(Configuration configuration) {
         this.selected = getOpt()[0];
@@ -49,7 +45,7 @@ public class SelectLevelMenu extends Menu {
 
     public void setSelected(Option selected) {
         this.selected = selected;
-    };
+    }
 
     public Option getCurrentSelect() {
         return selected;

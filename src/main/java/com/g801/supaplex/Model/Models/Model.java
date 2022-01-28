@@ -1,6 +1,5 @@
 package com.g801.supaplex.Model.Models;
 
-import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Position;
 
 public class Model {

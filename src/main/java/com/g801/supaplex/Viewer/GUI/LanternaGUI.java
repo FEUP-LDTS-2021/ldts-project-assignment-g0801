@@ -90,11 +90,6 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void close() throws IOException {
-        screen.close();
-    }
-
-    @Override
     public Size getSize() {
         return this.size;
     }
@@ -102,7 +97,7 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawRectangle(Position position) {
         TextGraphics tg = screen.newTextGraphics();
-        TerminalPosition tp = new TerminalPosition((int) position.getX(), (int) position.getY());
+        TerminalPosition tp = new TerminalPosition(position.getX(), position.getY());
         TerminalSize ts = new TerminalSize(size.getWidth(), size.getHeight());
 
         tg.fillRectangle(tp, ts, TextCharacter.fromCharacter(' ', TextColor.Factory.fromString("#ff00ff"), TextColor.Factory.fromString("#00FF000"))[0]);
