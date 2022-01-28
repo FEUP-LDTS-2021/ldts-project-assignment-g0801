@@ -1,4 +1,4 @@
-## LTDS_<T>08_<G>801 - <GameName> Supapl0x
+**## LTDS_<T>08_<G>801 - <GameName> Supapl0x
 
 The project is a clone of the 90's game Supaplex. We play as Murphy, a very brave and adventurous red ball on a mission to capture Infotrons. During his
 quest he's faced with a series of challenges in the form of mazes which he must go through in order to find the Infotrons he needs. The mazes are dangerous
@@ -79,6 +79,11 @@ our game (some of which gave rise to other problems which will be discussed furt
 
 Singletons were implemented using the standard Singleton template (although some had to be slightly modified, as we'll soon expose). Each object has a private
 field of its own type, and a private constructor which initializes it. Instances of the object can be retrieved through the getInstance() method, which calls the private constructor if the field hasn't been initialized yet.
+
+##### Examples: 
+
+- [Colors](../src/main/java/com/g801/supaplex/Model/Colors.java)
+- [Sprites](../src/main/java/com/g801/supaplex/Model/Models/SpriteFactory.java)
 
 ```java
 class InfotronSprite extends Sprite {
@@ -188,6 +193,8 @@ time more efficiently, since it allowed each of us to work on different parts (b
 
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
+
+#### 
 #### USING A DATA CLASS (Class that only exists to store variables)
 
 We are aware that we currently have this smell in our code, but we are still discussing 
@@ -211,7 +218,15 @@ public Integer xMax;
 
 - Screenshot of coverage report.
 
-![alt-text](src/main/resources/Report/other/tests.png)
+![alt-text](Tests/Coverage.png)
+
+- Screenshot of Mutation Testing:
+
+![alt-text](Tests/MutationTest.png)
+
+- Screenshot of Tests Summary:
+
+![alt-text](Tests/TestSummary.png)
 
 ### SELF-EVALUATION
 
