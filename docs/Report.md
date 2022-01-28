@@ -34,7 +34,7 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 ------
 ### DESIGN
 
-#### APPLICATION FLOW BETWEEN THE DIFFERENT MENUS 
+#### APPLICATION FLOW
 
 ##### Problem in context
 
@@ -46,7 +46,7 @@ In order to guarantee our application to have a good flow, we implemented the [*
 It also provides a simple way to implement some features, for example the Pause Menu, in which the current state is the game one, we simply push a PauseMenuState, and then when the user wants to return to the game, simply pop the stack.
 This pattern enabled us to address the identified problems because it allowed us to keep the game states in a stack located in the Game class, eliminating the need to use switch operators, and making the change in state much easier to handle.
 
-### IMPLEMENTATION
+### Implementation
 
 ![StatePatternUML](Images/State_Pattern.png)
 
@@ -106,8 +106,9 @@ The use of the Singleton Pattern provided the following benefits:
   on and so forth
 
 However, there were certain drawbacks:
+
 - Constructors where private, therefore couldn't receive parameter arguments
-- Certain objects (Murphy, GameScreen, Display) have to be reset after each level, therefore, it's hard to implement a Singleton Pattern
+- Certain objects (Murphy, GameScreen, Display) have to be reset after each level, therefore, despite our initial intentions, it's hard to implement a Singleton Pattern
   for them.
 -------
 ####CREATING SEVERAL INHERITED OBJECTS
@@ -128,7 +129,7 @@ proper Bitmap for the Models (SpriteFactory) or the proper actions (actionFactor
 
 Again, we followed the standard Factory template. Here are the snippets:
 
-###### SPRITE FACTORY
+##### SPRITE FACTORY
 ```java
 public class SpriteFactory {
 
@@ -148,40 +149,50 @@ public class SpriteFactory {
 }
 ```
 
-###### ACTION FACTORY
 
-```java
-public class Action {
-    public void factory(Actions a) {
-        if (murphy.canMove(a)) {
-            switch (a) {
-              case MOVE_UP -> murphy.moveUp();
-              case MOVE_DOWN -> murphy.moveDown();
-              case MOVE_LEFT -> murphy.moveLeft();
-              case MOVE_RIGHT -> murphy.moveRight();
-              case EAT_UP -> eatUp();
-              case EAT_DOWN -> eatDown();
-              case EAT_LEFT -> eatLeft();
-              case EAT_RIGHT -> eatRight();
-              case EXPLODE -> explode();
-            }
-            murphy.updateAura();
-        }
-    }
-}
-```
-**Consequences**
+##### CONSEQUENCES
 
 - Adding a new color, a new Model or a new Action to our system would require minimal effort, since the factory would handle the creation.
 - We could freely use inheritance without having to instantiate new objects "by hand" each time we had to.
 - We kept the code readable and free from long conditional chains.
+
 ------
+
+### MVC (Model-View-Controller)
+
+#### Problem in context
+
+We had to separate the data, interface and control of the game for organization’s sake and to have a more **reusable,
+modular and easy to implement code**. This architectural pattern complies with the **Single Responsibility Principle**
+assuring the separation of functions between classes.
+
+#### The Pattern
+
+The [**MVC architectural pattern**](https://www.freecodecamp.org/news/the-model-view-controller-pattern-mvc-architecture-and-frameworks-explained/) is a way to separate all the code in three elements, Model, View and Control. The Model
+does not have dependencies, the View depends on the Model, and the Controller depends on both the Viewer and Model.
+
+The model only represents the data. The view displays the model data, and sends user actions to the controller. The
+controller provides model data to the view, and interprets user actions.
+
+#### Implementation 
+
+- [Model](../src/main/java/com/g801/supaplex/Model)
+- [Controller](../src/main/java/com/g801/supaplex/Controller)
+- [Viewer](../src/main/java/com/g801/supaplex/Viewer)
+
+#### Consequences
+
+- Using MVC (our professor recommendation) was a crucial part of our project, since it allowed us to manage our code and 
+time more efficiently, since it allowed each of us to work on different parts (backend/frontend) simultaneously, without depending so much on the other fields of code.
+- The program became easier to modify and test, derived from the isolated nature of the different elements.
+
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
 #### USING A DATA CLASS (Class that only exists to store variables)
 
 We are aware that we currently have this smell in our code, but we are still discussing 
 the best way to contour this problem.
+
 ```java
 class ScreenSettings {
     
@@ -193,9 +204,7 @@ public Integer xMin;
 public Integer xMax;
 
 }
-
 ```
-
 ------
 
 ### TESTING
