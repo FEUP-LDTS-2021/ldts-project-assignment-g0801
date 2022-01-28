@@ -27,8 +27,8 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
     underneath them is also a Rock.
 - **Restart** - Allows the user to restart the game at any given point.
 - **Sounds** - Different sounds for some animations (for example, when murphy captures an Infotron).
+- 
 ### PLANNED FEATURE LEFT OUT
-
 
 - **Push** - Murphy can push Rocks which can move
 - **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
