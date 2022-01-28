@@ -52,8 +52,6 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 
 ### SELF-EVALUATION
 
-#### Example:
-
 - Fábio Sá: 33.(3) %
 - Pedro Barbeira: 33.(3) %
 - José Diogo: 33.(3) %

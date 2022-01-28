@@ -17,27 +17,49 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 - **Game Logic** - We have most of the code logic behind most of the planned features (about the game flow) in a good position.
 - **Menus** - Basic Layout for menus, including Main, Level Select and Pause.
 - **States** - Stack Structure to allow simple application flow.
-- **Pause Menu** Currently on Main Menu START, our intention is for the user to be able to take a break and pick off right where he left the game.
+- **Pause Menu** The user is able to take a break and pick off right where he left the game, or simply restart the current level.
 - **Move** - Murphy will move according to the arrow key pressed by the user (up, down, left, right)
 - **Eat** - The player can make Murphy eat an adjacent block without moving into it by pressing CTRL + ARROW
 - **Unit Collision** - Murphy can't move against walls, Rocks and Scissors can only move if there's no block in front of them.
-- **Specific Behavior** - Rocks which can't be moved act as Walls and Scissors rotate when moving isn't possible.
+- **Specific Behavior** - Rocks which can't be moved act as Walls and Scissors rotate when moving forwards isn't possible.
 - **Infotron Counter** - Murphy needs a certain number of Infotrons to beat each level
-- **Fall** - Rocks will fall if there's no supporting block underneath them, also they can fall sideways (right/left) it the block
+- **Fall** - Rocks will fall if there's no supporting block underneath them, also they can fall sideways (right/left) if the block
     underneath them is also a Rock.
 - **Restart** - Allows the user to restart the game at any given point.
 - **Sounds** - Different sounds for some animations (for example, when murphy captures an Infotron).
-- 
-### PLANNED FEATURE LEFT OUT
+- **Sprites** - Our different game elements are drawn using multiple 2D arrays of chars (or a bitmap), in order to allow the design
+-   of more complex images.
 
-- **Push** - Murphy can push Rocks which can move
-- **Explode** - Murphy explodes if he gets caught by a Scissor, and both Murphy and the Scissor explode when crushed by a Rock
-
-### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
-![alt-text](docs/Gifs/MainMenu.gif)
 
 ------
 ### DESIGN
+
+#### APPLICATION FLOW BETWEEN THE DIFFERENT MENUS 
+
+##### Problem in context
+
+There was the need to switch between levels, menus and splash menus, each with their own respective controller and viewer.
+
+##### The Pattern
+
+In order to guarantee our application to have a good flow, we implemented the [**State Pattern**](https://refactoring.guru/design-patterns/state). This pattern allows us to keep state-specific behaviors inside different subclasses that represent different states. We can switch to a different state of the application by pushing another implementation to the stack (i.e., another subclass).
+It also provides a simple way to implement some features, for example the Pause Menu, in which the current state is the game one, we simply push a PauseMenuState, and then when the user wants to return to the game, simply pop the stack.
+This pattern enabled us to address the identified problems because it allowed us to keep the game states in a stack located in the Game class, eliminating the need to use switch operators, and making the change in state much easier to handle.
+
+### IMPLEMENTATION
+
+![StatePatternUML](Images/State_Pattern.png)
+
+Some classes where we implemented this pattern are the following:
+
+- [State](../src/main/java/com/g801/supaplex/States/State.java)
+- [GameState](../src/main/java/com/g801/supaplex/States/GameState.java)
+- [MainMenuState](../src/main/java/com/g801/supaplex/States/MenuState.java)
+
+### CONSEQUENCES
+
+Localizes and partitions behavior for different states.
+Makes state transitions easier and more explicit.
 
 #### REPETITION OF OBJECTS
 
@@ -183,8 +205,6 @@ public Integer xMax;
 ![alt-text](src/main/resources/Report/other/tests.png)
 
 ### SELF-EVALUATION
-
-#### Example:
 
 - Fábio Sá: 33.(3) %
 - Pedro Barbeira: 33.(3) %
