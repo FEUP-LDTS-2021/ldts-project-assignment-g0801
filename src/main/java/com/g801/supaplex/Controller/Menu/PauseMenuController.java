@@ -26,7 +26,7 @@ public class PauseMenuController extends Controller<PauseMenu> {
                 switch (model.getCurrentSelect()) {
                     case CONTINUE -> game.popState();
                     case RESTART -> {
-                        game.popState();
+                        game.popState(); game.popState();
                         game.pushState(new GameState(new Display()));
                     }
                     case QUIT -> {

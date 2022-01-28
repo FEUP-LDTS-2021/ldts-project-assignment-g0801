@@ -1,4 +1,4 @@
-**## LTDS_<T>08_<G>801 - <GameName> Supapl0x
+## LTDS_<T>08_<G>801 - <GameName> Supapl0x
 
 The project is a clone of the 90's game Supaplex. We play as Murphy, a very brave and adventurous red ball on a mission to capture Infotrons. During his
 quest he's faced with a series of challenges in the form of mazes which he must go through in order to find the Infotrons he needs. The mazes are dangerous
