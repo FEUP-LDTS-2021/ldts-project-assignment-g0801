@@ -17,56 +17,47 @@ public class RockController extends ElementController {
     @Override
     public void execute(Game game, GUI.KEYACTION keyaction, long time) throws IOException {
 
-        for (Rock elem : getModel().getRockList()) {
+        Display model = getModel();
+        for (Rock elem : model.getRockList()) {
             if (canMoveDown(elem)) {
                 this.soundPlayer.playFallSound();
                 elem.moveDown();
-                getModel().updateRock(elem);
+                model.updateRock(elem);
             }
             else if (canMoveRight(elem)) {
                 elem.moveRight(); elem.moveDown();
-                getModel().updateRockRight(elem);
+                model.updateRockRight(elem);
             }
             else if (canMoveLeft(elem)) {
                 elem.moveLeft(); elem.moveDown();
-                getModel().updateRockLeft(elem);
+                model.updateRockLeft(elem);
             }
         }
     }
 
     public boolean canMoveDown(Rock elem){
-        boolean ret = false;
-        Position pos = elem.getPos();
-        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        if (tmp instanceof Base) ret = true;
-
-        return ret;
+        Position pos = elem.getPos().getDown();
+        Model model = getModel().getMap()[pos.getY()][pos.getX()];
+        return model instanceof Base;
     }
 
-    public boolean canMoveRight(Movable elem) {
-        boolean ret = false;
-
+    public boolean canMoveRight(Rock elem) {
+        Model[][] map = getModel().getMap();
         Position pos = elem.getPos();
-        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        Model tmp1 = getModel().getMap()[pos.getRight().getY()][pos.getRight().getX()];
-        Model tmp2 = getModel().getMap()[pos.getRight().getDown().getY()][pos.getRight().getDown().getX()];
-
-        if (tmp instanceof Rock && (tmp1 instanceof Base && tmp2 instanceof Base)) ret = true;
-
-        return ret;
+        Model tmp = map[pos.getY()][pos.getX()];
+        pos = pos.getRight();
+        Model tmp1 = map[pos.getY()][pos.getX()];
+        Model tmp2 = map[pos.getY()+1][pos.getX()];
+        return tmp instanceof Rock && tmp1 instanceof Base && tmp2 instanceof Base;
     }
 
-    public boolean canMoveLeft(Movable elem) {
-        boolean ret = false;
-
+    public boolean canMoveLeft(Rock elem) {
+        Model[][] map = getModel().getMap();
         Position pos = elem.getPos();
-        Model tmp = getModel().getMap()[pos.getDown().getY()][pos.getDown().getX()];
-        Model tmp1 = getModel().getMap()[pos.getLeft().getY()][pos.getLeft().getX()];
-        Model tmp2 = getModel().getMap()[pos.getLeft().getDown().getY()][pos.getLeft().getDown().getX()];
-
-        if (tmp instanceof Rock && (tmp1 instanceof Base && tmp2 instanceof Base)) ret = true;
-
-        return ret;
+        Model tmp = map[pos.getY()][pos.getX()];
+        pos = pos.getLeft();
+        Model tmp1 = map[pos.getY()][pos.getX()];
+        Model tmp2 = map[pos.getY()+1][pos.getX()];
+        return tmp instanceof Rock && tmp1 instanceof Base && tmp2 instanceof Base;
     }
-
 }
