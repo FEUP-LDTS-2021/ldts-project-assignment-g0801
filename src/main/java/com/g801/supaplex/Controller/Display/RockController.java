@@ -43,14 +43,14 @@ public class RockController extends ElementController {
     public boolean canMoveRight(Rock elem) {
         Model[][] map = getModel().getMap();
         Position pos = elem.getPos();
-        return map[pos.getY()][pos.getX()] instanceof Rock && map[pos.getRight().getY()][pos.getRight().getX()] instanceof Base
+        return map[pos.getY() + 1][pos.getX()] instanceof Rock && map[pos.getRight().getY()][pos.getRight().getX()] instanceof Base
                 && map[pos.getRight().getY()+1][pos.getRight().getX()] instanceof Base;
     }
 
     public boolean canMoveLeft(Rock elem) {
         Model[][] map = getModel().getMap();
         Position pos = elem.getPos();
-        return map[pos.getY()][pos.getX()] instanceof Rock && map[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Base
+        return map[pos.getY() + 1][pos.getX()] instanceof Rock && map[pos.getLeft().getY()][pos.getLeft().getX()] instanceof Base
                 && map[pos.getLeft().getY()+1][pos.getLeft().getX()] instanceof Base;
     }
 }
