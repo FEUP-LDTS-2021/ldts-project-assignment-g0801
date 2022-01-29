@@ -8,12 +8,10 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.BasicTextImage;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.MouseCaptureMode;
 import com.googlecode.lanterna.terminal.Terminal;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -35,10 +33,8 @@ public class LanternaGUI implements GUI {
     private TerminalScreen createScreen(Terminal terminal) throws IOException {
         final TerminalScreen screen;
         screen = new TerminalScreen(terminal);
-        // Since we will not use the mouse cursor
         screen.setCursorPosition(null);
         screen.startScreen();
-        // Allows resize of window
         screen.doResizeIfNecessary();
         return screen;
     }
@@ -46,7 +42,6 @@ public class LanternaGUI implements GUI {
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-
         terminalFactory.setTerminalEmulatorTitle("Supaplex");
         terminalFactory.setMouseCaptureMode(MouseCaptureMode.CLICK_RELEASE_DRAG_MOVE);
         Terminal terminal = terminalFactory.createTerminal();
@@ -56,27 +51,28 @@ public class LanternaGUI implements GUI {
 
     @Override
     public KEYACTION getNextAction() throws IOException {
+
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return KEYACTION.NONE;
-        if (keyStroke.getKeyType() == KeyType.EOF) return KEYACTION.CLOSE;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return KEYACTION.QUIT;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'p') return KEYACTION.PAUSE;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'r') return KEYACTION.RESTART;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'h') return KEYACTION.SKIP;
-        if (keyStroke.getKeyType() == KeyType.Enter) return KEYACTION.SELECT;
-        if (keyStroke.isCtrlDown()) {
-            if (keyStroke.getKeyType() == KeyType.ArrowUp) return KEYACTION.EAT_UP;
-            if (keyStroke.getKeyType() == KeyType.ArrowDown) return KEYACTION.EAT_DOWN;
-            if (keyStroke.getKeyType() == KeyType.ArrowRight) return KEYACTION.EAT_RIGHT;
-            if (keyStroke.getKeyType() == KeyType.ArrowLeft) return KEYACTION.EAT_LEFT;
-        } else {
-            if (keyStroke.getKeyType() == KeyType.ArrowUp) return KEYACTION.UP;
-            if (keyStroke.getKeyType() == KeyType.ArrowDown) return KEYACTION.DOWN;
-            if (keyStroke.getKeyType() == KeyType.ArrowRight) return KEYACTION.RIGHT;
-            if (keyStroke.getKeyType() == KeyType.ArrowLeft) return KEYACTION.LEFT;
-        }
-        if (keyStroke.getKeyType() == KeyType.Enter) return KEYACTION.SELECT;
-        return KEYACTION.NONE;
+
+        boolean isCtrlDown = keyStroke.isCtrlDown();
+        return switch (keyStroke.getKeyType()) {
+
+            case EOF -> KEYACTION.CLOSE;
+            case Enter -> KEYACTION.SELECT;
+            case ArrowUp -> isCtrlDown ? KEYACTION.EAT_UP : KEYACTION.UP;
+            case ArrowDown -> isCtrlDown ? KEYACTION.EAT_DOWN : KEYACTION.DOWN;
+            case ArrowLeft -> isCtrlDown ? KEYACTION.EAT_LEFT : KEYACTION.LEFT;
+            case ArrowRight -> isCtrlDown ? KEYACTION.EAT_RIGHT : KEYACTION.RIGHT;
+            case Character -> switch (keyStroke.getCharacter()) {
+                case 'q' -> KEYACTION.QUIT;
+                case 'p' -> KEYACTION.PAUSE;
+                case 'r' -> KEYACTION.RESTART;
+                case 'h' -> KEYACTION.SKIP;
+                default -> KEYACTION.NONE;
+            };
+            default -> KEYACTION.NONE;
+        };
     }
 
     @Override
@@ -99,7 +95,6 @@ public class LanternaGUI implements GUI {
         TextGraphics tg = screen.newTextGraphics();
         TerminalPosition tp = new TerminalPosition(position.getX(), position.getY());
         TerminalSize ts = new TerminalSize(size.getWidth(), size.getHeight());
-
         tg.fillRectangle(tp, ts, TextCharacter.fromCharacter(' ', TextColor.Factory.fromString("#ff00ff"), TextColor.Factory.fromString("#00FF000"))[0]);
     }
 
@@ -109,13 +104,11 @@ public class LanternaGUI implements GUI {
         TextColor color;
         for (int i = 0; i < size.getRows(); i++) {
             for (int j = 0; j < size.getColumns(); j++) {
-
                 color = TextColor.Factory.fromString(colors.getColorString(textImage[i][j]));
-
                 lanternaTextImage.setCharacterAt(j,i, TextCharacter.fromCharacter(textImage[i][j], color, color)[0]);
             }
         }
-            TextGraphics tg = screen.newTextGraphics();
+        TextGraphics tg = screen.newTextGraphics();
         tg.drawImage(new TerminalPosition(position.getX(), position.getY()),  lanternaTextImage);
     }
 
@@ -148,8 +141,6 @@ public class LanternaGUI implements GUI {
     public void drawTitleBorder() {
 
         TextGraphics tg = getScreen().newTextGraphics();
-
-        // drawing double line box
 
         //CORNERS
         tg.setForegroundColor(TextColor.ANSI.YELLOW).setCharacter(65,8, Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);

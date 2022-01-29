@@ -8,7 +8,6 @@ import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
 import com.googlecode.lanterna.TextColor;
 
-
 public class DisplayViewer extends Viewer<Display> {
 
     public DisplayViewer(Display model) {

@@ -8,7 +8,6 @@ import com.g801.supaplex.States.MenuState;
 import com.g801.supaplex.States.State;
 import com.g801.supaplex.Viewer.GUI.LanternaGUI;
 import com.g801.supaplex.Model.Size;
-
 import java.io.IOException;
 import java.util.Stack;
 
@@ -21,7 +20,6 @@ public class Game implements Runnable {
     private Thread thread;
 
     private synchronized void start() {
-        // Deal with loose thread
         if (running)
             return;
 
@@ -31,13 +29,12 @@ public class Game implements Runnable {
     }
 
     public synchronized void stop() {
+
         if (!running)
             return;
-
         running = false;
 
         try {
-            // Needs try catch because throwing all thread together may not work
             thread.join(); // joins all threads and waits for them to die
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -71,7 +68,7 @@ public class Game implements Runnable {
 
         while (running) {
 
-            long now = System.nanoTime(); //takes time to load from line 43 to this one
+            long now = System.nanoTime(); //takes time to load from line 38 to this one
 
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -87,14 +84,12 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-//                System.out.println(updates + " Ticks, FPS: " + frames);
-                // Resetting
             }
 
         }
-        stop();    }
+        stop();
+    }
 
-    // EVERYTHING THAT UPDATES
     private void tick(long time) throws IOException {
         states.peek().step(this, this.gui, time);
     }
@@ -111,12 +106,7 @@ public class Game implements Runnable {
         return configuration;
     }
 
-    public void close() throws IOException {
-        gui.getScreen().close();
-    }
-
     public static void main(String[] args) throws IOException {
         new Game().start();
     }
 }
-

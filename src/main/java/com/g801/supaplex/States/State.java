@@ -4,7 +4,6 @@ import com.g801.supaplex.Controller.Controller;
 import com.g801.supaplex.Game;
 import com.g801.supaplex.Viewer.GUI.GUI;
 import com.g801.supaplex.Viewer.Viewer;
-
 import java.io.IOException;
 
 public abstract class State<T> {

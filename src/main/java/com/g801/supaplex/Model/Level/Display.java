@@ -28,7 +28,6 @@ public class Display {
     public void update(Movable m, GUI.KEYACTION keyaction){
 
         Position oldPosition = new Position(m.getPos().getX(), m.getPos().getY());
-        map[m.getPos().getY()][m.getPos().getX()] = m;
 
         switch (keyaction) {
             case DOWN -> oldPosition.addY(-1);
@@ -38,6 +37,7 @@ public class Display {
         }
 
         map[oldPosition.getY()][oldPosition.getX()] = new Base(oldPosition);
+        map[m.getPos().getY()][m.getPos().getX()] = m;
     }
 
     public void updateRock(Model m) {

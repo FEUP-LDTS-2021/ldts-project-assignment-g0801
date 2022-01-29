@@ -22,7 +22,7 @@ public class MurphyController extends Controller<Display> {
 
         if (canMove(keyaction, game)) {
 
-            Position oldPos = getModel().getMurphy().getPos();
+            Position oldPos = new Position(getModel().getMurphy().getPos().getX(), getModel().getMurphy().getPos().getY());
             Murphy murphy = this.getModel().getMurphy();
             Model[][] map = this.getModel().getMap();
             Position newPos = oldPos;
@@ -38,8 +38,10 @@ public class MurphyController extends Controller<Display> {
                 case EAT_DOWN -> newPos = oldPos.getDown();
             }
 
-            if (newPos != murphy.getPos()) map[newPos.getY()][newPos.getX()] = new Base(newPos);
-            getModel().update(murphy, keyaction);
+            if (newPos != murphy.getPos()) {
+                map[newPos.getY()][newPos.getX()] = new Base(newPos);
+                getModel().update(murphy, keyaction);
+            }
             getModel().updateTopLeft();
         }
     }

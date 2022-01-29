@@ -7,6 +7,7 @@ import com.g801.supaplex.Viewer.Menu.MainMenuViewer;
 import com.g801.supaplex.Viewer.Viewer;
 
 public class MenuState extends State<MainMenu> {
+
     public MenuState(MainMenu model) {
         super(model);
     }

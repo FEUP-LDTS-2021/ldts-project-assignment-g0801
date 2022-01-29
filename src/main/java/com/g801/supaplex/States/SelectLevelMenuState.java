@@ -8,18 +8,17 @@ import com.g801.supaplex.Viewer.Viewer;
 
 public class SelectLevelMenuState extends State<SelectLevelMenu>{
 
-        public SelectLevelMenuState(SelectLevelMenu model) {
+    public SelectLevelMenuState(SelectLevelMenu model) {
             super(model);
         }
 
-        @Override
-        protected Viewer<SelectLevelMenu> getViewer() {
+    @Override
+    protected Viewer<SelectLevelMenu> getViewer() {
             return new SelectMenuViewer(getModel());
         }
 
-        @Override
-        protected Controller<SelectLevelMenu> getController() {
+    @Override
+    protected Controller<SelectLevelMenu> getController() {
             return new SelectLevelMenuController(getModel());
         }
-
 }
