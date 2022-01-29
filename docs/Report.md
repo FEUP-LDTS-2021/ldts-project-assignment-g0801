@@ -104,7 +104,7 @@ class InfotronSprite extends Sprite {
 
 **Consequences**
 
-The use of the Singleton Pattern provided the following benefits:
+The use of the [**Singleton**](https://refactoring.guru/design-patterns/singleton) Pattern provided the following benefits:
 - There's only one possible instance of objects which are singular in the system (Sprites, Murphy, GameScreen, Display)
 - Since the getInstance() method is a public static we can easily access the instance in any layer of the system without having to pass it as a parameter
 - Changes in a Singleton ripple throughout the whole system, therefore a change made at the Model Level will also be accessible at the View Level, and so
@@ -128,9 +128,11 @@ layer, when parsing the user input to figure out which Action would Murphy do.
 **The Pattern**
 
 This is almost a textbook application of the Factory pattern. We applied different factories, which would either return the proper Strings (color), the
-proper Bitmap for the Models (SpriteFactory) or the proper actions (actionFactory).
+proper Bitmap for the Models (SpriteFactory).
 
 **Implementation**
+
+![StatePatternUML](Images/Factory_Pattern.png)
 
 Again, we followed the standard Factory template. Here are the snippets:
 
@@ -202,7 +204,7 @@ although it is generally considered a bad practice, we think it keeps the code m
 #### USING A DATA CLASS (Class that only exists to store variables)
 
 We are aware that we currently have this smell in our code, but we choose to keep it like this, since this class is used 
-by [Configuration](../src/main/java/com/g801/supaplex/Model/Configuration.java), which is a pretty big class on it's own.
+by [Configuration](../src/main/java/com/g801/supaplex/Model/Configuration.java), which is a pretty big class on its own.
 
 ```java
 class ScreenSettings {
@@ -233,8 +235,6 @@ which means that it has too many lines of code, making it harder to read.
 
 Although it's a long method, we don't have any duplicate code inside it, so our solution would be to extract some code into
 smaller and more concise methods.
-
-
 
 ----
 
