@@ -193,12 +193,16 @@ time more efficiently, since it allowed each of us to work on different parts (b
 
 ### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
+#### USAGE OF SWITCH CASE
 
-#### 
+We are using it for example in our [LanternaGUI](../src/main/java/com/g801/supaplex/Viewer/GUI/LanternaGUI.java) 
+or in our Menu Controllers (e.g. [MainMenuController](../src/main/java/com/g801/supaplex/Controller/Menu/MainMenuController.java)) to handle inputs from the user,
+although it is generally considered a bad practice, we think it keeps the code more organized and readable.
+
 #### USING A DATA CLASS (Class that only exists to store variables)
 
-We are aware that we currently have this smell in our code, but we are still discussing 
-the best way to contour this problem.
+We are aware that we currently have this smell in our code, but we choose to keep it like this, since this class is used 
+by [Configuration](../src/main/java/com/g801/supaplex/Model/Configuration.java), which is a pretty big class on it's own.
 
 ```java
 class ScreenSettings {
@@ -212,7 +216,27 @@ public Integer xMax;
 
 }
 ```
-------
+
+#### LARGE CLASS
+
+The way our class [Display](../src/main/java/com/g801/supaplex/Model/Level/Display.java) is set up at the moment, it's handling a lot of features, 
+for example initially rendering the level, updating the visible portion of the game map and also updating the relative positions of the different
+game elements.
+
+A possible solution is to use the **Extract class** technique of refactoring, 
+but the Display class makes more sense if it is done like this and also dividing into subclasses would make for larger function chains.
+
+#### LONG METHOD
+
+We consider our Render() method inside [Display](../src/main/java/com/g801/supaplex/Model/Level/Display.java) to be a long method,
+which means that it has too many lines of code, making it harder to read.
+
+Although it's a long method, we don't have any duplicate code inside it, so our solution would be to extract some code into
+smaller and more concise methods.
+
+
+
+----
 
 ### TESTING
 
