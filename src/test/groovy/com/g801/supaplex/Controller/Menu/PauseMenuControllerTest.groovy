@@ -51,7 +51,7 @@ class PauseMenuControllerTest extends Specification {
         when:
             menuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
-            1 * game.popState();
+            2 * game.popState();
             1 * game.pushState(_);
     }
 

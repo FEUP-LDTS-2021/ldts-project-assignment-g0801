@@ -10,5 +10,4 @@ public class Base extends Model {
         super.model = SpriteFactory.factoryMethod(' ');
         super.pos = p;
     }
-
 }

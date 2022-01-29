@@ -27,7 +27,6 @@ public class Movable extends Model {
         super.pos.addX(1);
     }
 
-    //Checks if Murphy can move to the desired block
     public boolean canMove(Action.Actions action){
         return aura.canMove(action);
     }

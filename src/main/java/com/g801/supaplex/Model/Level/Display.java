@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Display {
+
     private static final Position blockSize = new Position(Sprite.width, Sprite.height);
     private final Configuration configurations;
     private static final List<Rock> rockList = new ArrayList<>();
@@ -200,4 +201,3 @@ public class Display {
         return scissorList;
     }
 }
-

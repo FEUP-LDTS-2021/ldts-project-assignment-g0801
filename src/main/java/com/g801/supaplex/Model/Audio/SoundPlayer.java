@@ -7,7 +7,6 @@ import javax.sound.sampled.FloatControl;
 import java.io.File;
 import java.util.Objects;
 
-
 public class SoundPlayer {
 
     private Clip sound;
