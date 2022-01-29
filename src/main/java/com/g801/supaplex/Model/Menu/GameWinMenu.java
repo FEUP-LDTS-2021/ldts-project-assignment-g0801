@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model.Menu;
 
 import com.g801.supaplex.Model.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +29,7 @@ public class GameWinMenu extends Menu {
     }
 
     public String enumToString(GameWinMenu.Option menuOption) {
-        int pos = getPosElem(menuOption);
-        return optString[pos];
+        return optString[getPosElem(menuOption)];
     }
 
     public GameWinMenu.Option[] getOpt() {
@@ -47,20 +45,10 @@ public class GameWinMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.NEXT_LEVEL) selected = GameWinMenu.Option.QUIT;
-        else {
-            int i = getPosElem(selected);
-            i--;
-            selected = options[i];
-        }
+        selected = getPosElem(selected) == 0 ? options[2] : options[(getPosElem(selected)-1) % 3];
     }
 
     public void downButton() {
-        if (selected == GameWinMenu.Option.QUIT) selected = Option.NEXT_LEVEL;
-        else {
-            int i = getPosElem(selected);
-            i++;
-            selected = options[i];
-        }
+        selected = options[(getPosElem(selected)+1) % 3];
     }
 }

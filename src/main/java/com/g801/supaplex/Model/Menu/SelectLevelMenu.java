@@ -2,7 +2,6 @@ package com.g801.supaplex.Model.Menu;
 
 import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class SelectLevelMenu extends Menu {
 
     public enum Option {LOWER, INCREASE, BACK}
 
-    public String[] optString = {"LOWER", "INCREASE", "BACK"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"LOWER", "INCREASE", "BACK"};
 
     Option selected;
 
@@ -39,8 +38,7 @@ public class SelectLevelMenu extends Menu {
     }
 
     public String enumToString(Option menuOption) {
-        int pos = getPosElem(menuOption);
-        return optString[pos];
+        return optString[getPosElem(menuOption)];
     }
 
     public void setSelected(Option selected) {
@@ -56,21 +54,11 @@ public class SelectLevelMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.LOWER) selected = Option.BACK;
-        else {
-            int i = getPosElem(selected);
-            i--;
-            selected = options[i];
-        }
+        selected = getPosElem(selected) == 0 ? options[2] : options[(getPosElem(selected)-1) % 3];
     }
 
     public void downButton() {
-        if (selected == Option.BACK) selected = Option.LOWER;
-        else {
-            int i = getPosElem(selected);
-            i++;
-            selected = options[i];
-        }
+        selected = options[(getPosElem(selected)+1) % 3];
     }
 
     public Configuration getConfiguration() {
@@ -80,5 +68,4 @@ public class SelectLevelMenu extends Menu {
     public List<Image> getTextImagesList() {
         return textImagesList;
     }
-
 }

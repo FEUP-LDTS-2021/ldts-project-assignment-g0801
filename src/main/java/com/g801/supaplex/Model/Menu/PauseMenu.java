@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model.Menu;
 
 import com.g801.supaplex.Model.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class PauseMenu extends Menu {
 
     public enum Option {CONTINUE, RESTART, QUIT}
 
-    public String[] optString = {"CONTINUE GAME", "RESTART", "RETURN TO MENU"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"CONTINUE GAME", "RESTART", "RETURN TO MENU"};
 
     PauseMenu.Option selected;
 
@@ -30,8 +29,7 @@ public class PauseMenu extends Menu {
     }
 
     public String enumToString(PauseMenu.Option menuOption) {
-        int pos = getPosElem(menuOption);
-        return optString[pos];
+        return optString[getPosElem(menuOption)];
     }
 
     public void setSelected(PauseMenu.Option selected) {
@@ -55,20 +53,10 @@ public class PauseMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.CONTINUE) selected = PauseMenu.Option.QUIT;
-        else {
-            int i = getPosElem(selected);
-            i--;
-            selected = options[i];
-        }
+        selected = getPosElem(selected) == 0 ? options[2] : options[(getPosElem(selected)-1) % 3];
     }
 
     public void downButton() {
-        if (selected == PauseMenu.Option.QUIT) selected = PauseMenu.Option.CONTINUE;
-        else {
-            int i = getPosElem(selected);
-            i++;
-            selected = options[i];
-        }
+        selected = options[(getPosElem(selected)+1) % 3];
     }
 }

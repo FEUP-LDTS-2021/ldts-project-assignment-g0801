@@ -1,7 +1,6 @@
 package com.g801.supaplex.Model.Menu;
 
 import com.g801.supaplex.Model.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class MainMenu extends Menu {
 
     public enum Option {START, LEVEL, EXIT}
 
-    public String[] optString = {"START", "SELECT LEVEL", "QUIT"}; // GET THE STRING ASSOCIATED TO THE ENUMERATOR
+    public String[] optString = {"START", "SELECT LEVEL", "QUIT"};
 
     Option selected;
 
@@ -30,8 +29,7 @@ public class MainMenu extends Menu {
     }
 
     public String enumToString(Option menuOption) {
-        int pos = getPosElem(menuOption);
-        return optString[pos];
+        return optString[getPosElem(menuOption)];
     }
 
     public void setSelected(Option selected) {
@@ -51,21 +49,11 @@ public class MainMenu extends Menu {
     }
 
     public void upButton() {
-        if (selected == Option.START) selected = Option.EXIT;
-        else {
-            int i = getPosElem(selected);
-            i--;
-            selected = options[i];
-        }
+        selected = getPosElem(selected) == 0 ? options[2] : options[(getPosElem(selected)-1) % 3];
     }
 
     public void downButton() {
-        if (selected == Option.EXIT) selected = Option.START;
-        else {
-            int i = getPosElem(selected);
-            i++;
-            selected = options[i];
-        }
+        selected = options[(getPosElem(selected)+1) % 3];
     }
 
     public List<Image> getTextImagesList() {

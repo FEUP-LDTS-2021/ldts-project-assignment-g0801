@@ -3,7 +3,6 @@ package com.g801.supaplex.Model.Menu;
 import com.g801.supaplex.Model.Image;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
-
 import java.util.List;
 
 abstract public class Menu {
@@ -12,7 +11,6 @@ abstract public class Menu {
 
         imagesList.add(new Image(new Position( 40, 5), SpriteFactory.factoryMethod('I').getBitmap()));
         imagesList.add(new Image(new Position( 30, 10), SpriteFactory.factoryMethod('I').getBitmap()));
-
         imagesList.add(new Image(new Position( 100, 5), SpriteFactory.factoryMethod('I').getBitmap()));
         imagesList.add(new Image(new Position( 110, 10), SpriteFactory.factoryMethod('I').getBitmap()));
 
@@ -25,8 +23,6 @@ abstract public class Menu {
         imagesList.add(new Image(new Position( 10, 40), SpriteFactory.factoryMethod('X').getBitmap()));
         imagesList.add(new Image(new Position( 0, 35), SpriteFactory.factoryMethod('X').getBitmap()));
         imagesList.add(new Image(new Position( 20, 45), SpriteFactory.factoryMethod('X').getBitmap()));
-
-
         imagesList.add(new Image(new Position( 140, 35), SpriteFactory.factoryMethod('X').getBitmap()));
         imagesList.add(new Image(new Position( 130, 40), SpriteFactory.factoryMethod('X').getBitmap()));
         imagesList.add(new Image(new Position( 120, 45), SpriteFactory.factoryMethod('X').getBitmap()));
