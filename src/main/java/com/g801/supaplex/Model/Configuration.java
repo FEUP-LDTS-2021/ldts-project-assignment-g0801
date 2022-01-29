@@ -3,9 +3,8 @@ package com.g801.supaplex.Model;
 import com.g801.supaplex.Model.Elements.Murphy;
 import com.g801.supaplex.Model.Level.ScreenSettings;
 
-import java.util.Objects;
-
 public class Configuration {
+
     private static Configuration confs;
     private static ScreenSettings displayConfig;
     private Integer currentLevel;
@@ -55,16 +54,13 @@ public class Configuration {
     }
 
     public void updateSettings(Murphy m){
-        Integer xMin;
-        Integer yMin;
+
         Position bound = displayConfig.getMapBounds();
         Position pos = m.getPos();
-
         Integer w = getWidth() / 2;
         Integer h = getHeight() / 2;
-
-        yMin = Math.max(pos.getY() - h, 0);
-        xMin = Math.max(pos.getX() - w, 0);
+        Integer yMin = Math.max(pos.getY() - h, 0);
+        Integer xMin = Math.max(pos.getX() - w, 0);
 
         if (yMin != 0) yMin = pos.getY() + h >= bound.getY() ? bound.getY() - getHeight() : pos.getY() - h;
         if (xMin != 0) xMin = pos.getX() + w >= bound.getX() ? bound.getX() - getWidth() : pos.getX() - w;
@@ -80,16 +76,11 @@ public class Configuration {
     public Position getScreenLowerBound() { return displayConfig.getMapBounds(); }
 
     public void increaseCurrentLevel() {
-        if (Objects.equals(currentLevel, NUM_LEVELS)) {
-            currentLevel = 1;
-        }
-        else currentLevel++;
+        currentLevel = currentLevel == NUM_LEVELS ? 1 : currentLevel+1;
     }
 
     public void lowerCurrentLevel() {
-        if (currentLevel == 1) {
-            currentLevel = NUM_LEVELS;
-        } else currentLevel--;
+        currentLevel = currentLevel == 1 ? NUM_LEVELS : currentLevel-1;
     }
 
     public static void setWidth(Integer w) {

@@ -1,4 +1,5 @@
 package com.g801.supaplex.Model.Models;
+
 import com.g801.supaplex.Model.Reader;
 
 class WallSprite extends Sprite {
@@ -177,11 +178,7 @@ public class SpriteFactory {
             case '2' -> ScissorsSpriteRight.getInstance();
             case '3' -> ScissorsSpriteLeft.getInstance();
             case 'R' -> RockSprite.getInstance();
-            default ->
-
-                    // default something, retorna uma excepção de caracter inválido
-                    null;
+            default -> null;
         };
-        // temos de ter um return value após o switch?!
     }
 }
