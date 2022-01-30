@@ -30,7 +30,6 @@ This project was developed by Fábio Sá (up202007658@edu.fe.up.pt), Pedro Barbe
 - **Sprites** - Our different game elements are drawn using multiple 2D arrays of chars (or a bitmap), in order to allow the design
 -   of more complex images.
 
-
 ------
 ### DESIGN
 
@@ -155,7 +154,6 @@ public class SpriteFactory {
     }
 }
 ```
-
 
 ##### CONSEQUENCES
 
