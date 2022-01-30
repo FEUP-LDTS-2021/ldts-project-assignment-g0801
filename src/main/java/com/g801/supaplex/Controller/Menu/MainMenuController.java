@@ -26,9 +26,9 @@ public class MainMenuController extends Controller<MainMenu> {
             case UP -> model.upButton();
             case SELECT -> {
                 switch (model.getCurrentSelect()) {
-                    case START -> game.pushState(new GameState(new Display()));
-                    case LEVEL -> game.pushState(new SelectLevelMenuState(new SelectLevelMenu(game.getConfiguration())));
-                    case EXIT -> System.exit(0);
+                    case "START" -> game.pushState(new GameState(new Display()));
+                    case "SELECT LEVEL" -> game.pushState(new SelectLevelMenuState(new SelectLevelMenu()));
+                    case "QUIT" -> System.exit(0);
                 }
             }
         }

@@ -116,7 +116,7 @@ However, there were certain drawbacks:
 - Certain objects (Murphy, GameScreen, Display) have to be reset after each level, therefore, despite our initial intentions, it's hard to implement a Singleton Pattern
   for them.
 -------
-####CREATING SEVERAL INHERITED OBJECTS
+#### CREATING SEVERAL INHERITED OBJECTS
 
 **Problem in Context**
 

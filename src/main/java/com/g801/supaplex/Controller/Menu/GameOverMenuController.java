@@ -25,11 +25,11 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
             case UP -> model.upButton();
             case SELECT -> {
                 switch (model.getCurrentSelect()) {
-                    case RESTART -> {
+                    case "RESTART LEVEL" -> {
                         game.popState();
                         game.pushState(new GameState(new Display()));
                     }
-                    case MENU_RET -> {
+                    case "RETURN TO MENU" -> {
                         game.popState();
                         game.popState();
                     }

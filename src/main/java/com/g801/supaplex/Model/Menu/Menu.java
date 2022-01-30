@@ -1,11 +1,57 @@
 package com.g801.supaplex.Model.Menu;
 
+import com.g801.supaplex.Model.Configuration;
 import com.g801.supaplex.Model.Image;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
+import java.util.ArrayList;
 import java.util.List;
 
 abstract public class Menu {
+
+    String[] optString;
+    private final List<Image> textImagesList = new ArrayList<>();
+    String selected;
+    Configuration configuration;
+
+    public Menu() {
+        createImages(textImagesList);
+        configuration = Configuration.getInstance();
+    }
+
+    public String[] getOptString() {
+        return optString;
+    }
+
+    public int getPosElem(String target) {
+        int i = 0;
+        for (; optString[i] != target; i++);
+        return i;
+    }
+
+    public void setSelected(String selected) {
+        this.selected = selected;
+    }
+
+    public String getCurrentSelect() {
+        return selected;
+    }
+
+    public List<Image> getTextImagesList() {
+        return textImagesList;
+    }
+
+    public void upButton() {
+        selected = getPosElem(selected) == 0 ? optString[optString.length-1] : optString[(getPosElem(selected)-1) % optString.length];
+    }
+
+    public void downButton() {
+        selected = optString[(getPosElem(selected)+1) % optString.length];
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
 
     public void createImages(List<Image> imagesList)  {
 

@@ -28,10 +28,10 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
 
         int y = 10;
 
-        for (PauseMenu.Option elem : getModel().getOpt()) {
+        for (String elem : getModel().getOptString()) {
             if (getModel().getCurrentSelect() == elem) {
-                gui.drawStringCentered(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
-            } else gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
+                gui.drawStringCentered(TextColor.ANSI.BLUE_BRIGHT, y, elem);
+            } else gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, elem);
             y += 2;
         }
         gui.drawImages(getModel().getTextImagesList());

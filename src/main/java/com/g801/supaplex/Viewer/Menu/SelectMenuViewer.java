@@ -27,10 +27,10 @@ public class SelectMenuViewer extends Viewer <SelectLevelMenu> {
 
         int y = 10;
 
-        for (SelectLevelMenu.Option elem : getModel().getOpt()) {
+        for (String elem : getModel().getOptString()) {
             if (getModel().getCurrentSelect() == elem) {
-                gui.drawStringCentered(TextColor.ANSI.BLUE_BRIGHT, y, getModel().enumToString(elem));
-            } else gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, getModel().enumToString(elem));
+                gui.drawStringCentered(TextColor.ANSI.BLUE_BRIGHT, y, elem);
+            } else gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, elem);
             y += 2;
         }
         gui.drawStringCentered(TextColor.ANSI.RED_BRIGHT, y, "CURRENT LVL: " + getModel().getConfiguration().getCurrentLevel());

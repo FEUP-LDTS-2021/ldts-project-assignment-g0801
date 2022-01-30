@@ -25,17 +25,17 @@ public class GameWinMenuController extends Controller<GameWinMenu> {
             case UP -> model.upButton();
             case SELECT -> {
                 switch (model.getCurrentSelect()) {
-                    case NEXT_LEVEL -> {
+                    case "NEXT LEVEL" -> {
                         game.popState();
                         game.popState();
                         Configuration.getInstance().increaseCurrentLevel();
                         game.pushState(new GameState(new Display()));
                     }
-                    case MENU_RET -> {
+                    case "RETURN TO MAIN MENU" -> {
                         game.popState();
                         game.popState();
                     }
-                    case QUIT -> System.exit(0);
+                    case "QUIT" -> System.exit(0);
                 }
             }
         }
