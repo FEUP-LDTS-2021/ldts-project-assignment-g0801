@@ -40,7 +40,7 @@ class GameOverMenuControllerTest extends Specification {
     def "Key Select -> Restart"() {
 
         given:
-            gameOverMenu.getCurrentSelect() >> GameOverMenu.Option.RESTART;
+            gameOverMenu.getCurrentSelect() >> "RESTART";
         when:
             gameOverMenuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:

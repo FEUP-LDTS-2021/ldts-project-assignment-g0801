@@ -14,57 +14,33 @@ class PauseMenuTest extends Specification {
     def "Initial Pause menu State"() {
 
         expect:
-            menu.getCurrentSelect() == PauseMenu.Option.CONTINUE;
+            menu.getCurrentSelect() == "CONTINUE GAME";
             menu.getTextImagesList().size() == 21;
-    }
-
-    def "Position of options in menu"() {
-
-        expect:
-            menu.getPosElem(a) == b;
-
-        where:
-            a                           | b
-            PauseMenu.Option.CONTINUE   | 0
-            PauseMenu.Option.RESTART    | 1
-            PauseMenu.Option.QUIT       | 2
-    }
-
-    def "Getting a string with options"() {
-
-        expect:
-            menu.enumToString(a) == b;
-
-        where:
-            a                           | b
-            PauseMenu.Option.CONTINUE   | "CONTINUE GAME"
-            PauseMenu.Option.RESTART    | "RESTART"
-            PauseMenu.Option.QUIT       | "RETURN TO MENU"
     }
 
     def "Select another option"() {
 
         when:
-            menu.setSelected(PauseMenu.Option.RESTART);
+            menu.setSelected("RESTART");
         then:
-            menu.getCurrentSelect() == PauseMenu.Option.RESTART;
+            menu.getCurrentSelect() == "RESTART";
 
         when:
-            menu.setSelected(PauseMenu.Option.QUIT );
+            menu.setSelected("RESTART");
         then:
-            menu.getCurrentSelect() == PauseMenu.Option.QUIT;
+            menu.getCurrentSelect() == "RESTART";
     }
 
     def "Return all options"() {
 
         expect:
-            menu.getOpt()[a] == b
+            menu.getOptString()[a] == b
 
         where:
             a | b
-            0 | PauseMenu.Option.CONTINUE
-            1 | PauseMenu.Option.RESTART
-            2 | PauseMenu.Option.QUIT
+            0 | "CONTINUE GAME"
+            1 | "RESTART"
+            2 | "RETURN TO MENU"
     }
 
     def "Return all string options"() {
@@ -87,10 +63,10 @@ class PauseMenuTest extends Specification {
             menu.getCurrentSelect() == b;
 
         where:
-                                      a | b
-            PauseMenu.Option.CONTINUE   | PauseMenu.Option.QUIT
-            PauseMenu.Option.QUIT       | PauseMenu.Option.RESTART
-            PauseMenu.Option.RESTART    | PauseMenu.Option.CONTINUE
+                       a | b
+            "CONTINUE GAME"   | "RETURN TO MENU"
+            "RETURN TO MENU"       | "RESTART"
+            "RESTART"    | "CONTINUE GAME"
     }
 
     def "Down Button Click"() {
@@ -101,10 +77,10 @@ class PauseMenuTest extends Specification {
             menu.getCurrentSelect() == b;
 
         where:
-                                      a | b
-            PauseMenu.Option.CONTINUE   | PauseMenu.Option.RESTART
-            PauseMenu.Option.RESTART    | PauseMenu.Option.QUIT
-            PauseMenu.Option.QUIT       | PauseMenu.Option.CONTINUE
+                       a | b
+            "CONTINUE GAME"   | "RESTART"
+            "RESTART"    | "RETURN TO MENU"
+            "RETURN TO MENU"       | "CONTINUE GAME"
 
     }
 
