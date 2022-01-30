@@ -1,10 +1,7 @@
 package com.g801.supaplex.Viewer;
 
 import com.g801.supaplex.Viewer.GUI.GUI;
-
-
 import java.io.IOException;
-
 
 abstract public class Viewer <T> {
 
@@ -25,5 +22,4 @@ abstract public class Viewer <T> {
     public T getModel() {
         return model;
     }
-
 }

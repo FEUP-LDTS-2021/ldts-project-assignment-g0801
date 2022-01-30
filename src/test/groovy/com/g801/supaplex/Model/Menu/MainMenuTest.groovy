@@ -14,57 +14,34 @@ class MainMenuTest extends Specification {
     def "Initial menu State"() {
 
         expect:
-            menu.getCurrentSelect() == MainMenu.Option.START;
+            menu.getCurrentSelect() == "START";
             menu.getTextImagesList().size() == 21;
     }
 
-    def "Position of options in menu"() {
-
-        expect:
-            menu.getPosElem(a) == b;
-
-        where:
-            a                     | b
-            MainMenu.Option.START | 0
-            MainMenu.Option.LEVEL | 1
-            MainMenu.Option.EXIT  | 2
-    }
-
-    def "Getting a string with options"() {
-
-        expect:
-            menu.enumToString(a) == b;
-
-        where:
-            a                     | b
-            MainMenu.Option.START | "START"
-            MainMenu.Option.LEVEL | "SELECT LEVEL"
-            MainMenu.Option.EXIT  | "QUIT"
-    }
 
     def "Select another option"() {
 
         when:
-            menu.setSelected(MainMenu.Option.LEVEL);
+            menu.setSelected("LEVEL");
         then:
-            menu.getCurrentSelect() == MainMenu.Option.LEVEL;
+            menu.getCurrentSelect() == "LEVEL";
 
         when:
-            menu.setSelected(MainMenu.Option.EXIT);
+            menu.setSelected("EXIT");
         then:
-            menu.getCurrentSelect() == MainMenu.Option.EXIT;
+            menu.getCurrentSelect() == "EXIT";
     }
 
     def "Return all options"() {
 
         expect:
-            menu.getOpt()[a] == b
+            menu.getOptString()[a] == b
 
         where:
             a | b
-            0 | MainMenu.Option.START
-            1 | MainMenu.Option.LEVEL
-            2 | MainMenu.Option.EXIT
+            0 | "START"
+            1 | "SELECT LEVEL"
+            2 | "QUIT"
     }
 
     def "Return all string options"() {
@@ -87,10 +64,10 @@ class MainMenuTest extends Specification {
             menu.getCurrentSelect() == b;
 
         where:
-                                a | b
-            MainMenu.Option.START | MainMenu.Option.EXIT
-            MainMenu.Option.LEVEL | MainMenu.Option.START
-            MainMenu.Option.EXIT  | MainMenu.Option.LEVEL
+                  a | b
+            "START" | "QUIT"
+            "SELECT LEVEL" | "START"
+            "QUIT"  | "SELECT LEVEL"
     }
 
     def "Down Button Click"() {
@@ -101,10 +78,10 @@ class MainMenuTest extends Specification {
             menu.getCurrentSelect() == b;
 
         where:
-                                a | b
-            MainMenu.Option.START | MainMenu.Option.LEVEL
-            MainMenu.Option.LEVEL | MainMenu.Option.EXIT
-            MainMenu.Option.EXIT  | MainMenu.Option.START
+                  a | b
+            "START" | "SELECT LEVEL"
+            "SELECT LEVEL" | "QUIT"
+            "QUIT"  | "START"
 
     }
 

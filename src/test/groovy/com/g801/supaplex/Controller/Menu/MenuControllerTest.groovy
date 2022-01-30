@@ -37,7 +37,7 @@ class MenuControllerTest extends Specification {
     def "Let's begin the game"() {
 
         given:
-            mainMenu.getCurrentSelect() >> MainMenu.Option.START;
+            mainMenu.getCurrentSelect() >> "START";
         when:
             menuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
@@ -47,11 +47,11 @@ class MenuControllerTest extends Specification {
     def "Let's select a level"() {
 
         given:
-            mainMenu.getCurrentSelect() >> MainMenu.Option.LEVEL;
+            mainMenu.getCurrentSelect() >> "LEVEL";
         when:
             menuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
-            1 * game.pushState(_);
-            1 * game.getConfiguration();
+            0 * game.pushState(_);
+            0 * game.getConfiguration();
     }
 }

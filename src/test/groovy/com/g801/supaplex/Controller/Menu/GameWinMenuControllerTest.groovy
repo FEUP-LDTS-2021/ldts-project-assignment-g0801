@@ -47,11 +47,22 @@ class GameWinMenuControllerTest extends Specification {
     def "Key Select -> Next Level"() {
 
         given:
-            gameWinMenu.getCurrentSelect() >> GameWinMenu.Option.NEXT_LEVEL;
+            gameWinMenu.getCurrentSelect() >> "NEXT LEVEL";
         when:
             gameWinMenuController.execute(game, GUI.KEYACTION.SELECT, time);
         then:
             0 * game.popState();
             0 * game.pushState(_);
+    }
+
+    def "Key Select -> Return to main menu"() {
+
+        given:
+        gameWinMenu.getCurrentSelect() >> "RETURN TO MAIN MENU";
+        when:
+        gameWinMenuController.execute(game, GUI.KEYACTION.SELECT, time);
+        then:
+        0 * game.popState();
+        0 * game.pushState(_);
     }
 }

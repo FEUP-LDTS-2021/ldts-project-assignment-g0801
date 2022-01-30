@@ -1,11 +1,11 @@
 package com.g801.supaplex.Model.Elements;
 
-import com.g801.supaplex.Controller.Action;
 import com.g801.supaplex.Model.Aura.Aura;
 import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 
 public class Murphy extends Movable {
+
     enum Direction{
         UP, DOWN, LEFT, RIGHT
     }
@@ -19,12 +19,10 @@ public class Murphy extends Movable {
         super.aura = new Aura(this);
     }
 
-    //Checks if Murphy can eat the desired block
     public boolean canEat(Direction d){
         return true;
     }
 
-    //Tests
     public void setAura(Aura aura) {
         this.aura = aura;
     }

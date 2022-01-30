@@ -5,7 +5,6 @@ import com.g801.supaplex.Model.Position;
 import com.g801.supaplex.Model.Size;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.screen.TerminalScreen;
-
 import java.io.IOException;
 import java.util.List;
 

@@ -5,6 +5,10 @@ import com.g801.supaplex.Model.Position;
 
 public class Scissors extends Movable {
 
+    public enum Direction {
+        RIGHT, LEFT, UP, DOWN
+    }
+
     private Direction direction = Direction.RIGHT;
 
     public Scissors(Position p){
@@ -18,12 +22,5 @@ public class Scissors extends Movable {
 
     public void setDirection(Direction dir) {
         this.direction = dir;
-    }
-
-    public enum Direction {
-        RIGHT,
-        LEFT,
-        UP,
-        DOWN
     }
 }

@@ -9,5 +9,4 @@ public class Infotron extends Movable {
         super.model = SpriteFactory.factoryMethod('I');
         super.pos = p;
     }
-
 }

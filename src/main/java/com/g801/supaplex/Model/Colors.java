@@ -38,12 +38,7 @@ public class Colors {
     }
 
     public String getColorString(Character ch) {
-
-        if(allColors.containsKey(ch))
-        {
-            return allColors.get(ch);
-        }
-        return null;
+        return allColors.containsKey(ch) ? allColors.get(ch) : null;
     }
 
     public static Colors getInstance() {

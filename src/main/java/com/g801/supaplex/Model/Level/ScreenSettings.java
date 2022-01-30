@@ -3,7 +3,8 @@ package com.g801.supaplex.Model.Level;
 import com.g801.supaplex.Model.Position;
 
 public class ScreenSettings{
-    private static Integer width;   //How many blocks to the side of murphy
+
+    private static Integer width;
     private static Integer height;
     private static Position mapBounds;
     private static Position displayTopleft;

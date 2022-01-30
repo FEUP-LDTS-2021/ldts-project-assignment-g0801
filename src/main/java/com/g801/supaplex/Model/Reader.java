@@ -26,6 +26,5 @@ public class Reader {
             System.out.println("File not found");
             e.printStackTrace();
         }
-
     }
 }

@@ -1,23 +1,19 @@
 package com.g801.supaplex.Model.Menu
 
-import com.g801.supaplex.Model.Configuration
 import spock.lang.Specification;
 
 class SelectLevelMenuTest extends Specification {
 
     private SelectLevelMenu menu;
-    private Configuration configuration;
 
     def setup() {
-        configuration = Mock(Configuration.class)
-        menu = new SelectLevelMenu(configuration);
+        menu = new SelectLevelMenu();
     }
 
     def "Initial level menu State"() {
 
         expect:
-            menu.getCurrentSelect() == SelectLevelMenu.Option.LOWER;
-            menu.getConfiguration() == configuration;
+            menu.getCurrentSelect() == "LOWER";
             menu.getTextImagesList().size() != 0;
     }
 
@@ -27,50 +23,26 @@ class SelectLevelMenuTest extends Specification {
             menu.getPosElem(a) == b;
 
         where:
-            a                                | b
-            SelectLevelMenu.Option.LOWER     | 0
-            SelectLevelMenu.Option.INCREASE  | 1
-            SelectLevelMenu.Option.BACK      | 2
-    }
-
-    def "Getting a string with options"() {
-
-        expect:
-            menu.enumToString(a) == b;
-
-        where:
-            a                                | b
-            SelectLevelMenu.Option.LOWER     | "LOWER"
-            SelectLevelMenu.Option.INCREASE  | "INCREASE"
-            SelectLevelMenu.Option.BACK      | "BACK"
+            a           | b
+            "LOWER"     | 0
+            "INCREASE"  | 1
+            "BACK"      | 2
     }
 
     def "Select another option"() {
 
         when:
-            menu.setSelected(SelectLevelMenu.Option.INCREASE);
+            menu.setSelected("INCREASE");
         then:
-            menu.getCurrentSelect() == SelectLevelMenu.Option.INCREASE;
+            menu.getCurrentSelect() == "INCREASE";
 
         when:
-            menu.setSelected(SelectLevelMenu.Option.BACK);
+            menu.setSelected("BACK");
         then:
-            menu.getCurrentSelect() == SelectLevelMenu.Option.BACK;
+            menu.getCurrentSelect() == "BACK";
     }
 
     def "Return all options"() {
-
-        expect:
-            menu.getOpt()[a] == b
-
-        where:
-            a | b
-            0 | SelectLevelMenu.Option.LOWER
-            1 | SelectLevelMenu.Option.INCREASE
-            2 | SelectLevelMenu.Option.BACK
-    }
-
-    def "Return all string options"() {
 
         expect:
             menu.getOptString()[a] == b
@@ -91,9 +63,9 @@ class SelectLevelMenuTest extends Specification {
 
         where:
             a | b
-            SelectLevelMenu.Option.LOWER | SelectLevelMenu.Option.BACK
-            SelectLevelMenu.Option.INCREASE | SelectLevelMenu.Option.LOWER
-            SelectLevelMenu.Option.BACK | SelectLevelMenu.Option.INCREASE
+            "LOWER" | "BACK"
+            "INCREASE" | "LOWER"
+            "BACK" | "INCREASE"
     }
 
     def "Down Button Click"() {
@@ -105,9 +77,8 @@ class SelectLevelMenuTest extends Specification {
 
         where:
             a | b
-            SelectLevelMenu.Option.LOWER | SelectLevelMenu.Option.INCREASE
-            SelectLevelMenu.Option.INCREASE | SelectLevelMenu.Option.BACK
-            SelectLevelMenu.Option.BACK | SelectLevelMenu.Option.LOWER
-
+            "LOWER" | "INCREASE"
+            "INCREASE" | "BACK"
+            "BACK" | "LOWER"
     }
 }

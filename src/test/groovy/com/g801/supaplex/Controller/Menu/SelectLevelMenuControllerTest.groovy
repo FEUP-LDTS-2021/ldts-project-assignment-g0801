@@ -41,7 +41,7 @@ class SelectLevelMenuControllerTest extends Specification {
     def "Decreasing the chosen level"() {
 
         given:
-            menu.getCurrentSelect() >> SelectLevelMenu.Option.LOWER;
+            menu.getCurrentSelect() >> "LOWER";
         when:
             controller.execute(game, GUI.KEYACTION.SELECT, time);
         then:
@@ -51,7 +51,7 @@ class SelectLevelMenuControllerTest extends Specification {
     def "Increasing the chosen level"() {
 
         given:
-            menu.getCurrentSelect() >> SelectLevelMenu.Option.INCREASE;
+            menu.getCurrentSelect() >> "INCREASE";
         when:
             controller.execute(game, GUI.KEYACTION.SELECT, time);
         then:
@@ -61,7 +61,7 @@ class SelectLevelMenuControllerTest extends Specification {
     def "Back to the main menu"() {
 
         given:
-            menu.getCurrentSelect() >> SelectLevelMenu.Option.BACK;
+            menu.getCurrentSelect() >> "BACK";
         when:
             controller.execute(game, GUI.KEYACTION.SELECT, time);
         then:
