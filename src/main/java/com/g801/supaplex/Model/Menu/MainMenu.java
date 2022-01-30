@@ -4,7 +4,7 @@ public class MainMenu extends Menu {
     public MainMenu() {
         super();
         this.selected = "START";
-        String[] optString = {"START", "SELECT LEVEL", "QUIT"};
-        this.optString = optString;
+        this.optString = new String[]{"START", "SELECT LEVEL", "QUIT"};
+        title = "SUPAPL0X";
     }
 }

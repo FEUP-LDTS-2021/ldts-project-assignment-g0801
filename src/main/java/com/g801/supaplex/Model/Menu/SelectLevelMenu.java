@@ -5,7 +5,7 @@ public class SelectLevelMenu extends Menu {
     public SelectLevelMenu() {
         super();
         this.selected = "LOWER";
-        String[] optString = {"LOWER", "INCREASE", "BACK"};
-        this.optString = optString;
+        this.optString = new String[]{"LOWER", "INCREASE", "BACK"};
+        title = "SELECT LEVEL";
     }
 }

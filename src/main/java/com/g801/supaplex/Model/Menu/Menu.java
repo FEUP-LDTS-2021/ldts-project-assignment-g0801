@@ -6,6 +6,7 @@ import com.g801.supaplex.Model.Models.SpriteFactory;
 import com.g801.supaplex.Model.Position;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 abstract public class Menu {
 
@@ -13,6 +14,7 @@ abstract public class Menu {
     private final List<Image> textImagesList = new ArrayList<>();
     String selected;
     Configuration configuration;
+    String title;
 
     public Menu() {
         createImages(textImagesList);
@@ -25,7 +27,7 @@ abstract public class Menu {
 
     public int getPosElem(String target) {
         int i = 0;
-        for (; optString[i] != target; i++);
+        for (; !Objects.equals(optString[i], target); i++);
         return i;
     }
 
@@ -52,6 +54,8 @@ abstract public class Menu {
     public Configuration getConfiguration() {
         return configuration;
     }
+
+    public String getTitle() {return title;}
 
     public void createImages(List<Image> imagesList)  {
 
